@@ -1,0 +1,856 @@
+﻿@{
+    Project_Management.Models.project_managementEntities db = new Project_Management.Models.project_managementEntities();
+    //var cur = db.currents.FirstOrDefault();
+    var userid = Session["userid"];
+    var email = Session["email"];
+}
+
+
+<!-- jQuery 3.6 (CDN) -->
+<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>-->
+<!-- jQuery-UI (optional animations) -->
+@*<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>*@
+
+
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <title>PROJECT MANAGEMENT</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="PROJECT MANAGEMENT" name="description" />
+    <meta content="Codeicon Technology" name="author" />
+
+    <!-- App favicon -->
+    <link rel="shortcut icon" href="~/Content/Qovex/assets/images/favicon.ico">
+
+    <!-- Plugins css -->
+    <link href="~/Content/Qovex/assets/libs/dropzone/min/dropzone.min.css" rel="stylesheet" type="text/css" />
+
+
+    <!-- jquery.vectormap css -->
+    <link href="~/Content/Qovex/assets/libs/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.css" rel="stylesheet"
+          type="text/css" />
+
+
+    <!-- fullcalendar -->
+    <!-- Plugin css -->
+    <link href="~/Content/Qovex/assets/libs/fullcalendar/core/main.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/Qovex/assets/libs/fullcalendar/daygrid/main.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/Qovex/assets/libs/fullcalendar/bootstrap/main.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/Qovex/assets/libs/fullcalendar/timegrid/main.min.css" rel="stylesheet" type="text/css" />
+
+
+    <!-- Bootstrap Css -->
+    <link href="~/Content/Qovex/assets/css/bootstrap.min.css" id="bootstrap-styledd" rel="stylesheet" type="text/css" />
+    <!-- Icons Css -->
+    <link href="~/Content/Qovex/assets/css/icons.min.css" rel="stylesheet" type="text/css" />
+    <!-- App Css-->
+    <link href="~/Content/Qovex/assets/css/app.min.css" id="app-styledd" rel="stylesheet" type="text/css" />
+
+    <!-- DataTables -->
+    <link href="~/Content/Qovex/assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/Qovex/assets/libs/datatables.net-buttons-bs4/css/buttons.bootstrap4.min.css" rel="stylesheet"
+          type="text/css" />
+
+    <!-- Responsive Table css -->
+    <link href="~/Content/Qovex/assets/libs/admin-resources/rwd-table/rwd-table.min.css" rel="stylesheet" type="text/css" />
+
+
+    <!-- Responsive datatable examples -->
+    <link href="~/Content/Qovex/assets/libs/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css" rel="stylesheet"
+          type="text/css" />
+
+    <!-- Sweet Alert-->
+    <link href="~/Content/Qovex/assets/libs/sweetalert2/sweetalert2.min.css" rel="stylesheet" type="text/css" />
+
+
+
+    <!-- jquery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <script src="~/Scripts/jquery-3.5.1.min.js"></script>
+   
+    <!-- SweetAlert2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
+</head>
+
+<body data-layout="detached" data-topbar="colored">
+
+
+
+    <!-- <body data-layout="horizontal" data-topbar="dark"> -->
+
+    <div class="container-fluid">
+        <!-- Begin page -->
+        <div id="layout-wrapper">
+
+            <header id="page-topbar">
+                <div class="navbar-header">
+                    <div class="container-fluid">
+                        <div class="float-end">
+
+                            <div class="dropdown d-inline-block d-lg-none ms-2">
+                                <button type="button" class="btn header-item noti-icon waves-effect"
+                                        id="page-header-search-dropdown" data-bs-toggle="dropdown" aria-haspopup="true"
+                                        aria-expanded="false">
+                                    <i class="mdi mdi-magnify"></i>
+                                </button>
+                                <div class="dropdown-menu dropdown-menu-lg dropdown-menu-end p-0"
+                                     aria-labelledby="page-header-search-dropdown">
+
+                                    <form class="p-3">
+                                        <div class="m-0">
+                                            <div class="input-group">
+                                                <input type="text" class="form-control" placeholder="Search ..."
+                                                       aria-label="Recipient's username">
+                                                <div class="input-group-append">
+                                                    <button class="btn btn-primary" type="submit">
+                                                        <i class="mdi mdi-magnify"></i>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+
+
+
+                            <div class="dropdown d-none d-lg-inline-block ms-1">
+                                <button type="button" class="btn header-item noti-icon waves-effect"
+                                        onclick="location.href='@Url.Action("Index", "StickyNotes")';">
+                                    <i class="mdi mdi-note"></i>
+                                </button>
+                            </div>
+
+
+
+                            <div class="dropdown d-none d-lg-inline-block ms-1">
+                                <button type="button" class="btn header-item noti-icon waves-effect" data-toggle="fullscreen">
+                                    <i class="mdi mdi-fullscreen"></i>
+                                </button>
+                            </div>
+
+                            <div class="dropdown d-inline-block">
+                                <button type="button" class="btn header-item noti-icon waves-effect"
+                                        id="page-header-notifications-dropdown" data-bs-toggle="dropdown" aria-haspopup="true"
+                                        aria-expanded="false">
+                                    <i class="mdi mdi-bell-outline"></i>
+                                    <span class="badge rounded-pill bg-danger ">
+                                        @*@db.notifications.Where(p => p.receiver == email && p.isread == "False").Count()*@
+                                    </span>
+                                </button>
+                                <div class="dropdown-menu dropdown-menu-lg dropdown-menu-end p-0"
+                                     aria-labelledby="page-header-notifications-dropdown">
+                                    <div class="p-3">
+                                        <div class="row align-items-center">
+                                            <div class="col">
+                                                <h6 class="m-0"> Notifications </h6>
+                                            </div>
+                                            <div class="col-auto">
+                                                <a href="#!" class="small"> View All</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div data-simplebar style="max-height: 230px;">
+
+                                        @*@foreach (var item in db.notifications.Where(p => p.receiver == email && p.isread == "False").ToList())
+                                        {
+                                            <a href="@Url.Action("Notification","Notifications", new {id = item.id})" class="text-reset notification-item">
+                                                <div class="d-flex align-items-start">
+                                                    <div class="avatar-xs me-3">
+                                                        <span class="avatar-title bg-primary rounded-circle font-size-16">
+                                                            <i class="bx bx-cart"></i>
+                                                        </span>
+                                                    </div>
+                                                    <div class="flex-1">
+                                                        <h6 class="mt-0 mb-1">@item.title</h6>
+                                                        <div class="font-size-12 text-muted">
+                                                            <p class="mb-1">@item.description</p>
+                                                            <p class="mb-0"><i class="mdi mdi-clock-outline"></i>@item.insertdate</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        }*@
+
+                                        @*<a href="" class="text-reset notification-item">
+                                                <div class="d-flex align-items-start">
+                                                    <img src="~/Content/Qovex/assets/images/users/avatar-3.jpg" class="me-3 rounded-circle avatar-xs"
+                                                         alt="user-pic">
+                                                    <div class="flex-1">
+                                                        <h6 class="mt-0 mb-1">James Lemire</h6>
+                                                        <div class="font-size-12 text-muted">
+                                                            <p class="mb-1">It will seem like simplified English.</p>
+                                                            <p class="mb-0"><i class="mdi mdi-clock-outline"></i> 1 hours ago</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                            <a href="" class="text-reset notification-item">
+                                                <div class="d-flex align-items-start">
+                                                    <div class="avatar-xs me-3">
+                                                        <span class="avatar-title bg-success rounded-circle font-size-16">
+                                                            <i class="bx bx-badge-check"></i>
+                                                        </span>
+                                                    </div>
+                                                    <div class="flex-1">
+                                                        <h6 class="mt-0 mb-1">Your item is shipped</h6>
+                                                        <div class="font-size-12 text-muted">
+                                                            <p class="mb-1">If several languages coalesce the grammar</p>
+                                                            <p class="mb-0"><i class="mdi mdi-clock-outline"></i> 3 min ago</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </a>
+
+                                            <a href="" class="text-reset notification-item">
+                                                <div class="d-flex align-items-start">
+                                                    <img src="~/Content/Qovex/assets/images/users/avatar-4.jpg" class="me-3 rounded-circle avatar-xs"
+                                                         alt="user-pic">
+                                                    <div class="flex-1">
+                                                        <h6 class="mt-0 mb-1">Salena Layfield</h6>
+                                                        <div class="font-size-12 text-muted">
+                                                            <p class="mb-1">As a skeptical Cambridge friend of mine occidental.</p>
+                                                            <p class="mb-0"><i class="mdi mdi-clock-outline"></i> 1 hours ago</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </a>*@
+                                    </div>
+                                    <div class="p-2 border-top d-grid">
+                                        <a class="btn btn-sm btn-link font-size-14 " href="javascript:void(0)">
+                                            <i class="mdi mdi-arrow-right-circle me-1"></i> View More..
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="dropdown d-inline-block">
+                                <button type="button" class="btn header-item waves-effect" id="page-header-user-dropdown"
+                                        data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <img class="rounded-circle header-profile-user" src="~/Content/Qovex/assets/images/users/avatar-2.jpg"
+                                         alt="Header Avatar">
+                                    <!---DISPLAY THE LOGIN USER EMAIL-->
+                                    <span class="d-none d-xl-inline-block ms-1">@Session["email"]</span>
+                                    <i class="mdi mdi-chevron-down d-none d-xl-inline-block"></i>
+                                </button>
+                                <div class="dropdown-menu dropdown-menu-end">
+                                    <!-- item-->
+                                    <a class="dropdown-item" href="@Url.Action("Index","Companies")">
+                                        <i class="bx bx-user font-size-16 align-middle me-1"></i>
+                                        Add Company
+                                    </a>
+                                    <a class="dropdown-item" href="@Url.Action("Index","Packages")">
+                                        <i class="bx bx-wallet font-size-16 align-middle me-1"></i>
+                                        Add Package
+                                    </a>
+                                    <a class="dropdown-item" href="@Url.Action("Index","SuperAdmin")">
+                                        <i class="bx bx-wallet font-size-16 align-middle me-1"></i>
+                                        Add Super Admin
+                                    </a>
+                                    <a class="dropdown-item" href="#">
+                                        <i class="bx bx-user font-size-16 align-middle me-1"></i>
+                                        Profile
+                                    </a>
+                                    <a class="dropdown-item" href="#">
+                                        <i class="bx bx-wallet font-size-16 align-middle me-1"></i> My
+                                        Wallet
+                                    </a>
+                                    <a class="dropdown-item d-block" href="#">
+                                        <span class="badge bg-success float-end">11</span><i class="bx bx-wrench font-size-16 align-middle me-1"></i>
+                                        Settings
+                                    </a>
+                                    <a class="dropdown-item" href="#">
+                                        <i class="bx bx-lock-open font-size-16 align-middle me-1"></i>
+                                        Lock screen
+                                    </a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item text-danger" href="@Url.Action("Login","UserAccounts")">
+                                        <i class="bx bx-power-off font-size-16 align-middle me-1 text-danger"></i>
+                                        Logout
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="dropdown d-inline-block">
+                                <button type="button" class="btn header-item noti-icon right-bar-toggle waves-effect">
+                                    <i class="mdi mdi-settings-outline"></i>
+                                </button>
+                            </div>
+
+                            <!-- Activity logs -->
+                            <div class="dropdown d-inline-block">
+                                <button type="button" class="btn header-item noti-icon waves-effect"
+                                        id="page-header-notifications-dropdown" data-bs-toggle="dropdown" aria-haspopup="true"
+                                        aria-expanded="false">
+                                    <i class="mdi mdi-bell-outline"></i>
+                                    <span class="badge rounded-pill bg-danger ">
+
+                                        @db.ActivityLogs.Take(10).Count()
+
+                                    </span>
+                                </button>
+                                <div class="dropdown-menu dropdown-menu-lg dropdown-menu-end p-0"
+                                     aria-labelledby="page-header-notifications-dropdown">
+                                    <div class="p-3">
+                                        <div class="row align-items-center">
+                                            <div class="col">
+                                                <h6 class="m-0"> Activity Logs </h6>
+                                            </div>
+                                            <div class="col-auto">
+                                                <a href="@Url.Action("Index","ActivityLogs")" class="small"> View All</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div data-simplebar style="max-height: 1000px;">
+                                        @foreach (var item in db.ActivityLogs.OrderByDescending(p => p.insertdate).Take(10))
+                                        {
+                                            if (item.logtype == "success")
+                                            {
+                                                <a href="@Url.Action("Index","ActivityLogs")" class="text-reset notification-item">
+                                                    <div class="d-flex align-items-start">
+                                                        <div class="avatar-xs me-3">
+                                                            <span class="avatar-title bg-success rounded-circle font-size-16">
+                                                                <i class="bx bx-badge-check"></i>
+                                                            </span>
+                                                        </div>
+                                                        <div class="flex-1">
+                                                            <h6 class="mt-0 mb-1">Created</h6>
+                                                            <h6 class="mt-0 mb-1">@item.title</h6>
+                                                            <div class="font-size-12 text-muted">
+                                                                <p class="mb-1">
+                                                                    STATUS: @item.status
+                                                                    <br>
+                                                                    USER EMAIL: @item.insertuser
+                                                                    <br>
+                                                                    USERID: @item.notes
+                                                                    <br>
+                                                                    DATE:  @item.insertdate
+                                                                    <br>
+                                                                    SOURCE: @item.source
+                                                                    <br>
+                                                                    MESSAGE: @item.message
+                                                                </p>
+                                                                <p class="mb-0"><i class="mdi mdi-clock-outline"></i> @item.insertdate</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                            }
+                                            else
+                                            {
+                                                <a href="@Url.Action("Index","ActivityLogs")" class="text-reset notification-item">
+                                                    <div class="d-flex align-items-start">
+                                                        <div class="avatar-xs me-3">
+                                                            <span class="avatar-title bg-success rounded-circle font-size-16">
+                                                                <i class="bx bx-badge-check"></i>
+                                                            </span>
+                                                        </div>
+                                                        <div class="flex-1">
+                                                            <h6 class="mt-0 mb-1">Added</h6>
+                                                            <h6 class="mt-0 mb-1">@item.title</h6>
+                                                            <div class="font-size-12 text-muted">
+                                                                <p class="mb-1">
+                                                                    STATUS: @item.status
+                                                                    <br>
+                                                                    USER EMAIL: @item.insertuser
+                                                                    <br>
+                                                                    USERID: @item.notes
+                                                                    <br>
+                                                                    DATE:  @item.insertdate
+                                                                    <br>
+                                                                    SOURCE: @item.source
+                                                                    <br>
+                                                                    MESSAGE: @item.message
+                                                                </p>
+                                                                <p class="mb-0"><i class="mdi mdi-clock-outline"></i> @item.insertdate</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </a>
+
+                                            }
+                                        }
+                                    </div>
+                                    <div class="p-2 border-top d-grid">
+                                        <a class="btn btn-sm btn-link font-size-14 " href="@Url.Action("Index","ActivityLogs")">
+                                            <i class="mdi mdi-arrow-right-circle me-1"></i> View More..
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Activity Logs -->
+                        </div>
+                        <div>
+                            <!-- LOGO -->
+                            <div class="navbar-brand-box">
+                                <a href="@Url.Action("Index","Home")" class="logo logo-dark">
+                                    <span class="logo-sm">
+                                        <img src="~/Content/Qovex/assets/images/logo-sm.png" alt="" height="20">
+                                    </span>
+                                    <span class="logo-lg">
+                                        <img src="~/Content/Qovex/assets/images/logo-dark.png" alt="" height="17">
+                                    </span>
+                                </a>
+
+                                <a href="@Url.Action("Index","Home")" class="logo logo-light">
+                                    <span class="logo-sm">
+                                        <img src="~/Content/Qovex/assets/images/logo-sm.png" alt="" height="20">
+                                    </span>
+                                    <span class="logo-lg">
+                                        <img src="~/Content/Qovex/assets/images/logo-light.png" alt="" height="19">
+                                    </span>
+                                </a>
+                            </div>
+
+                            <button type="button" class="btn btn-sm px-3 font-size-16 header-item toggle-btn waves-effect"
+                                    id="vertical-menu-btn">
+                                <i class="fa fa-fw fa-bars"></i>
+                            </button>
+
+                            <!-- App Search-->
+                            <form class="app-search d-none d-lg-inline-block">
+                                <div class="position-relative">
+                                    <input type="text" class="form-control" placeholder="Search...">
+                                    <span class="bx bx-search-alt"></span>
+                                </div>
+                            </form>
+
+
+                        </div>
+
+                    </div>
+                </div>
+            </header>
+
+
+            <!-- ========== Left Sidebar Start ========== -->
+            @Html.Partial("~/Views/Shared/_leftbar.cshtml")
+            <!-- ========== Left Sidebar End ========== -->
+            <!-- ============================================================== -->
+            <!-- Start right Content here -->
+            <!-- ============================================================== -->
+            <div class="main-content">
+
+                <div class="page-content">
+
+                    <!-- start page title -->
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="page-title-box d-flex align-items-center justify-content-between">
+                                <div class="d-flex align-items-center">
+                                    <h4 class="page-title mb-0 font-size-18">
+                                        Welcome to Project Management Dashboard
+                                    </h4>
+
+                                    @*<ul class="navbar-nav float-left mr-auto ml-3 pl-1">
+                                            <li class="nav-item d-none d-md-block fc-center">
+                                                <div class="customize-input">
+                                                    <h2 class="btn btn-outline-light btn-sm">
+                                                        <strong>
+                                                            Welcome to Project Management Dashboard
+                                                        </strong>
+                                                    </h2>
+                                                </div>
+                                            </li>
+                                        </ul>*@
+                                </div>
+
+
+                                <div class="page-title-right">
+                                    <ol class="breadcrumb m-0">
+                                        <li class="breadcrumb-item active">Dashboard</li>
+                                    </ol>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end page title -->
+                    <!-- ========== Display Message ========== -->
+                    <div class="container-fluid">
+                        @if (TempData["success"] != null)
+                        {
+                            if (TempData["success"].ToString() == "true")
+                            {
+                                <div class="alert alert-success" role="alert">
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                    <strong>Success! </strong> @TempData["message"]
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="alert alert-danger" role="alert">
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                    <strong>Error! </strong> @TempData["message"]
+                                </div>
+                            }
+                        }
+
+                        <!-- ========== For the Rest of the body in another page ========== -->
+                        @RenderBody()
+
+                    </div>
+                </div>
+                <!-- End Page-content -->
+
+                <footer class="footer">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <script>document.write(new Date().getFullYear())</script> © Project Management.
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="text-sm-end d-none d-sm-block">
+                                    Design & Develop by Codeicon Technology
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </footer>
+            </div>
+            <!-- end main content-->
+
+        </div>
+        <!-- END layout-wrapper -->
+
+    </div>
+    <!-- end container-fluid -->
+    <!-- Right Sidebar -->
+    <div class="right-bar">
+        <div data-simplebar class="h-100">
+            <div class="rightbar-title px-3 py-4">
+                <a href="javascript:void(0);" class="right-bar-toggle float-end">
+                    <i class="mdi mdi-close noti-icon"></i>
+                </a>
+                <h5 class="m-0">Settings</h5>
+            </div>
+
+            <!-- Settings -->
+            <hr class="mt-0" />
+            <h6 class="text-center mb-0">Choose Layouts</h6>
+
+            <div class="p-4">
+                <div class="mb-2">
+                    <img src="~/Content/Qovex/assets/images/layouts/layout-1.jpg" class="img-fluid img-thumbnail" alt="">
+                </div>
+
+                <div class="form-check form-switch mb-3">
+                    <input type="checkbox" class="form-check-input theme-choice" id="light-mode-switch" checked />
+                    <label class="form-check-label" for="light-mode-switch">Light Mode</label>
+                </div>
+
+                <div class="mb-2">
+                    <img src="~/Content/Qovex/assets/images/layouts/layout-2.jpg" class="img-fluid img-thumbnail" alt="">
+                </div>
+
+                <div class="form-check form-switch mb-3">
+                    <input type="checkbox" class="form-check-input theme-choice" id="dark-mode-switch"
+                           data-bsStyle="~/Content/Qovex/assets/css/bootstrap-dark.min.css" data-appStyle="~/Content/Qovex/assets/css/app-dark.min.css" />
+                    <label class="form-check-label" for="dark-mode-switch">Dark Mode</label>
+                </div>
+
+                <div class="mb-2">
+                    <img src="~/Content/Qovex/assets/images/layouts/layout-3.jpg" class="img-fluid img-thumbnail" alt="">
+                </div>
+                <div class="form-check form-switch mb-5">
+                    <input type="checkbox" class="form-check-input theme-choice" id="rtl-mode-switch"
+                           data-appStyle="~/Content/Qovex/assets/css/app-rtl.min.css" />
+                    <label class="form-check-label" for="rtl-mode-switch">RTL Mode</label>
+                </div>
+
+            </div>
+
+        </div>
+        <!-- end slimscroll-menu-->
+    </div>
+    <!-- /Right-bar -->
+    <!-- Right bar overlay-->
+    <div class="rightbar-overlay"></div>
+
+    <!-- JAVASCRIPT -->
+    <!-- JAVASCRIPT -->
+    <script src="~/Content/Qovex/assets/libs/jquery/jquery.min.js"></script>
+    <script src="~/Content/Qovex/assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="~/Content/Qovex/assets/libs/metismenu/metisMenu.min.js"></script>
+    <script src="~/Content/Qovex/assets/libs/simplebar/simplebar.min.js"></script>
+    <script src="~/Content/Qovex/assets/libs/node-waves/waves.min.js"></script>
+    <script src="~/Content/Qovex/assets/libs/jquery-sparkline/jquery.sparkline.min.js"></script>
+
+
+
+    <!-- fullcalendar -->
+    <!-- plugin js -->
+    <script src="~/Content/Qovex/assets/libs/moment/min/moment.min.js"></script>
+    <script src="~/Content/Qovex/assets/libs/jquery-ui-dist/jquery-ui.min.js"></script>
+    <script src="~/Content/Qovex/assets/libs/fullcalendar/core/main.min.js"></script>
+    <script src="~/Content/Qovex/assets/libs/fullcalendar/bootstrap/main.min.js"></script>
+    <script src="~/Content/Qovex/assets/libs/fullcalendar/daygrid/main.min.js"></script>
+    <script src="~/Content/Qovex/assets/libs/fullcalendar/timegrid/main.min.js"></script>
+    <script src="~/Content/Qovex/assets/libs/fullcalendar/interaction/main.min.js"></script>
+
+
+    <!-- apexcharts -->
+    <script src="~/Content/Qovex/assets/libs/apexcharts/apexcharts.min.js"></script>
+
+    <!-- jquery.vectormap map -->
+    <script src="~/Content/Qovex/assets/libs/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.min.js"></script>
+    <script src="~/Content/Qovex/assets/libs/admin-resources/jquery.vectormap/maps/jquery-jvectormap-us-merc-en.js"></script>
+
+    <script src="~/Content/Qovex/assets/js/pages/dashboard.init.js"></script>
+
+    <!-- Required datatable js -->
+    <script src="~/Content/Qovex/assets/libs/datatables.net/js/jquery.dataTables.min.js"></script>
+    <script src="~/Content/Qovex/assets/libs/datatables.net-bs4/js/dataTables.bootstrap4.min.js"></script>
+    <!-- Buttons examples -->
+    <script src="~/Content/Qovex/assets/libs/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
+    <script src="~/Content/Qovex/assets/libs/datatables.net-buttons-bs4/js/buttons.bootstrap4.min.js"></script>
+    <script src="~/Content/Qovex/assets/libs/jszip/jszip.min.js"></script>
+    <script src="~/Content/Qovex/assets/libs/pdfmake/build/pdfmake.min.js"></script>
+    <script src="~/Content/Qovex/assets/libs/pdfmake/build/vfs_fonts.js"></script>
+    <script src="~/Content/Qovex/assets/libs/datatables.net-buttons/js/buttons.html5.min.js"></script>
+    <script src="~/Content/Qovex/assets/libs/datatables.net-buttons/js/buttons.print.min.js"></script>
+    <script src="~/Content/Qovex/assets/libs/datatables.net-buttons/js/buttons.colVis.min.js"></script>
+    <!-- Responsive examples -->
+    <script src="~/Content/Qovex/assets/libs/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
+    <script src="~/Content/Qovex/assets/libs/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js"></script>
+
+    <!-- Datatable init js -->
+    <script src="~/Content/Qovex/assets/js/pages/datatables.init.js"></script>
+
+    <!-- Responsive Table js -->
+    <script src="~/Content/Qovex/assets/libs/admin-resources/rwd-table/rwd-table.min.js"></script>
+
+
+
+    <!-- Table Editable plugin -->
+    <script src="~/Content/Qovex/assets/libs/table-edits/build/table-edits.min.js"></script>
+
+    <script src="~/Content/Qovex/assets/js/pages/table-editable.int.js"></script>
+
+
+    <!-- form repeater js -->
+    <script src="~/Content/Qovex/assets/libs/jquery.repeater/jquery.repeater.min.js"></script>
+
+    <!-- form repeater init -->
+    <script src="~/Content/Qovex/assets/js/pages/form-repeater.init.js"></script>
+
+
+    <!-- Sweet Alerts js -->
+    <script src="~/Content/Qovex/assets/libs/sweetalert2/sweetalert2.min.js"></script>
+
+    <!-- Sweet alert init js-->
+    <script src="~/Content/Qovex/assets/js/pages/sweet-alerts.init.js"></script>
+
+
+    <!--tinymce js-->
+    <script src="~/Content/Qovex/assets/libs/tinymce/tinymce.min.js"></script>
+
+    <!-- Init js -->
+    <script src="~/Content/Qovex/assets/js/pages/table-responsive.init.js"></script>
+    <script src="~/Content/Qovex/assets/js/pages/form-editor.init.js"></script>
+
+
+
+    <!-- apexcharts -->
+    <script src="~/Content/Qovex/assets/libs/apexcharts/apexcharts.min.js"></script>
+
+    <script src="~/Content/Qovex/assets/js/pages/dashboard-2.init.js"></script>
+
+    <!-- Plugins js -->
+    <script src="~/Content/Qovex/assets/libs/dropzone/min/dropzone.min.js"></script>
+
+    <!-- Fullcalendar -->
+    <!-- Calendar init -->
+    <script src="~/Content/Qovex/assets/js/pages/calendar.init.js"></script>
+
+    <!-- App js -->
+    <script src="~/Content/Qovex/assets/js/app.js"></script>
+
+    <!-- =====================  PRINTING DIV  ========================= -->
+    <!-- ============================================================== -->
+    <script language="javascript" type="text/javascript">
+        function printDiv(divName) {
+            var printContents = document.getElementById(divName).innerHTML;
+            var originalContents = document.body.innerHTML;
+            document.body.innerHTML = printContents;
+
+            window.print();
+
+            document.body.innerHTML = originalContents;
+        }
+    </script>
+    <script>
+        function myFunction() {
+            // Declare variables
+            var input, filter, table, tr, td, i, txtValue;
+            input = document.getElementById("myInput");
+            filter = input.value.toUpperCase();
+            table = document.getElementById("search");
+            tr = table.getElementsByTagName("tr");
+
+            // Loop through all table rows, and hide those who don't match the search query
+            for (i = 0; i < tr.length; i++) {
+                td = tr[i].getElementsByTagName("td")[0];
+                if (td) {
+                    txtValue = td.textContent || td.innerText;
+                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                        tr[i].style.display = "";
+                    } else {
+                        tr[i].style.display = "none";
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- =====================  FOR SEARCHING ========================= -->
+    <!-- ============================================================== -->
+    <style>
+        #myInput {
+            background-image: url('/css/searchicon.png'); /* Add a search icon to input */
+            background-position: 10px 12px; /* Position the search icon */
+            background-repeat: no-repeat; /* Do not repeat the icon image */
+            width: 100%; /* Full-width */
+            font-size: 16px; /* Increase font-size */
+            padding: 12px 20px 12px 40px; /* Add some padding */
+            border: 1px solid #ddd; /* Add a grey border */
+            margin-bottom: 12px; /* Add some space below the input */
+        }
+
+        #search {
+            border-collapse: collapse; /* Collapse borders */
+            width: 100%; /* Full-width */
+            border: 1px solid #ddd; /* Add a grey border */
+            font-size: 18px; /* Increase font-size */
+        }
+
+            #search th, #search td {
+                text-align: left; /* Left-align text */
+                padding: 12px; /* Add padding */
+            }
+
+            #search tr {
+                /* Add a bottom border to all table rows */
+                border-bottom: 1px solid #ddd;
+            }
+
+                #search tr.header, #search tr:hover {
+                    /* Add a grey background color to the table header and on hover */
+                    background-color: #f1f1f1;
+                }
+    </style>
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- =========================  TEXTAREA  ========================= -->
+    <!-- ============================================================== -->
+    <!-- ===  <textarea class="form-control" aria-label="With textarea" rows="5" id="description" name="description"></textarea>  ========== -->
+    <script>
+        $(document).ready(function () {
+            $('textarea').summernote({
+                placeholder: 'Write something...',
+                tabsize: 2,
+                height: 250,
+                toolbar: [
+                    ['style', ['style']],
+                    ['font', ['bold', 'underline', 'clear']],
+                    ['color', ['color']],
+                    ['para', ['ul', 'ol', 'paragraph']],
+                    ['table', ['table']],
+                    ['insert', ['link', 'picture', 'video']],
+                    ['view', ['fullscreen', 'codeview', 'help']]
+                ]
+            });
+        });
+    </script>
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.9.0/dist/summernote.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.9.0/dist/summernote.min.js"></script>
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- =========================  FILE & IMAGE ======================= -->
+    <!-- ============================================================== -->
+    <!-- ===
+        <label for="maxEmployees">
+        Add Files
+    </label>
+    <input type="file" name="file" id="file" class="form-control" />
+    <img id="preview" src="#" alt="Image Preview" style="display:none; max-width:300px;" />
+        === -->
+    <script>
+        const input = document.getElementById('file');
+        const previewContainer = document.getElementById('previewContainer');
+        const previewImg = document.getElementById('previewImg');
+        const previewPdf = document.getElementById('previewPdf');
+
+        input.addEventListener('change', function () {
+            const file = this.files[0];
+            if (!file) {
+                previewContainer.style.display = 'none';
+                return;
+            }
+
+            const ext = file.name.split('.').pop().toLowerCase();
+            const reader = new FileReader();
+
+            if (['jpg', 'jpeg', 'png', 'gif', 'bmp', 'webp'].includes(ext)) {
+                reader.onload = function (e) {
+                    previewImg.src = e.target.result;
+                    previewImg.style.display = 'block';
+                    previewPdf.style.display = 'none';
+                    previewContainer.style.display = 'block';
+                };
+                reader.readAsDataURL(file);
+            } else if (ext === 'pdf') {
+                reader.onload = function (e) {
+                    previewPdf.data = e.target.result;
+                    previewPdf.style.display = 'block';
+                    previewImg.style.display = 'none';
+                    previewContainer.style.display = 'block';
+                };
+                reader.readAsDataURL(file);
+            } else {
+                alert("Only image or PDF files are allowed.");
+                input.value = ""; // reset
+                previewContainer.style.display = 'none';
+            }
+        });
+    </script>
+
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- =========================From dantoro yason school project===================================== -->
+    @*<script src="~/Content/assets/assets/libs/jquery/dist/jquery.min.js"></script>
+        <script src="~/Content/assets/assets/libs/popper.js/dist/umd/popper.min.js"></script>*@
+    <script src="~/Content/assets/assets/libs/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- ============================================================== -->
+    <!-- =========================From dantoro yason school project===================================== -->
+    <!-- =========================Drop down search select search ===================================== -->
+    <script src="~/Content/dist/js/select2.js"></script>
+    <link href="~/Content/dist/css/select2.css" rel="stylesheet" />
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <script>
+        $(document).ready(function () {
+            $("select").select2();
+        });
+    </script>
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- YOUR PAGE SCRIPTS COME AFTER THIS LINE -->
+    @RenderSection("Scripts", required: false)
+</body>
+
+</html>

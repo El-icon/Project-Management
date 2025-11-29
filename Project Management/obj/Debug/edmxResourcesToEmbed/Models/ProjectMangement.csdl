@@ -1,0 +1,873 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="project_managementModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="project_managementEntities" annotation:LazyLoadingEnabled="true">
+    <FunctionImport Name="sp_alterdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_creatediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_dropdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(project_managementModel.sp_helpdiagramdefinition_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(project_managementModel.sp_helpdiagrams_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_renamediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="new_diagramname" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_upgraddiagrams" />
+    <EntitySet Name="ActivityLogs" EntityType="project_managementModel.ActivityLog" />
+    <EntitySet Name="Adminfaqs" EntityType="project_managementModel.Adminfaq" />
+    <EntitySet Name="Adminfaqcategories" EntityType="project_managementModel.Adminfaqcategory" />
+    <EntitySet Name="Appreciatiions" EntityType="project_managementModel.Appreciatiion" />
+    <EntitySet Name="billings" EntityType="project_managementModel.billing" />
+    <EntitySet Name="Calendars" EntityType="project_managementModel.Calendar" />
+    <EntitySet Name="Clients" EntityType="project_managementModel.Client" />
+    <EntitySet Name="Companies" EntityType="project_managementModel.Company" />
+    <EntitySet Name="company001" EntityType="project_managementModel.company001" />
+    <EntitySet Name="Deals" EntityType="project_managementModel.Deal" />
+    <EntitySet Name="Departments" EntityType="project_managementModel.Department" />
+    <EntitySet Name="Designations" EntityType="project_managementModel.Designation" />
+    <EntitySet Name="documents" EntityType="project_managementModel.document" />
+    <EntitySet Name="Employees" EntityType="project_managementModel.Employee" />
+    <EntitySet Name="Lead_Contact" EntityType="project_managementModel.Lead_Contact" />
+    <EntitySet Name="Leaves" EntityType="project_managementModel.Leave" />
+    <EntitySet Name="notifications" EntityType="project_managementModel.notification" />
+    <EntitySet Name="Packages" EntityType="project_managementModel.Package" />
+    <EntitySet Name="personel_files_cat" EntityType="project_managementModel.personel_files_cat" />
+    <EntitySet Name="personneldocuments" EntityType="project_managementModel.personneldocument" />
+    <EntitySet Name="settings" EntityType="project_managementModel.setting" />
+    <EntitySet Name="settings_categories" EntityType="project_managementModel.settings_categories" />
+    <EntitySet Name="Shift_Roster" EntityType="project_managementModel.Shift_Roster" />
+    <EntitySet Name="StickyNotes" EntityType="project_managementModel.StickyNote" />
+    <EntitySet Name="Superadmins" EntityType="project_managementModel.Superadmin" />
+    <EntitySet Name="sysdiagrams" EntityType="project_managementModel.sysdiagram" />
+    <EntitySet Name="useraccounts" EntityType="project_managementModel.useraccount" />
+    <EntitySet Name="Offlinerequests" EntityType="project_managementModel.Offlinerequest" />
+    <AssociationSet Name="FK_Adminfaq_Adminfaqcategory" Association="project_managementModel.FK_Adminfaq_Adminfaqcategory">
+      <End Role="Adminfaqcategory" EntitySet="Adminfaqcategories" />
+      <End Role="Adminfaq" EntitySet="Adminfaqs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Appreciatiion_Employees" Association="project_managementModel.FK_Appreciatiion_Employees">
+      <End Role="Employee" EntitySet="Employees" />
+      <End Role="Appreciatiion" EntitySet="Appreciatiions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_billing_Companies" Association="project_managementModel.FK_billing_Companies">
+      <End Role="Company" EntitySet="Companies" />
+      <End Role="billing" EntitySet="billings" />
+    </AssociationSet>
+    <AssociationSet Name="FK_billing_Packages" Association="project_managementModel.FK_billing_Packages">
+      <End Role="Package" EntitySet="Packages" />
+      <End Role="billing" EntitySet="billings" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Clients_company001" Association="project_managementModel.FK_Clients_company001">
+      <End Role="company001" EntitySet="company001" />
+      <End Role="Client" EntitySet="Clients" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Companies_Packages1" Association="project_managementModel.FK_Companies_Packages1">
+      <End Role="Package" EntitySet="Packages" />
+      <End Role="Company" EntitySet="Companies" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Lead_Contact_company001" Association="project_managementModel.FK_Lead_Contact_company001">
+      <End Role="company001" EntitySet="company001" />
+      <End Role="Lead_Contact" EntitySet="Lead_Contact" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Deals_Lead_Contact" Association="project_managementModel.FK_Deals_Lead_Contact">
+      <End Role="Lead_Contact" EntitySet="Lead_Contact" />
+      <End Role="Deal" EntitySet="Deals" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Shift_Roster_Department" Association="project_managementModel.FK_Shift_Roster_Department">
+      <End Role="Department" EntitySet="Departments" />
+      <End Role="Shift_Roster" EntitySet="Shift_Roster" />
+    </AssociationSet>
+    <AssociationSet Name="FK_personneldocument_documents" Association="project_managementModel.FK_personneldocument_documents">
+      <End Role="document" EntitySet="documents" />
+      <End Role="personneldocument" EntitySet="personneldocuments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Lead_Contact_Employees1" Association="project_managementModel.FK_Lead_Contact_Employees1">
+      <End Role="Employee" EntitySet="Employees" />
+      <End Role="Lead_Contact" EntitySet="Lead_Contact" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Lead_Contact_Employees2" Association="project_managementModel.FK_Lead_Contact_Employees2">
+      <End Role="Employee" EntitySet="Employees" />
+      <End Role="Lead_Contact" EntitySet="Lead_Contact" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Leave_Employees" Association="project_managementModel.FK_Leave_Employees">
+      <End Role="Employee" EntitySet="Employees" />
+      <End Role="Leave" EntitySet="Leaves" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Shift_Roster_Employees" Association="project_managementModel.FK_Shift_Roster_Employees">
+      <End Role="Employee" EntitySet="Employees" />
+      <End Role="Shift_Roster" EntitySet="Shift_Roster" />
+    </AssociationSet>
+    <AssociationSet Name="FK_notifications_useraccount" Association="project_managementModel.FK_notifications_useraccount">
+      <End Role="useraccount" EntitySet="useraccounts" />
+      <End Role="notification" EntitySet="notifications" />
+    </AssociationSet>
+    <AssociationSet Name="FK_personneldocument_personel_files_cat" Association="project_managementModel.FK_personneldocument_personel_files_cat">
+      <End Role="personel_files_cat" EntitySet="personel_files_cat" />
+      <End Role="personneldocument" EntitySet="personneldocuments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_settings_settings_categories" Association="project_managementModel.FK_settings_settings_categories">
+      <End Role="settings_categories" EntitySet="settings_categories" />
+      <End Role="setting" EntitySet="settings" />
+    </AssociationSet>
+  </EntityContainer>
+  <ComplexType Name="sp_helpdiagramdefinition_Result">
+    <Property Type="Int32" Name="version" Nullable="true" />
+    <Property Type="Binary" Name="definition" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_helpdiagrams_Result">
+    <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+    <Property Type="Int32" Name="OwnerID" Nullable="false" />
+  </ComplexType>
+  <EntityType Name="ActivityLog">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="title" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="message" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="code" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="error" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="url" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="source" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="logtype" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="status" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="notes" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="loglevel" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="insertdate" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="insertuser" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Adminfaq">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="articletitle" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="files" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="categoryid" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="insertdate" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="doc_order" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="expdate" Type="DateTime" Precision="0" />
+    <Property Name="notes" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="status" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="url" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="doctype" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="updatedate" Type="DateTime" Precision="3" />
+    <Property Name="createdby" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="updateby" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Adminfaqcategory" Relationship="project_managementModel.FK_Adminfaq_Adminfaqcategory" FromRole="Adminfaq" ToRole="Adminfaqcategory" />
+  </EntityType>
+  <EntityType Name="Adminfaqcategory">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="categoryname" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="status" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="insertdate" Type="DateTime" Precision="3" />
+    <Property Name="updatedate" Type="DateTime" Precision="3" />
+    <Property Name="createdby" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="updateby" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Adminfaqs" Relationship="project_managementModel.FK_Adminfaq_Adminfaqcategory" FromRole="Adminfaqcategory" ToRole="Adminfaq" />
+  </EntityType>
+  <EntityType Name="Appreciatiion">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="award" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="employeeid" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="date" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="summary" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="photo" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Employee" Relationship="project_managementModel.FK_Appreciatiion_Employees" FromRole="Appreciatiion" ToRole="Employee" />
+  </EntityType>
+  <EntityType Name="billing">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="companyid" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="packageid" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="paymentdate" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="nextpaymentdate" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="transactionid" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="amount" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="paymentgateway" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Company" Relationship="project_managementModel.FK_billing_Companies" FromRole="billing" ToRole="Company" />
+    <NavigationProperty Name="Package" Relationship="project_managementModel.FK_billing_Packages" FromRole="billing" ToRole="Package" />
+  </EntityType>
+  <EntityType Name="Calendar">
+    <Key>
+      <PropertyRef Name="EventID" />
+    </Key>
+    <Property Name="EventID" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Subject" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="StartDateTime" Type="DateTime" Precision="3" />
+    <Property Name="EndDateTime" Type="DateTime" Precision="3" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Location" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="IsFullDay" Type="Boolean" />
+    <Property Name="CreatedBy" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="ThemeColor" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Client">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="name" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="email" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="country" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="mobile" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="gender" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Language" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="clientcategory" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="clientsubcategory" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Companyname" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="companywebsite" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="taxname" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="gstvatnumber" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="companyphone" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="city" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="state" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="postalcode" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="companyaddress" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="shippingaddress" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="addedby" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="note" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="insertdate" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="employeeid" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="companyid" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="company001" Relationship="project_managementModel.FK_Clients_company001" FromRole="Client" ToRole="company001" />
+  </EntityType>
+  <EntityType Name="Company">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="packageid" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="companyname" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="companyemail" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="companyphone" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="companywebsite" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="timezone" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="language" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="currency" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="address" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="acctname" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="acctemail" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="packageid1" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="details" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="insertdate" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="status" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="photo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="url" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="expdate" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="employees" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="clients" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="invoices" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="storage" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="estimates" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="projects" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="tasks" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="leads" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="orders" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="tickets" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="contacts" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="amount" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="paymentdate" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="nextpaymentdate" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="licenceexpireson" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="billings" Relationship="project_managementModel.FK_billing_Companies" FromRole="Company" ToRole="billing" />
+    <NavigationProperty Name="Package" Relationship="project_managementModel.FK_Companies_Packages1" FromRole="Company" ToRole="Package" />
+  </EntityType>
+  <EntityType Name="company001">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="name" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="email" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="mobile" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="officemobile" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="gstvatnumber" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="taxname" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="website" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="country" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="state" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="city" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="postalcode" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="address" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="shippingaddress" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="addedby" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="note" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="insertdate" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="status" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Clients" Relationship="project_managementModel.FK_Clients_company001" FromRole="company001" ToRole="Client" />
+    <NavigationProperty Name="Lead_Contact" Relationship="project_managementModel.FK_Lead_Contact_company001" FromRole="company001" ToRole="Lead_Contact" />
+  </EntityType>
+  <EntityType Name="Deal">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="leadcontactid" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="name" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="pipeline" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="dealstages" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="dealvalue" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="closedate" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="dealcategory" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="dealagent" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="product" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="dealwatcher" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="insertdate" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Lead_Contact" Relationship="project_managementModel.FK_Deals_Lead_Contact" FromRole="Deal" ToRole="Lead_Contact" />
+  </EntityType>
+  <EntityType Name="Department">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="name" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="parent" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Shift_Roster" Relationship="project_managementModel.FK_Shift_Roster_Department" FromRole="Department" ToRole="Shift_Roster" />
+  </EntityType>
+  <EntityType Name="Designation">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="name" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="parent" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="document">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="name" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="insertdate" Type="DateTime" Precision="3" />
+    <Property Name="notes" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="status" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="updatedate" Type="DateTime" Precision="3" />
+    <Property Name="createdby" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="updateby" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="personneldocuments" Relationship="project_managementModel.FK_personneldocument_documents" FromRole="document" ToRole="personneldocument" />
+  </EntityType>
+  <EntityType Name="Employee">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="name" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="dob" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="designation" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="department" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="email" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="country" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="mobile" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="gender" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="joiningdate" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="reportingto" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Language" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="status" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="userrole" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="insertdate" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="about" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="hourlyrate" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="slackmemberid" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="skills" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="probationenddate" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="noticeperiodstartdate" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="noticeperiodenddate" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="employmenttype" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="maritalstatus" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="businessaddress" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Appreciatiions" Relationship="project_managementModel.FK_Appreciatiion_Employees" FromRole="Employee" ToRole="Appreciatiion" />
+    <NavigationProperty Name="Lead_Contact" Relationship="project_managementModel.FK_Lead_Contact_Employees1" FromRole="Employee" ToRole="Lead_Contact" />
+    <NavigationProperty Name="Lead_Contact1" Relationship="project_managementModel.FK_Lead_Contact_Employees2" FromRole="Employee" ToRole="Lead_Contact" />
+    <NavigationProperty Name="Leaves" Relationship="project_managementModel.FK_Leave_Employees" FromRole="Employee" ToRole="Leave" />
+    <NavigationProperty Name="Shift_Roster" Relationship="project_managementModel.FK_Shift_Roster_Employees" FromRole="Employee" ToRole="Shift_Roster" />
+  </EntityType>
+  <EntityType Name="Lead_Contact">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="name" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="email" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="leadsource" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="addedby" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="leadowner" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="insertdate" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="companyid" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="company001" Relationship="project_managementModel.FK_Lead_Contact_company001" FromRole="Lead_Contact" ToRole="company001" />
+    <NavigationProperty Name="Deals" Relationship="project_managementModel.FK_Deals_Lead_Contact" FromRole="Lead_Contact" ToRole="Deal" />
+    <NavigationProperty Name="Employee" Relationship="project_managementModel.FK_Lead_Contact_Employees1" FromRole="Lead_Contact" ToRole="Employee" />
+    <NavigationProperty Name="Employee1" Relationship="project_managementModel.FK_Lead_Contact_Employees2" FromRole="Lead_Contact" ToRole="Employee" />
+  </EntityType>
+  <EntityType Name="Leave">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="name" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="leavetype" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="status" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Duration" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="date" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="leavefile" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="createdby" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="reasonforabsence" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="insertdate" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="employeeid" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Employee" Relationship="project_managementModel.FK_Leave_Employees" FromRole="Leave" ToRole="Employee" />
+  </EntityType>
+  <EntityType Name="notification">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="sender" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="receiver" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="title" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="description" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="isread" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="insertuser" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="insertdate" Type="DateTime" Precision="3" />
+    <Property Name="status" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="notes" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="useraccount" Relationship="project_managementModel.FK_notifications_useraccount" FromRole="notification" ToRole="useraccount" />
+  </EntityType>
+  <EntityType Name="Package">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="packagename" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="monthlyprice" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="annualprice" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="currency" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="filestoragemb" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="maxemployees" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="moduleinpackage1" Type="Boolean" Nullable="false" />
+    <Property Name="moduleinpackage2" Type="Boolean" Nullable="false" />
+    <Property Name="moduleinpackage3" Type="Boolean" Nullable="false" />
+    <Property Name="moduleinpackage4" Type="Boolean" Nullable="false" />
+    <Property Name="moduleinpackage5" Type="Boolean" Nullable="false" />
+    <Property Name="moduleinpackage6" Type="Boolean" Nullable="false" />
+    <Property Name="moduleinpackage7" Type="Boolean" Nullable="false" />
+    <Property Name="moduleinpackage8" Type="Boolean" Nullable="false" />
+    <Property Name="moduleinpackage9" Type="Boolean" Nullable="false" />
+    <Property Name="moduleinpackage10" Type="Boolean" Nullable="false" />
+    <Property Name="moduleinpackage11" Type="Boolean" Nullable="false" />
+    <Property Name="moduleinpackage12" Type="Boolean" Nullable="false" />
+    <Property Name="moduleinpackage13" Type="Boolean" Nullable="false" />
+    <Property Name="moduleinpackage14" Type="Boolean" Nullable="false" />
+    <Property Name="moduleinpackage15" Type="Boolean" Nullable="false" />
+    <Property Name="moduleinpackage16" Type="Boolean" Nullable="false" />
+    <Property Name="moduleinpackage17" Type="Boolean" Nullable="false" />
+    <Property Name="moduleinpackage18" Type="Boolean" Nullable="false" />
+    <Property Name="moduleinpackage19" Type="Boolean" Nullable="false" />
+    <Property Name="moduleinpackage20" Type="Boolean" Nullable="false" />
+    <Property Name="moduleinpackage21" Type="Boolean" Nullable="false" />
+    <Property Name="moduleinpackage22" Type="Boolean" Nullable="false" />
+    <Property Name="moduleinpackage23" Type="Boolean" Nullable="false" />
+    <Property Name="moduleinpackage24" Type="Boolean" Nullable="false" />
+    <Property Name="moduleinpackage25" Type="Boolean" Nullable="false" />
+    <Property Name="moduleinpackage26" Type="Boolean" Nullable="false" />
+    <Property Name="moduleinpackage27" Type="Boolean" Nullable="false" />
+    <Property Name="moduleinpackage28" Type="Boolean" Nullable="false" />
+    <Property Name="moduleinpackage29" Type="Boolean" Nullable="false" />
+    <Property Name="moduleinpackage30" Type="Boolean" Nullable="false" />
+    <Property Name="moduleinpackage31" Type="Boolean" Nullable="false" />
+    <Property Name="moduleinpackage32" Type="Boolean" Nullable="false" />
+    <Property Name="moduleinpackage33" Type="Boolean" Nullable="false" />
+    <Property Name="moduleinpackage34" Type="Boolean" Nullable="false" />
+    <Property Name="status" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="insertdate" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="packagetype" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="packagecategory" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="paymentdate" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="nextpaymentdate" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="licenceexpireson" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="billings" Relationship="project_managementModel.FK_billing_Packages" FromRole="Package" ToRole="billing" />
+    <NavigationProperty Name="Companies" Relationship="project_managementModel.FK_Companies_Packages1" FromRole="Package" ToRole="Company" />
+  </EntityType>
+  <EntityType Name="personel_files_cat">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="cat_name" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="cat_order" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="status" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="insertdate" Type="DateTime" Precision="3" />
+    <Property Name="updatedate" Type="DateTime" Precision="3" />
+    <Property Name="createdby" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="updateby" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="personneldocuments" Relationship="project_managementModel.FK_personneldocument_personel_files_cat" FromRole="personel_files_cat" ToRole="personneldocument" />
+  </EntityType>
+  <EntityType Name="personneldocument">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="doc_order" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="expdate" Type="DateTime" Precision="0" />
+    <Property Name="insertdate" Type="DateTime" Precision="3" />
+    <Property Name="notes" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="status" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="url" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="doctype" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="documentid" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="cat_id" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="document" Relationship="project_managementModel.FK_personneldocument_documents" FromRole="personneldocument" ToRole="document" />
+    <NavigationProperty Name="personel_files_cat" Relationship="project_managementModel.FK_personneldocument_personel_files_cat" FromRole="personneldocument" ToRole="personel_files_cat" />
+  </EntityType>
+  <EntityType Name="setting">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="name" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="insertdate" Type="DateTime" Precision="3" />
+    <Property Name="notes" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="status" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="updatedate" Type="DateTime" Precision="3" />
+    <Property Name="createdby" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="updateby" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="categoryid" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="settings_categories" Relationship="project_managementModel.FK_settings_settings_categories" FromRole="setting" ToRole="settings_categories" />
+  </EntityType>
+  <EntityType Name="settings_categories">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="name" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="cat_order" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="status" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="insertdate" Type="DateTime" Precision="3" />
+    <Property Name="updatedate" Type="DateTime" Precision="3" />
+    <Property Name="createdby" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="updateby" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="settings" Relationship="project_managementModel.FK_settings_settings_categories" FromRole="settings_categories" ToRole="setting" />
+  </EntityType>
+  <EntityType Name="Shift_Roster">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Departmentid" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="employeeshift" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="shiftfrom" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="shiftto" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="remarks" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="shiftfile" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="createdby" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="insertdate" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="employeeid" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Department" Relationship="project_managementModel.FK_Shift_Roster_Department" FromRole="Shift_Roster" ToRole="Department" />
+    <NavigationProperty Name="Employee" Relationship="project_managementModel.FK_Shift_Roster_Employees" FromRole="Shift_Roster" ToRole="Employee" />
+  </EntityType>
+  <EntityType Name="StickyNote">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="title" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="status" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="insertdate" Type="DateTime" Precision="3" />
+    <Property Name="updatedate" Type="DateTime" Precision="3" />
+    <Property Name="createdby" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="updateby" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="color" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Superadmin">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="name" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="email" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="userrole" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="status" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="insertdate" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="useraccount">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="name" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="email" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="password" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="phone" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="address" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="notes" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="status" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="usertype" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="insertdate" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="notifications" Relationship="project_managementModel.FK_notifications_useraccount" FromRole="useraccount" ToRole="notification" />
+  </EntityType>
+  <EntityType Name="Offlinerequest">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="company" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="package" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="paymentby" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="created" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="status" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="insertdate" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <Association Name="FK_Adminfaq_Adminfaqcategory">
+    <End Type="project_managementModel.Adminfaqcategory" Role="Adminfaqcategory" Multiplicity="0..1" />
+    <End Type="project_managementModel.Adminfaq" Role="Adminfaq" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Adminfaqcategory">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Adminfaq">
+        <PropertyRef Name="categoryid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Appreciatiion_Employees">
+    <End Type="project_managementModel.Employee" Role="Employee" Multiplicity="0..1" />
+    <End Type="project_managementModel.Appreciatiion" Role="Appreciatiion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Appreciatiion">
+        <PropertyRef Name="employeeid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_billing_Companies">
+    <End Type="project_managementModel.Company" Role="Company" Multiplicity="0..1" />
+    <End Type="project_managementModel.billing" Role="billing" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Company">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="billing">
+        <PropertyRef Name="companyid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_billing_Packages">
+    <End Type="project_managementModel.Package" Role="Package" Multiplicity="0..1" />
+    <End Type="project_managementModel.billing" Role="billing" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Package">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="billing">
+        <PropertyRef Name="packageid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Clients_company001">
+    <End Type="project_managementModel.company001" Role="company001" Multiplicity="0..1" />
+    <End Type="project_managementModel.Client" Role="Client" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="company001">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Client">
+        <PropertyRef Name="companyid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Companies_Packages1">
+    <End Type="project_managementModel.Package" Role="Package" Multiplicity="0..1" />
+    <End Type="project_managementModel.Company" Role="Company" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Package">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Company">
+        <PropertyRef Name="packageid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Lead_Contact_company001">
+    <End Type="project_managementModel.company001" Role="company001" Multiplicity="0..1" />
+    <End Type="project_managementModel.Lead_Contact" Role="Lead_Contact" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="company001">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Lead_Contact">
+        <PropertyRef Name="companyid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Deals_Lead_Contact">
+    <End Type="project_managementModel.Lead_Contact" Role="Lead_Contact" Multiplicity="0..1" />
+    <End Type="project_managementModel.Deal" Role="Deal" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Lead_Contact">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Deal">
+        <PropertyRef Name="leadcontactid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Shift_Roster_Department">
+    <End Type="project_managementModel.Department" Role="Department" Multiplicity="0..1" />
+    <End Type="project_managementModel.Shift_Roster" Role="Shift_Roster" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Department">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Shift_Roster">
+        <PropertyRef Name="Departmentid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_personneldocument_documents">
+    <End Type="project_managementModel.document" Role="document" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="project_managementModel.personneldocument" Role="personneldocument" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="document">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="personneldocument">
+        <PropertyRef Name="documentid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Lead_Contact_Employees1">
+    <End Type="project_managementModel.Employee" Role="Employee" Multiplicity="0..1" />
+    <End Type="project_managementModel.Lead_Contact" Role="Lead_Contact" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Lead_Contact">
+        <PropertyRef Name="addedby" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Lead_Contact_Employees2">
+    <End Type="project_managementModel.Employee" Role="Employee" Multiplicity="0..1" />
+    <End Type="project_managementModel.Lead_Contact" Role="Lead_Contact" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Lead_Contact">
+        <PropertyRef Name="leadowner" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Leave_Employees">
+    <End Type="project_managementModel.Employee" Role="Employee" Multiplicity="0..1" />
+    <End Type="project_managementModel.Leave" Role="Leave" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Leave">
+        <PropertyRef Name="employeeid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Shift_Roster_Employees">
+    <End Type="project_managementModel.Employee" Role="Employee" Multiplicity="0..1" />
+    <End Type="project_managementModel.Shift_Roster" Role="Shift_Roster" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Shift_Roster">
+        <PropertyRef Name="employeeid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_notifications_useraccount">
+    <End Type="project_managementModel.useraccount" Role="useraccount" Multiplicity="0..1" />
+    <End Type="project_managementModel.notification" Role="notification" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="useraccount">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="notification">
+        <PropertyRef Name="insertuser" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_personneldocument_personel_files_cat">
+    <End Type="project_managementModel.personel_files_cat" Role="personel_files_cat" Multiplicity="0..1" />
+    <End Type="project_managementModel.personneldocument" Role="personneldocument" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="personel_files_cat">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="personneldocument">
+        <PropertyRef Name="cat_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_settings_settings_categories">
+    <End Type="project_managementModel.settings_categories" Role="settings_categories" Multiplicity="0..1" />
+    <End Type="project_managementModel.setting" Role="setting" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="settings_categories">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="setting">
+        <PropertyRef Name="categoryid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

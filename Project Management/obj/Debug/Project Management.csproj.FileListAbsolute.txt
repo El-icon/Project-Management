@@ -1,0 +1,262 @@
+C:\Users\yusuf\Documents\Project Management\Project Management\obj\Debug\Project Management.csproj.AssemblyReference.cache
+C:\Users\yusuf\Documents\Project Management\Project Management\obj\Debug\Project Management.csproj.CoreCompileInputs.cache
+C:\Users\yusuf\Documents\Project Management\Project Management\bin\Project Management.dll.config
+C:\Users\yusuf\Documents\Project Management\Project Management\bin\Project Management.dll
+C:\Users\yusuf\Documents\Project Management\Project Management\bin\Project Management.pdb
+C:\Users\yusuf\Documents\Project Management\Project Management\bin\roslyn\csc.exe
+C:\Users\yusuf\Documents\Project Management\Project Management\bin\roslyn\csc.exe.config
+C:\Users\yusuf\Documents\Project Management\Project Management\bin\roslyn\csc.rsp
+C:\Users\yusuf\Documents\Project Management\Project Management\bin\roslyn\csi.exe
+C:\Users\yusuf\Documents\Project Management\Project Management\bin\roslyn\csi.exe.config
+C:\Users\yusuf\Documents\Project Management\Project Management\bin\roslyn\csi.rsp
+C:\Users\yusuf\Documents\Project Management\Project Management\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\yusuf\Documents\Project Management\Project Management\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\yusuf\Documents\Project Management\Project Management\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+C:\Users\yusuf\Documents\Project Management\Project Management\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\yusuf\Documents\Project Management\Project Management\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+C:\Users\yusuf\Documents\Project Management\Project Management\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\yusuf\Documents\Project Management\Project Management\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\yusuf\Documents\Project Management\Project Management\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+C:\Users\yusuf\Documents\Project Management\Project Management\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+C:\Users\yusuf\Documents\Project Management\Project Management\bin\roslyn\Microsoft.Managed.Core.CurrentVersions.targets
+C:\Users\yusuf\Documents\Project Management\Project Management\bin\roslyn\Microsoft.Managed.Core.targets
+C:\Users\yusuf\Documents\Project Management\Project Management\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\yusuf\Documents\Project Management\Project Management\bin\roslyn\System.Buffers.dll
+C:\Users\yusuf\Documents\Project Management\Project Management\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\yusuf\Documents\Project Management\Project Management\bin\roslyn\System.Memory.dll
+C:\Users\yusuf\Documents\Project Management\Project Management\bin\roslyn\System.Numerics.Vectors.dll
+C:\Users\yusuf\Documents\Project Management\Project Management\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\yusuf\Documents\Project Management\Project Management\bin\roslyn\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\yusuf\Documents\Project Management\Project Management\bin\roslyn\System.Text.Encoding.CodePages.dll
+C:\Users\yusuf\Documents\Project Management\Project Management\bin\roslyn\System.Threading.Tasks.Extensions.dll
+C:\Users\yusuf\Documents\Project Management\Project Management\bin\roslyn\vbc.exe
+C:\Users\yusuf\Documents\Project Management\Project Management\bin\roslyn\vbc.exe.config
+C:\Users\yusuf\Documents\Project Management\Project Management\bin\roslyn\vbc.rsp
+C:\Users\yusuf\Documents\Project Management\Project Management\bin\roslyn\VBCSCompiler.exe
+C:\Users\yusuf\Documents\Project Management\Project Management\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\yusuf\Documents\Project Management\Project Management\bin\Antlr3.Runtime.dll
+C:\Users\yusuf\Documents\Project Management\Project Management\bin\EntityFramework.dll
+C:\Users\yusuf\Documents\Project Management\Project Management\bin\EntityFramework.SqlServer.dll
+C:\Users\yusuf\Documents\Project Management\Project Management\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\yusuf\Documents\Project Management\Project Management\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\yusuf\Documents\Project Management\Project Management\bin\Newtonsoft.Json.dll
+C:\Users\yusuf\Documents\Project Management\Project Management\bin\System.Web.Helpers.dll
+C:\Users\yusuf\Documents\Project Management\Project Management\bin\System.Web.Mvc.dll
+C:\Users\yusuf\Documents\Project Management\Project Management\bin\System.Web.Optimization.dll
+C:\Users\yusuf\Documents\Project Management\Project Management\bin\System.Web.Razor.dll
+C:\Users\yusuf\Documents\Project Management\Project Management\bin\System.Web.WebPages.Deployment.dll
+C:\Users\yusuf\Documents\Project Management\Project Management\bin\System.Web.WebPages.dll
+C:\Users\yusuf\Documents\Project Management\Project Management\bin\System.Web.WebPages.Razor.dll
+C:\Users\yusuf\Documents\Project Management\Project Management\bin\WebGrease.dll
+C:\Users\yusuf\Documents\Project Management\Project Management\bin\EntityFramework.xml
+C:\Users\yusuf\Documents\Project Management\Project Management\bin\EntityFramework.SqlServer.xml
+C:\Users\yusuf\Documents\Project Management\Project Management\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\yusuf\Documents\Project Management\Project Management\bin\System.Web.Helpers.xml
+C:\Users\yusuf\Documents\Project Management\Project Management\bin\System.Web.Mvc.xml
+C:\Users\yusuf\Documents\Project Management\Project Management\bin\System.Web.Razor.xml
+C:\Users\yusuf\Documents\Project Management\Project Management\bin\System.Web.WebPages.xml
+C:\Users\yusuf\Documents\Project Management\Project Management\bin\System.Web.WebPages.Deployment.xml
+C:\Users\yusuf\Documents\Project Management\Project Management\bin\System.Web.WebPages.Razor.xml
+C:\Users\yusuf\Documents\Project Management\Project Management\bin\System.Web.Optimization.xml
+C:\Users\yusuf\Documents\Project Management\Project Management\bin\Newtonsoft.Json.xml
+C:\Users\yusuf\Documents\Project Management\Project Management\bin\Antlr3.Runtime.pdb
+C:\Users\yusuf\Documents\Project Management\Project Management\obj\Debug\Project .F72AE62B.Up2Date
+C:\Users\yusuf\Documents\Project Management\Project Management\obj\Debug\Project Management.dll
+C:\Users\yusuf\Documents\Project Management\Project Management\obj\Debug\Project Management.pdb
+C:\Users\yusuf\Documents\GitHub\Project Management\Project Management\bin\Project Management.dll.config
+C:\Users\yusuf\Documents\GitHub\Project Management\Project Management\bin\Project Management.dll
+C:\Users\yusuf\Documents\GitHub\Project Management\Project Management\bin\Project Management.pdb
+C:\Users\yusuf\Documents\GitHub\Project Management\Project Management\bin\roslyn\csc.exe
+C:\Users\yusuf\Documents\GitHub\Project Management\Project Management\bin\roslyn\csc.exe.config
+C:\Users\yusuf\Documents\GitHub\Project Management\Project Management\bin\roslyn\csc.rsp
+C:\Users\yusuf\Documents\GitHub\Project Management\Project Management\bin\roslyn\csi.exe
+C:\Users\yusuf\Documents\GitHub\Project Management\Project Management\bin\roslyn\csi.exe.config
+C:\Users\yusuf\Documents\GitHub\Project Management\Project Management\bin\roslyn\csi.rsp
+C:\Users\yusuf\Documents\GitHub\Project Management\Project Management\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\yusuf\Documents\GitHub\Project Management\Project Management\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\yusuf\Documents\GitHub\Project Management\Project Management\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+C:\Users\yusuf\Documents\GitHub\Project Management\Project Management\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\yusuf\Documents\GitHub\Project Management\Project Management\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+C:\Users\yusuf\Documents\GitHub\Project Management\Project Management\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\yusuf\Documents\GitHub\Project Management\Project Management\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\yusuf\Documents\GitHub\Project Management\Project Management\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+C:\Users\yusuf\Documents\GitHub\Project Management\Project Management\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+C:\Users\yusuf\Documents\GitHub\Project Management\Project Management\bin\roslyn\Microsoft.Managed.Core.CurrentVersions.targets
+C:\Users\yusuf\Documents\GitHub\Project Management\Project Management\bin\roslyn\Microsoft.Managed.Core.targets
+C:\Users\yusuf\Documents\GitHub\Project Management\Project Management\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\yusuf\Documents\GitHub\Project Management\Project Management\bin\roslyn\System.Buffers.dll
+C:\Users\yusuf\Documents\GitHub\Project Management\Project Management\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\yusuf\Documents\GitHub\Project Management\Project Management\bin\roslyn\System.Memory.dll
+C:\Users\yusuf\Documents\GitHub\Project Management\Project Management\bin\roslyn\System.Numerics.Vectors.dll
+C:\Users\yusuf\Documents\GitHub\Project Management\Project Management\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\yusuf\Documents\GitHub\Project Management\Project Management\bin\roslyn\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\yusuf\Documents\GitHub\Project Management\Project Management\bin\roslyn\System.Text.Encoding.CodePages.dll
+C:\Users\yusuf\Documents\GitHub\Project Management\Project Management\bin\roslyn\System.Threading.Tasks.Extensions.dll
+C:\Users\yusuf\Documents\GitHub\Project Management\Project Management\bin\roslyn\vbc.exe
+C:\Users\yusuf\Documents\GitHub\Project Management\Project Management\bin\roslyn\vbc.exe.config
+C:\Users\yusuf\Documents\GitHub\Project Management\Project Management\bin\roslyn\vbc.rsp
+C:\Users\yusuf\Documents\GitHub\Project Management\Project Management\bin\roslyn\VBCSCompiler.exe
+C:\Users\yusuf\Documents\GitHub\Project Management\Project Management\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\yusuf\Documents\GitHub\Project Management\Project Management\bin\Antlr3.Runtime.dll
+C:\Users\yusuf\Documents\GitHub\Project Management\Project Management\bin\EntityFramework.dll
+C:\Users\yusuf\Documents\GitHub\Project Management\Project Management\bin\EntityFramework.SqlServer.dll
+C:\Users\yusuf\Documents\GitHub\Project Management\Project Management\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\yusuf\Documents\GitHub\Project Management\Project Management\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\yusuf\Documents\GitHub\Project Management\Project Management\bin\Newtonsoft.Json.dll
+C:\Users\yusuf\Documents\GitHub\Project Management\Project Management\bin\System.Web.Helpers.dll
+C:\Users\yusuf\Documents\GitHub\Project Management\Project Management\bin\System.Web.Mvc.dll
+C:\Users\yusuf\Documents\GitHub\Project Management\Project Management\bin\System.Web.Optimization.dll
+C:\Users\yusuf\Documents\GitHub\Project Management\Project Management\bin\System.Web.Razor.dll
+C:\Users\yusuf\Documents\GitHub\Project Management\Project Management\bin\System.Web.WebPages.Deployment.dll
+C:\Users\yusuf\Documents\GitHub\Project Management\Project Management\bin\System.Web.WebPages.dll
+C:\Users\yusuf\Documents\GitHub\Project Management\Project Management\bin\System.Web.WebPages.Razor.dll
+C:\Users\yusuf\Documents\GitHub\Project Management\Project Management\bin\WebGrease.dll
+C:\Users\yusuf\Documents\GitHub\Project Management\Project Management\bin\EntityFramework.xml
+C:\Users\yusuf\Documents\GitHub\Project Management\Project Management\bin\EntityFramework.SqlServer.xml
+C:\Users\yusuf\Documents\GitHub\Project Management\Project Management\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\yusuf\Documents\GitHub\Project Management\Project Management\bin\System.Web.Helpers.xml
+C:\Users\yusuf\Documents\GitHub\Project Management\Project Management\bin\System.Web.Mvc.xml
+C:\Users\yusuf\Documents\GitHub\Project Management\Project Management\bin\System.Web.Razor.xml
+C:\Users\yusuf\Documents\GitHub\Project Management\Project Management\bin\System.Web.WebPages.xml
+C:\Users\yusuf\Documents\GitHub\Project Management\Project Management\bin\System.Web.WebPages.Deployment.xml
+C:\Users\yusuf\Documents\GitHub\Project Management\Project Management\bin\System.Web.WebPages.Razor.xml
+C:\Users\yusuf\Documents\GitHub\Project Management\Project Management\bin\System.Web.Optimization.xml
+C:\Users\yusuf\Documents\GitHub\Project Management\Project Management\bin\Newtonsoft.Json.xml
+C:\Users\yusuf\Documents\GitHub\Project Management\Project Management\bin\Antlr3.Runtime.pdb
+C:\Users\yusuf\Documents\GitHub\Project Management\Project Management\obj\Debug\Project Management.csproj.AssemblyReference.cache
+C:\Users\yusuf\Documents\GitHub\Project Management\Project Management\obj\Debug\Project Management.csproj.CoreCompileInputs.cache
+C:\Users\yusuf\Documents\GitHub\Project Management\Project Management\obj\Debug\Project .F72AE62B.Up2Date
+C:\Users\yusuf\Documents\GitHub\Project Management\Project Management\obj\Debug\Project Management.dll
+C:\Users\yusuf\Documents\GitHub\Project Management\Project Management\obj\Debug\Project Management.pdb
+C:\Users\yusuf\Documents\Project-Management\Project Management\bin\Project Management.dll.config
+C:\Users\yusuf\Documents\Project-Management\Project Management\bin\Project Management.dll
+C:\Users\yusuf\Documents\Project-Management\Project Management\bin\Project Management.pdb
+C:\Users\yusuf\Documents\Project-Management\Project Management\bin\roslyn\csc.exe
+C:\Users\yusuf\Documents\Project-Management\Project Management\bin\roslyn\csc.exe.config
+C:\Users\yusuf\Documents\Project-Management\Project Management\bin\roslyn\csc.rsp
+C:\Users\yusuf\Documents\Project-Management\Project Management\bin\roslyn\csi.exe
+C:\Users\yusuf\Documents\Project-Management\Project Management\bin\roslyn\csi.exe.config
+C:\Users\yusuf\Documents\Project-Management\Project Management\bin\roslyn\csi.rsp
+C:\Users\yusuf\Documents\Project-Management\Project Management\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\yusuf\Documents\Project-Management\Project Management\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\yusuf\Documents\Project-Management\Project Management\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+C:\Users\yusuf\Documents\Project-Management\Project Management\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\yusuf\Documents\Project-Management\Project Management\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+C:\Users\yusuf\Documents\Project-Management\Project Management\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\yusuf\Documents\Project-Management\Project Management\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\yusuf\Documents\Project-Management\Project Management\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+C:\Users\yusuf\Documents\Project-Management\Project Management\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+C:\Users\yusuf\Documents\Project-Management\Project Management\bin\roslyn\Microsoft.Managed.Core.CurrentVersions.targets
+C:\Users\yusuf\Documents\Project-Management\Project Management\bin\roslyn\Microsoft.Managed.Core.targets
+C:\Users\yusuf\Documents\Project-Management\Project Management\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\yusuf\Documents\Project-Management\Project Management\bin\roslyn\System.Buffers.dll
+C:\Users\yusuf\Documents\Project-Management\Project Management\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\yusuf\Documents\Project-Management\Project Management\bin\roslyn\System.Memory.dll
+C:\Users\yusuf\Documents\Project-Management\Project Management\bin\roslyn\System.Numerics.Vectors.dll
+C:\Users\yusuf\Documents\Project-Management\Project Management\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\yusuf\Documents\Project-Management\Project Management\bin\roslyn\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\yusuf\Documents\Project-Management\Project Management\bin\roslyn\System.Text.Encoding.CodePages.dll
+C:\Users\yusuf\Documents\Project-Management\Project Management\bin\roslyn\System.Threading.Tasks.Extensions.dll
+C:\Users\yusuf\Documents\Project-Management\Project Management\bin\roslyn\vbc.exe
+C:\Users\yusuf\Documents\Project-Management\Project Management\bin\roslyn\vbc.exe.config
+C:\Users\yusuf\Documents\Project-Management\Project Management\bin\roslyn\vbc.rsp
+C:\Users\yusuf\Documents\Project-Management\Project Management\bin\roslyn\VBCSCompiler.exe
+C:\Users\yusuf\Documents\Project-Management\Project Management\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\yusuf\Documents\Project-Management\Project Management\bin\Antlr3.Runtime.dll
+C:\Users\yusuf\Documents\Project-Management\Project Management\bin\EntityFramework.dll
+C:\Users\yusuf\Documents\Project-Management\Project Management\bin\EntityFramework.SqlServer.dll
+C:\Users\yusuf\Documents\Project-Management\Project Management\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\yusuf\Documents\Project-Management\Project Management\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\yusuf\Documents\Project-Management\Project Management\bin\Newtonsoft.Json.dll
+C:\Users\yusuf\Documents\Project-Management\Project Management\bin\System.Web.Helpers.dll
+C:\Users\yusuf\Documents\Project-Management\Project Management\bin\System.Web.Mvc.dll
+C:\Users\yusuf\Documents\Project-Management\Project Management\bin\System.Web.Optimization.dll
+C:\Users\yusuf\Documents\Project-Management\Project Management\bin\System.Web.Razor.dll
+C:\Users\yusuf\Documents\Project-Management\Project Management\bin\System.Web.WebPages.Deployment.dll
+C:\Users\yusuf\Documents\Project-Management\Project Management\bin\System.Web.WebPages.dll
+C:\Users\yusuf\Documents\Project-Management\Project Management\bin\System.Web.WebPages.Razor.dll
+C:\Users\yusuf\Documents\Project-Management\Project Management\bin\WebGrease.dll
+C:\Users\yusuf\Documents\Project-Management\Project Management\bin\EntityFramework.xml
+C:\Users\yusuf\Documents\Project-Management\Project Management\bin\EntityFramework.SqlServer.xml
+C:\Users\yusuf\Documents\Project-Management\Project Management\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\yusuf\Documents\Project-Management\Project Management\bin\System.Web.Helpers.xml
+C:\Users\yusuf\Documents\Project-Management\Project Management\bin\System.Web.Mvc.xml
+C:\Users\yusuf\Documents\Project-Management\Project Management\bin\System.Web.Razor.xml
+C:\Users\yusuf\Documents\Project-Management\Project Management\bin\System.Web.WebPages.xml
+C:\Users\yusuf\Documents\Project-Management\Project Management\bin\System.Web.WebPages.Deployment.xml
+C:\Users\yusuf\Documents\Project-Management\Project Management\bin\System.Web.WebPages.Razor.xml
+C:\Users\yusuf\Documents\Project-Management\Project Management\bin\System.Web.Optimization.xml
+C:\Users\yusuf\Documents\Project-Management\Project Management\bin\Newtonsoft.Json.xml
+C:\Users\yusuf\Documents\Project-Management\Project Management\bin\Antlr3.Runtime.pdb
+C:\Users\yusuf\Documents\Project-Management\Project Management\obj\Debug\Project Management.csproj.AssemblyReference.cache
+C:\Users\yusuf\Documents\Project-Management\Project Management\obj\Debug\Project Management.csproj.CoreCompileInputs.cache
+C:\Users\yusuf\Documents\Project-Management\Project Management\obj\Debug\Project .F72AE62B.Up2Date
+C:\Users\yusuf\Documents\Project-Management\Project Management\obj\Debug\Project Management.dll
+C:\Users\yusuf\Documents\Project-Management\Project Management\obj\Debug\Project Management.pdb
+C:\Users\yusuf\Documents\GitHub\Project-Management\Project Management\bin\Project Management.dll.config
+C:\Users\yusuf\Documents\GitHub\Project-Management\Project Management\bin\Project Management.dll
+C:\Users\yusuf\Documents\GitHub\Project-Management\Project Management\bin\Project Management.pdb
+C:\Users\yusuf\Documents\GitHub\Project-Management\Project Management\bin\roslyn\csc.exe
+C:\Users\yusuf\Documents\GitHub\Project-Management\Project Management\bin\roslyn\csc.exe.config
+C:\Users\yusuf\Documents\GitHub\Project-Management\Project Management\bin\roslyn\csc.rsp
+C:\Users\yusuf\Documents\GitHub\Project-Management\Project Management\bin\roslyn\csi.exe
+C:\Users\yusuf\Documents\GitHub\Project-Management\Project Management\bin\roslyn\csi.exe.config
+C:\Users\yusuf\Documents\GitHub\Project-Management\Project Management\bin\roslyn\csi.rsp
+C:\Users\yusuf\Documents\GitHub\Project-Management\Project Management\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\yusuf\Documents\GitHub\Project-Management\Project Management\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\yusuf\Documents\GitHub\Project-Management\Project Management\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+C:\Users\yusuf\Documents\GitHub\Project-Management\Project Management\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\yusuf\Documents\GitHub\Project-Management\Project Management\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+C:\Users\yusuf\Documents\GitHub\Project-Management\Project Management\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\yusuf\Documents\GitHub\Project-Management\Project Management\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\yusuf\Documents\GitHub\Project-Management\Project Management\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+C:\Users\yusuf\Documents\GitHub\Project-Management\Project Management\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+C:\Users\yusuf\Documents\GitHub\Project-Management\Project Management\bin\roslyn\Microsoft.Managed.Core.CurrentVersions.targets
+C:\Users\yusuf\Documents\GitHub\Project-Management\Project Management\bin\roslyn\Microsoft.Managed.Core.targets
+C:\Users\yusuf\Documents\GitHub\Project-Management\Project Management\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\yusuf\Documents\GitHub\Project-Management\Project Management\bin\roslyn\System.Buffers.dll
+C:\Users\yusuf\Documents\GitHub\Project-Management\Project Management\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\yusuf\Documents\GitHub\Project-Management\Project Management\bin\roslyn\System.Memory.dll
+C:\Users\yusuf\Documents\GitHub\Project-Management\Project Management\bin\roslyn\System.Numerics.Vectors.dll
+C:\Users\yusuf\Documents\GitHub\Project-Management\Project Management\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\yusuf\Documents\GitHub\Project-Management\Project Management\bin\roslyn\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\yusuf\Documents\GitHub\Project-Management\Project Management\bin\roslyn\System.Text.Encoding.CodePages.dll
+C:\Users\yusuf\Documents\GitHub\Project-Management\Project Management\bin\roslyn\System.Threading.Tasks.Extensions.dll
+C:\Users\yusuf\Documents\GitHub\Project-Management\Project Management\bin\roslyn\vbc.exe
+C:\Users\yusuf\Documents\GitHub\Project-Management\Project Management\bin\roslyn\vbc.exe.config
+C:\Users\yusuf\Documents\GitHub\Project-Management\Project Management\bin\roslyn\vbc.rsp
+C:\Users\yusuf\Documents\GitHub\Project-Management\Project Management\bin\roslyn\VBCSCompiler.exe
+C:\Users\yusuf\Documents\GitHub\Project-Management\Project Management\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\yusuf\Documents\GitHub\Project-Management\Project Management\bin\Antlr3.Runtime.dll
+C:\Users\yusuf\Documents\GitHub\Project-Management\Project Management\bin\EntityFramework.dll
+C:\Users\yusuf\Documents\GitHub\Project-Management\Project Management\bin\EntityFramework.SqlServer.dll
+C:\Users\yusuf\Documents\GitHub\Project-Management\Project Management\bin\FullCalendar.MVC5.dll
+C:\Users\yusuf\Documents\GitHub\Project-Management\Project Management\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\yusuf\Documents\GitHub\Project-Management\Project Management\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\yusuf\Documents\GitHub\Project-Management\Project Management\bin\Newtonsoft.Json.dll
+C:\Users\yusuf\Documents\GitHub\Project-Management\Project Management\bin\System.Web.Helpers.dll
+C:\Users\yusuf\Documents\GitHub\Project-Management\Project Management\bin\System.Web.Mvc.dll
+C:\Users\yusuf\Documents\GitHub\Project-Management\Project Management\bin\System.Web.Optimization.dll
+C:\Users\yusuf\Documents\GitHub\Project-Management\Project Management\bin\System.Web.Razor.dll
+C:\Users\yusuf\Documents\GitHub\Project-Management\Project Management\bin\System.Web.WebPages.Deployment.dll
+C:\Users\yusuf\Documents\GitHub\Project-Management\Project Management\bin\System.Web.WebPages.dll
+C:\Users\yusuf\Documents\GitHub\Project-Management\Project Management\bin\System.Web.WebPages.Razor.dll
+C:\Users\yusuf\Documents\GitHub\Project-Management\Project Management\bin\WebGrease.dll
+C:\Users\yusuf\Documents\GitHub\Project-Management\Project Management\bin\EntityFramework.xml
+C:\Users\yusuf\Documents\GitHub\Project-Management\Project Management\bin\EntityFramework.SqlServer.xml
+C:\Users\yusuf\Documents\GitHub\Project-Management\Project Management\bin\FullCalendar.MVC5.xml
+C:\Users\yusuf\Documents\GitHub\Project-Management\Project Management\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\yusuf\Documents\GitHub\Project-Management\Project Management\bin\System.Web.Helpers.xml
+C:\Users\yusuf\Documents\GitHub\Project-Management\Project Management\bin\System.Web.Mvc.xml
+C:\Users\yusuf\Documents\GitHub\Project-Management\Project Management\bin\System.Web.Razor.xml
+C:\Users\yusuf\Documents\GitHub\Project-Management\Project Management\bin\System.Web.WebPages.xml
+C:\Users\yusuf\Documents\GitHub\Project-Management\Project Management\bin\System.Web.WebPages.Deployment.xml
+C:\Users\yusuf\Documents\GitHub\Project-Management\Project Management\bin\System.Web.WebPages.Razor.xml
+C:\Users\yusuf\Documents\GitHub\Project-Management\Project Management\bin\System.Web.Optimization.xml
+C:\Users\yusuf\Documents\GitHub\Project-Management\Project Management\bin\Newtonsoft.Json.xml
+C:\Users\yusuf\Documents\GitHub\Project-Management\Project Management\bin\Antlr3.Runtime.pdb
+C:\Users\yusuf\Documents\GitHub\Project-Management\Project Management\obj\Debug\Project Management.csproj.AssemblyReference.cache
+C:\Users\yusuf\Documents\GitHub\Project-Management\Project Management\obj\Debug\Project Management.csproj.CoreCompileInputs.cache
+C:\Users\yusuf\Documents\GitHub\Project-Management\Project Management\obj\Debug\Project .F72AE62B.Up2Date
+C:\Users\yusuf\Documents\GitHub\Project-Management\Project Management\obj\Debug\Project Management.dll
+C:\Users\yusuf\Documents\GitHub\Project-Management\Project Management\obj\Debug\Project Management.pdb

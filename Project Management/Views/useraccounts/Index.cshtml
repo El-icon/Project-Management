@@ -1,0 +1,491 @@
+﻿@model IEnumerable<Project_Management.Models.useraccount>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title"> Users  </h4>
+
+                <hr />
+                <button class="btn btn-primary waves-effect waves-light"
+                        data-toggle="modal" data-target=".bs-example-modal-xl">
+                    Create User
+                </button>
+                <hr />
+                <br />
+                <br />
+
+                <div class="table-rep-plugin">
+                    <div class="table-responsive mb-0" data-pattern="priority-columns">
+
+                        <table id="datatable-buttons"
+                               class="table table-striped table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        FULL NAME
+                                    </th>
+                                    <th>
+                                        EMAIL
+                                    </th>
+                                    <th>
+                                        PASSWORD
+                                    </th>
+                                    <th>
+                                        PHONE
+                                    </th>
+                                    <th>
+                                        ADDRESS
+                                    </th>
+                                    <th>
+                                        NOTES
+                                    </th>
+                                    <th>
+                                        STATUS
+                                    </th>
+                                    <th>
+                                        USERTYPE
+                                    </th>
+                                    <th>ACTIONS</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.name)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.email)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.password)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.phone)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.address)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.notes)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.status)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.usertype)
+                                        </td>
+                                        <td>
+                                            <a href="#" data-toggle="modal" data-target="#edit_@item.id">
+                                                <i class="fa fa-edit btn btn-info btn-sm"></i>
+                                            </a>
+                                            |
+                                            <a href="#" data-toggle="modal" data-target="#view_@item.id">
+                                                <i class="fa fa-info btn btn-success btn-sm"></i>
+                                            </a>
+                                            |
+                                            <a href="#" data-toggle="modal" data-target="#delete_@item.id">
+                                                <i class="fa fa-trash btn btn-danger btn-sm"></i>
+                                            </a>
+
+
+                                            <!---------------------- EDIT------------------------>
+                                            <div id="edit_@item.id" class="modal fade" role="dialog">
+                                                <div class="modal-dialog modal-xl">
+                                                    <!-- Modal content-->
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h4 class="modal-title">
+                                                                Edit User
+                                                            </h4>
+                                                        </div>
+                                                        <div class="modal-body">
+
+                                                            <form class="custom-validation" action="@Url.Action("Edit","Useraccounts")" method="post">
+                                                                @Html.AntiForgeryToken()
+                                                                <input type="hidden" name="id" value="@item.id" />
+                                                                <div class="form-group">
+                                                                    <div class="row">
+                                                                        <div class="col-md-12">
+                                                                            <label class="form-label">Full Name</label>
+                                                                            <input type="text" name="name" class="form-control" value="@item.name" />
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <br />
+
+                                                                    <div class="row">
+                                                                        <div class="col-md-12">
+                                                                            <label class="form-label">Email</label>
+                                                                            <input type="email" name="email" class="form-control" value="@item.email" />
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <br />
+
+                                                                    <div class="row">
+                                                                        <div class="col-md-12">
+                                                                            <label class="form-label">Password</label>
+                                                                            <input type="text" name="password" class="form-control" value="@item.password" />
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <br />
+
+                                                                    <div class="row">
+                                                                        <div class="col-md-12">
+                                                                            <label class="form-label">Phone</label>
+                                                                            <input type="text" name="phone" class="form-control" value="@item.phone" />
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <br />
+
+                                                                    <div class="row">
+                                                                        <div class="col-md-12">
+                                                                            <label class="form-label">Address</label>
+                                                                            <input type="text" class="form-control" name="address" value="@item.address" />
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <br />
+
+                                                                    <div class="row">
+                                                                        <div class="col-md-12">
+                                                                            <label class="form-label">Status</label>
+                                                                            <select name="status" class="form-control">
+                                                                                <option value="@item.status">@item.status</option>
+                                                                                <option value="ACTIVE">ACTIVE</option>
+                                                                                <option value="NOT ACTIVE">NOT ACTIVE</option>
+                                                                                <option value="BLOCK">BLOCK</option>
+                                                                                <option value="DISACTIVATED">DISACTIVATED</option>
+                                                                            </select>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <br />
+
+                                                                    <div class="row">
+                                                                        <div class="col-md-12">
+                                                                            <label class="form-label">Usertype</label>
+                                                                            <select name="usertype" class="form-control">
+                                                                                <option value="@item.usertype">@item.usertype</option>
+                                                                                <option value="SUPERADMIN">SUPERADMIN</option>
+                                                                                <option value="ADMIN">ADMIN</option>
+                                                                                <option value="WORKER">WORKER</option>
+                                                                                <option value="USER">USER</option>
+                                                                            </select>
+                                                                        </div>
+                                                                    </div>
+
+
+
+                                                                    <br />
+
+                                                                    <div class="row">
+                                                                        <div class="col-md-12">
+                                                                            <label class="form-label">Notes</label>
+                                                                            <textarea class="form-control" aria-label="With textarea" rows="5" id="notes" @item.notes name="notes">@item.notes</textarea>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+
+                                                                <br />
+                                                                <div class="row">
+                                                                    <div class="col-md-12 text-center">
+                                                                        <button type="submit" class="btn btn-block btn-success">Submit</button>
+                                                                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                                                    </div>
+                                                                </div>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <!---------------------- DETAILS------------------------>
+                                            <div id="view_@item.id" class="modal fade" role="dialog">
+                                                <div class="modal-dialog modal-xl">
+                                                    <!-- Modal content-->
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h4 class="modal-title">
+                                                                Detail of User
+                                                            </h4>
+                                                        </div>
+                                                        <div class="modal-body">
+
+                                                            <form class="custom-validation" action="@Url.Action("Details","Useraccounts")" method="post">
+                                                                @Html.AntiForgeryToken()
+                                                                <input type="hidden" name="id" value="@item.id" />
+                                                                <div class="form-group">
+                                                                    <div class="row">
+                                                                        <div class="col-md-12">
+                                                                            <label class="form-label">Full Name</label>
+                                                                            <input type="text" name="name" readonly class="form-control" value="@item.name" />
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <br />
+
+                                                                    <div class="row">
+                                                                        <div class="col-md-12">
+                                                                            <label class="form-label">Email</label>
+                                                                            <input type="email" name="email" readonly class="form-control" value="@item.email" />
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <br />
+
+                                                                    <div class="row">
+                                                                        <div class="col-md-12">
+                                                                            <label class="form-label">Password</label>
+                                                                            <input type="text" name="password" readonly class="form-control" value="@item.password" />
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <br />
+
+                                                                    <div class="row">
+                                                                        <div class="col-md-12">
+                                                                            <label class="form-label">Phone</label>
+                                                                            <input type="text" name="phone" readonly class="form-control" value="@item.phone" />
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <br />
+
+                                                                    <div class="row">
+                                                                        <div class="col-md-12">
+                                                                            <label class="form-label">Address</label>
+                                                                            <input type="text" class="form-control" readonly name="address" value="@item.address" />
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <br />
+
+                                                                    <div class="row">
+                                                                        <div class="col-md-12">
+                                                                            <label class="form-label">Status</label>
+                                                                            <input type="text" class="form-control" id="st" name="st" value="@item.status" readonly />
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <br />
+
+                                                                    <div class="row">
+                                                                        <div class="col-md-12">
+                                                                            <label class="form-label">Usertype</label>
+                                                                            <input type="text" class="form-control" id="usertype" name="usertype" value="@item.usertype" readonly />
+                                                                        </div>
+                                                                    </div>
+
+
+
+                                                                    <br />
+
+                                                                    <div class="row">
+                                                                        <div class="col-md-12">
+                                                                            <label class="form-label">Notes</label>
+                                                                            <textarea class="form-control" aria-label="With textarea" readonly rows="5" id="notes" @item.notes name="notes">@item.notes</textarea>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+
+                                                                <br />
+                                                                <div class="row">
+                                                                    <div class="col-md-12 text-center">
+                                                                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                                                    </div>
+                                                                </div>
+                                                            </form>
+                                                        </div>
+
+                                                    </div>
+
+                                                </div>
+                                            </div>
+
+
+                                            <!---------------------- DELETE------------------------>
+                                            <div id="delete_@item.id" class="modal fade" role="dialog">
+                                                <div class="modal-dialog">
+
+                                                    <!-- Modal content-->
+                                                    <div class="modal-content">
+                                                        <div class="modal-header text-center">
+                                                            <h4 class="text-danger">ARE YOU SURE YOU WANT TO DELETE</h4>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <H3 class="text-center">
+                                                                @item.name
+                                                            </H3>
+                                                            <form class="" action="@Url.Action("delete","Useraccounts")" method="post">
+                                                                @Html.AntiForgeryToken()
+                                                                <input type="hidden" name="id" value="@item.id" />
+
+                                                                <br />
+
+                                                                <div class="row">
+                                                                    <div class="col-md-12 text-center">
+                                                                        <button type="submit" class="btn btn-success">Yes</button>
+                                                                        <button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
+                                                                    </div>
+                                                                </div>
+                                                            </form>
+                                                        </div>
+
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <!-- end col -->
+            </div>
+        </div>
+    </div>
+    <!-- end row -->
+</div>
+
+
+
+
+
+<!----------------------CREATE------------------------>
+<div class="col-sm-6 col-md-4 col-xl-3">
+    <!--  Modal content for the above example -->
+    <div class="modal fade bs-example-modal-xl" tabindex="-1" role="dialog"
+         aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title mt-0" id="myExtraLargeModalLabel">
+                        Create New User
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                            aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form method="post" action="@Url.Action("create","Useraccounts")" enctype="multipart/form-data">
+
+                        @using (Html.BeginForm())
+                        {
+                            @Html.AntiForgeryToken()
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <label class="form-label">Full Name</label>
+                                    <input type="text" name="name" required="" class="form-control" />
+                                </div>
+                            </div>
+
+                            <br />
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <label class="form-label">Email</label>
+                                    <input type="email" name="email" required="" class="form-control" />
+                                </div>
+                            </div>
+
+                            <br />
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <label class="form-label">Password</label>
+                                    <input type="text" name="password" required="" class="form-control" />
+                                </div>
+                            </div>
+
+                            <br />
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <label class="form-label">Phone</label>
+                                    <input type="text" name="phone" required="" class="form-control" />
+                                </div>
+                            </div>
+
+                            <br />
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <label class="form-label">Address</label>
+                                    <input type="text" class="form-control" required="" name="address" />
+                                </div>
+                            </div>
+
+                            <br />
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <label class="form-label">Status</label>
+                                    <select required name="status" class="form-control">
+                                        <option disabled selected>Please Select</option>
+                                        <option value="ACTIVE">ACTIVE</option>
+                                        <option value="NOT ACTIVE">NOT ACTIVE</option>
+                                        <option value="BLOCK">BLOCK</option>
+                                        <option value="DISACTIVATED">DISACTIVATED</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <br />
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <label class="form-label">Usertype</label>
+                                    <select required name="usertype" class="form-control">
+                                        <option disabled selected>Please Select</option>
+                                        <option value="SUPERADMIN">SUPERADMIN</option>
+                                        <option value="ADMIN">ADMIN</option>
+                                        <option value="WORKER">WORKER</option>
+                                        <option value="USER">USER</option>
+                                    </select>
+                                </div>
+                            </div>
+
+
+
+                            <br />
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <label class="form-label">Notes</label>
+                                    <textarea class="form-control" name="notes" rows="5"></textarea>
+                                </div>
+                            </div>
+
+                            <br />
+
+                            <div class="row">
+                                <div class="col-md-12 text-center">
+                                    <button type="submit" class="btn btn-block btn-success">Submit</button>
+                                    <a href="@Url.Action("Index", "useraccounts")" class="btn btn-primary">Back to List</a>
+                                </div>
+                            </div>
+                        }
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->

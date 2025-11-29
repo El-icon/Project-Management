@@ -1,0 +1,101 @@
+﻿@model IEnumerable<Project_Management.Models.Deal>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.pipeline)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.dealstages)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.dealvalue)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.closedate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.dealcategory)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.dealagent)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.product)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.dealwatcher)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.insertdate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Lead_Contact.name)
+            </th>
+            <th></th>
+        </tr>
+    
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.pipeline)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.dealstages)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.dealvalue)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.closedate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.dealcategory)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.dealagent)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.product)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.dealwatcher)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.insertdate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Lead_Contact.name)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
+                @Html.ActionLink("Details", "Details", new { id=item.id }) |
+                @Html.ActionLink("Delete", "Delete", new { id=item.id })
+            </td>
+        </tr>
+    }
+    
+    </table>
+</body>
+</html>

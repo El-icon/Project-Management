@@ -1,0 +1,112 @@
+﻿@model Project_Management.Models.Company
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Delete</title>
+</head>
+<body>
+    <h3>Are you sure you want to delete this?</h3>
+    <div>
+        <h4>Company</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.companyname)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.companyname)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.details)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.details)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.insertdate)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.insertdate)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.status)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.status)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.photo)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.photo)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.url)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.url)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.expdate)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.expdate)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.employees)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.employees)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.clients)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.clients)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Package.packagename)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Package.packagename)
+            </dd>
+    
+        </dl>
+    
+        @using (Html.BeginForm()) {
+            @Html.AntiForgeryToken()
+    
+            <div class="form-actions no-color">
+                <input type="submit" value="Delete" class="btn btn-default" /> |
+                @Html.ActionLink("Back to List", "Index")
+            </div>
+        }
+    </div>
+</body>
+</html>

@@ -1,0 +1,548 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="project_managementModelStoreContainer" CdmEntityContainer="project_managementEntities">
+    <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="project_managementModel.Store.sp_alterdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="project_managementModel.Store.sp_creatediagram" />
+    <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="project_managementModel.Store.sp_dropdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="project_managementModel.Store.sp_helpdiagramdefinition">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="project_managementModel.sp_helpdiagramdefinition_Result">
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="project_managementModel.Store.sp_helpdiagrams">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="project_managementModel.sp_helpdiagrams_Result">
+          <ScalarProperty Name="Database" ColumnName="Database" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Owner" ColumnName="Owner" />
+          <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="project_managementModel.Store.sp_renamediagram" />
+    <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="project_managementModel.Store.sp_upgraddiagrams" />
+    <EntitySetMapping Name="ActivityLogs">
+      <EntityTypeMapping TypeName="project_managementModel.ActivityLog">
+        <MappingFragment StoreEntitySet="ActivityLog">
+          <ScalarProperty Name="insertuser" ColumnName="insertuser" />
+          <ScalarProperty Name="insertdate" ColumnName="insertdate" />
+          <ScalarProperty Name="loglevel" ColumnName="loglevel" />
+          <ScalarProperty Name="notes" ColumnName="notes" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="logtype" ColumnName="logtype" />
+          <ScalarProperty Name="source" ColumnName="source" />
+          <ScalarProperty Name="url" ColumnName="url" />
+          <ScalarProperty Name="error" ColumnName="error" />
+          <ScalarProperty Name="code" ColumnName="code" />
+          <ScalarProperty Name="message" ColumnName="message" />
+          <ScalarProperty Name="title" ColumnName="title" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Adminfaqs">
+      <EntityTypeMapping TypeName="project_managementModel.Adminfaq">
+        <MappingFragment StoreEntitySet="Adminfaq">
+          <ScalarProperty Name="updateby" ColumnName="updateby" />
+          <ScalarProperty Name="createdby" ColumnName="createdby" />
+          <ScalarProperty Name="updatedate" ColumnName="updatedate" />
+          <ScalarProperty Name="doctype" ColumnName="doctype" />
+          <ScalarProperty Name="url" ColumnName="url" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="notes" ColumnName="notes" />
+          <ScalarProperty Name="expdate" ColumnName="expdate" />
+          <ScalarProperty Name="doc_order" ColumnName="doc_order" />
+          <ScalarProperty Name="insertdate" ColumnName="insertdate" />
+          <ScalarProperty Name="categoryid" ColumnName="categoryid" />
+          <ScalarProperty Name="files" ColumnName="files" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="articletitle" ColumnName="articletitle" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Adminfaqcategories">
+      <EntityTypeMapping TypeName="project_managementModel.Adminfaqcategory">
+        <MappingFragment StoreEntitySet="Adminfaqcategory">
+          <ScalarProperty Name="updateby" ColumnName="updateby" />
+          <ScalarProperty Name="createdby" ColumnName="createdby" />
+          <ScalarProperty Name="updatedate" ColumnName="updatedate" />
+          <ScalarProperty Name="insertdate" ColumnName="insertdate" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="categoryname" ColumnName="categoryname" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Appreciatiions">
+      <EntityTypeMapping TypeName="project_managementModel.Appreciatiion">
+        <MappingFragment StoreEntitySet="Appreciatiion">
+          <ScalarProperty Name="photo" ColumnName="photo" />
+          <ScalarProperty Name="summary" ColumnName="summary" />
+          <ScalarProperty Name="date" ColumnName="date" />
+          <ScalarProperty Name="employeeid" ColumnName="employeeid" />
+          <ScalarProperty Name="award" ColumnName="award" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="billings">
+      <EntityTypeMapping TypeName="project_managementModel.billing">
+        <MappingFragment StoreEntitySet="billing">
+          <ScalarProperty Name="paymentgateway" ColumnName="paymentgateway" />
+          <ScalarProperty Name="amount" ColumnName="amount" />
+          <ScalarProperty Name="transactionid" ColumnName="transactionid" />
+          <ScalarProperty Name="nextpaymentdate" ColumnName="nextpaymentdate" />
+          <ScalarProperty Name="paymentdate" ColumnName="paymentdate" />
+          <ScalarProperty Name="packageid" ColumnName="packageid" />
+          <ScalarProperty Name="companyid" ColumnName="companyid" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Calendars">
+      <EntityTypeMapping TypeName="project_managementModel.Calendar">
+        <MappingFragment StoreEntitySet="Calendar">
+          <ScalarProperty Name="ThemeColor" ColumnName="ThemeColor" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="IsFullDay" ColumnName="IsFullDay" />
+          <ScalarProperty Name="Location" ColumnName="Location" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="EndDateTime" ColumnName="EndDateTime" />
+          <ScalarProperty Name="StartDateTime" ColumnName="StartDateTime" />
+          <ScalarProperty Name="Subject" ColumnName="Subject" />
+          <ScalarProperty Name="EventID" ColumnName="EventID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Clients">
+      <EntityTypeMapping TypeName="project_managementModel.Client">
+        <MappingFragment StoreEntitySet="Clients">
+          <ScalarProperty Name="companyid" ColumnName="companyid" />
+          <ScalarProperty Name="employeeid" ColumnName="employeeid" />
+          <ScalarProperty Name="insertdate" ColumnName="insertdate" />
+          <ScalarProperty Name="note" ColumnName="note" />
+          <ScalarProperty Name="addedby" ColumnName="addedby" />
+          <ScalarProperty Name="shippingaddress" ColumnName="shippingaddress" />
+          <ScalarProperty Name="companyaddress" ColumnName="companyaddress" />
+          <ScalarProperty Name="postalcode" ColumnName="postalcode" />
+          <ScalarProperty Name="state" ColumnName="state" />
+          <ScalarProperty Name="city" ColumnName="city" />
+          <ScalarProperty Name="companyphone" ColumnName="companyphone" />
+          <ScalarProperty Name="gstvatnumber" ColumnName="gstvatnumber" />
+          <ScalarProperty Name="taxname" ColumnName="taxname" />
+          <ScalarProperty Name="companywebsite" ColumnName="companywebsite" />
+          <ScalarProperty Name="Companyname" ColumnName="Companyname" />
+          <ScalarProperty Name="clientsubcategory" ColumnName="clientsubcategory" />
+          <ScalarProperty Name="clientcategory" ColumnName="clientcategory" />
+          <ScalarProperty Name="Language" ColumnName="Language" />
+          <ScalarProperty Name="gender" ColumnName="gender" />
+          <ScalarProperty Name="mobile" ColumnName="mobile" />
+          <ScalarProperty Name="country" ColumnName="country" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Companies">
+      <EntityTypeMapping TypeName="project_managementModel.Company">
+        <MappingFragment StoreEntitySet="Companies">
+          <ScalarProperty Name="licenceexpireson" ColumnName="licenceexpireson" />
+          <ScalarProperty Name="nextpaymentdate" ColumnName="nextpaymentdate" />
+          <ScalarProperty Name="paymentdate" ColumnName="paymentdate" />
+          <ScalarProperty Name="amount" ColumnName="amount" />
+          <ScalarProperty Name="contacts" ColumnName="contacts" />
+          <ScalarProperty Name="tickets" ColumnName="tickets" />
+          <ScalarProperty Name="orders" ColumnName="orders" />
+          <ScalarProperty Name="leads" ColumnName="leads" />
+          <ScalarProperty Name="tasks" ColumnName="tasks" />
+          <ScalarProperty Name="projects" ColumnName="projects" />
+          <ScalarProperty Name="estimates" ColumnName="estimates" />
+          <ScalarProperty Name="storage" ColumnName="storage" />
+          <ScalarProperty Name="invoices" ColumnName="invoices" />
+          <ScalarProperty Name="clients" ColumnName="clients" />
+          <ScalarProperty Name="employees" ColumnName="employees" />
+          <ScalarProperty Name="expdate" ColumnName="expdate" />
+          <ScalarProperty Name="url" ColumnName="url" />
+          <ScalarProperty Name="photo" ColumnName="photo" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="insertdate" ColumnName="insertdate" />
+          <ScalarProperty Name="details" ColumnName="details" />
+          <ScalarProperty Name="packageid1" ColumnName="packageid1" />
+          <ScalarProperty Name="acctemail" ColumnName="acctemail" />
+          <ScalarProperty Name="acctname" ColumnName="acctname" />
+          <ScalarProperty Name="address" ColumnName="address" />
+          <ScalarProperty Name="currency" ColumnName="currency" />
+          <ScalarProperty Name="language" ColumnName="language" />
+          <ScalarProperty Name="timezone" ColumnName="timezone" />
+          <ScalarProperty Name="companywebsite" ColumnName="companywebsite" />
+          <ScalarProperty Name="companyphone" ColumnName="companyphone" />
+          <ScalarProperty Name="companyemail" ColumnName="companyemail" />
+          <ScalarProperty Name="companyname" ColumnName="companyname" />
+          <ScalarProperty Name="packageid" ColumnName="packageid" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="company001">
+      <EntityTypeMapping TypeName="project_managementModel.company001">
+        <MappingFragment StoreEntitySet="company001">
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="insertdate" ColumnName="insertdate" />
+          <ScalarProperty Name="note" ColumnName="note" />
+          <ScalarProperty Name="addedby" ColumnName="addedby" />
+          <ScalarProperty Name="shippingaddress" ColumnName="shippingaddress" />
+          <ScalarProperty Name="address" ColumnName="address" />
+          <ScalarProperty Name="postalcode" ColumnName="postalcode" />
+          <ScalarProperty Name="city" ColumnName="city" />
+          <ScalarProperty Name="state" ColumnName="state" />
+          <ScalarProperty Name="country" ColumnName="country" />
+          <ScalarProperty Name="website" ColumnName="website" />
+          <ScalarProperty Name="taxname" ColumnName="taxname" />
+          <ScalarProperty Name="gstvatnumber" ColumnName="gstvatnumber" />
+          <ScalarProperty Name="officemobile" ColumnName="officemobile" />
+          <ScalarProperty Name="mobile" ColumnName="mobile" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Deals">
+      <EntityTypeMapping TypeName="project_managementModel.Deal">
+        <MappingFragment StoreEntitySet="Deals">
+          <ScalarProperty Name="insertdate" ColumnName="insertdate" />
+          <ScalarProperty Name="dealwatcher" ColumnName="dealwatcher" />
+          <ScalarProperty Name="product" ColumnName="product" />
+          <ScalarProperty Name="dealagent" ColumnName="dealagent" />
+          <ScalarProperty Name="dealcategory" ColumnName="dealcategory" />
+          <ScalarProperty Name="closedate" ColumnName="closedate" />
+          <ScalarProperty Name="dealvalue" ColumnName="dealvalue" />
+          <ScalarProperty Name="dealstages" ColumnName="dealstages" />
+          <ScalarProperty Name="pipeline" ColumnName="pipeline" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="leadcontactid" ColumnName="leadcontactid" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Departments">
+      <EntityTypeMapping TypeName="project_managementModel.Department">
+        <MappingFragment StoreEntitySet="Department">
+          <ScalarProperty Name="parent" ColumnName="parent" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Designations">
+      <EntityTypeMapping TypeName="project_managementModel.Designation">
+        <MappingFragment StoreEntitySet="Designation">
+          <ScalarProperty Name="parent" ColumnName="parent" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="documents">
+      <EntityTypeMapping TypeName="project_managementModel.document">
+        <MappingFragment StoreEntitySet="documents">
+          <ScalarProperty Name="updateby" ColumnName="updateby" />
+          <ScalarProperty Name="createdby" ColumnName="createdby" />
+          <ScalarProperty Name="updatedate" ColumnName="updatedate" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="notes" ColumnName="notes" />
+          <ScalarProperty Name="insertdate" ColumnName="insertdate" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Employees">
+      <EntityTypeMapping TypeName="project_managementModel.Employee">
+        <MappingFragment StoreEntitySet="Employees">
+          <ScalarProperty Name="businessaddress" ColumnName="businessaddress" />
+          <ScalarProperty Name="maritalstatus" ColumnName="maritalstatus" />
+          <ScalarProperty Name="employmenttype" ColumnName="employmenttype" />
+          <ScalarProperty Name="noticeperiodenddate" ColumnName="noticeperiodenddate" />
+          <ScalarProperty Name="noticeperiodstartdate" ColumnName="noticeperiodstartdate" />
+          <ScalarProperty Name="probationenddate" ColumnName="probationenddate" />
+          <ScalarProperty Name="skills" ColumnName="skills" />
+          <ScalarProperty Name="slackmemberid" ColumnName="slackmemberid" />
+          <ScalarProperty Name="hourlyrate" ColumnName="hourlyrate" />
+          <ScalarProperty Name="about" ColumnName="about" />
+          <ScalarProperty Name="insertdate" ColumnName="insertdate" />
+          <ScalarProperty Name="userrole" ColumnName="userrole" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="Language" ColumnName="Language" />
+          <ScalarProperty Name="reportingto" ColumnName="reportingto" />
+          <ScalarProperty Name="joiningdate" ColumnName="joiningdate" />
+          <ScalarProperty Name="gender" ColumnName="gender" />
+          <ScalarProperty Name="mobile" ColumnName="mobile" />
+          <ScalarProperty Name="country" ColumnName="country" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="department" ColumnName="department" />
+          <ScalarProperty Name="designation" ColumnName="designation" />
+          <ScalarProperty Name="dob" ColumnName="dob" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Lead_Contact">
+      <EntityTypeMapping TypeName="project_managementModel.Lead_Contact">
+        <MappingFragment StoreEntitySet="Lead_Contact">
+          <ScalarProperty Name="companyid" ColumnName="companyid" />
+          <ScalarProperty Name="insertdate" ColumnName="insertdate" />
+          <ScalarProperty Name="leadowner" ColumnName="leadowner" />
+          <ScalarProperty Name="addedby" ColumnName="addedby" />
+          <ScalarProperty Name="leadsource" ColumnName="leadsource" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Leaves">
+      <EntityTypeMapping TypeName="project_managementModel.Leave">
+        <MappingFragment StoreEntitySet="Leave">
+          <ScalarProperty Name="employeeid" ColumnName="employeeid" />
+          <ScalarProperty Name="insertdate" ColumnName="insertdate" />
+          <ScalarProperty Name="reasonforabsence" ColumnName="reasonforabsence" />
+          <ScalarProperty Name="createdby" ColumnName="createdby" />
+          <ScalarProperty Name="leavefile" ColumnName="leavefile" />
+          <ScalarProperty Name="date" ColumnName="date" />
+          <ScalarProperty Name="Duration" ColumnName="Duration" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="leavetype" ColumnName="leavetype" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="notifications">
+      <EntityTypeMapping TypeName="project_managementModel.notification">
+        <MappingFragment StoreEntitySet="notifications">
+          <ScalarProperty Name="notes" ColumnName="notes" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="insertdate" ColumnName="insertdate" />
+          <ScalarProperty Name="insertuser" ColumnName="insertuser" />
+          <ScalarProperty Name="isread" ColumnName="isread" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="title" ColumnName="title" />
+          <ScalarProperty Name="receiver" ColumnName="receiver" />
+          <ScalarProperty Name="sender" ColumnName="sender" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Packages">
+      <EntityTypeMapping TypeName="project_managementModel.Package">
+        <MappingFragment StoreEntitySet="Packages">
+          <ScalarProperty Name="licenceexpireson" ColumnName="licenceexpireson" />
+          <ScalarProperty Name="nextpaymentdate" ColumnName="nextpaymentdate" />
+          <ScalarProperty Name="paymentdate" ColumnName="paymentdate" />
+          <ScalarProperty Name="packagecategory" ColumnName="packagecategory" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="packagetype" ColumnName="packagetype" />
+          <ScalarProperty Name="insertdate" ColumnName="insertdate" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="moduleinpackage34" ColumnName="moduleinpackage34" />
+          <ScalarProperty Name="moduleinpackage33" ColumnName="moduleinpackage33" />
+          <ScalarProperty Name="moduleinpackage32" ColumnName="moduleinpackage32" />
+          <ScalarProperty Name="moduleinpackage31" ColumnName="moduleinpackage31" />
+          <ScalarProperty Name="moduleinpackage30" ColumnName="moduleinpackage30" />
+          <ScalarProperty Name="moduleinpackage29" ColumnName="moduleinpackage29" />
+          <ScalarProperty Name="moduleinpackage28" ColumnName="moduleinpackage28" />
+          <ScalarProperty Name="moduleinpackage27" ColumnName="moduleinpackage27" />
+          <ScalarProperty Name="moduleinpackage26" ColumnName="moduleinpackage26" />
+          <ScalarProperty Name="moduleinpackage25" ColumnName="moduleinpackage25" />
+          <ScalarProperty Name="moduleinpackage24" ColumnName="moduleinpackage24" />
+          <ScalarProperty Name="moduleinpackage23" ColumnName="moduleinpackage23" />
+          <ScalarProperty Name="moduleinpackage22" ColumnName="moduleinpackage22" />
+          <ScalarProperty Name="moduleinpackage21" ColumnName="moduleinpackage21" />
+          <ScalarProperty Name="moduleinpackage20" ColumnName="moduleinpackage20" />
+          <ScalarProperty Name="moduleinpackage19" ColumnName="moduleinpackage19" />
+          <ScalarProperty Name="moduleinpackage18" ColumnName="moduleinpackage18" />
+          <ScalarProperty Name="moduleinpackage17" ColumnName="moduleinpackage17" />
+          <ScalarProperty Name="moduleinpackage16" ColumnName="moduleinpackage16" />
+          <ScalarProperty Name="moduleinpackage15" ColumnName="moduleinpackage15" />
+          <ScalarProperty Name="moduleinpackage14" ColumnName="moduleinpackage14" />
+          <ScalarProperty Name="moduleinpackage13" ColumnName="moduleinpackage13" />
+          <ScalarProperty Name="moduleinpackage12" ColumnName="moduleinpackage12" />
+          <ScalarProperty Name="moduleinpackage11" ColumnName="moduleinpackage11" />
+          <ScalarProperty Name="moduleinpackage10" ColumnName="moduleinpackage10" />
+          <ScalarProperty Name="moduleinpackage9" ColumnName="moduleinpackage9" />
+          <ScalarProperty Name="moduleinpackage8" ColumnName="moduleinpackage8" />
+          <ScalarProperty Name="moduleinpackage7" ColumnName="moduleinpackage7" />
+          <ScalarProperty Name="moduleinpackage6" ColumnName="moduleinpackage6" />
+          <ScalarProperty Name="moduleinpackage5" ColumnName="moduleinpackage5" />
+          <ScalarProperty Name="moduleinpackage4" ColumnName="moduleinpackage4" />
+          <ScalarProperty Name="moduleinpackage3" ColumnName="moduleinpackage3" />
+          <ScalarProperty Name="moduleinpackage2" ColumnName="moduleinpackage2" />
+          <ScalarProperty Name="moduleinpackage1" ColumnName="moduleinpackage1" />
+          <ScalarProperty Name="maxemployees" ColumnName="maxemployees" />
+          <ScalarProperty Name="filestoragemb" ColumnName="filestoragemb" />
+          <ScalarProperty Name="currency" ColumnName="currency" />
+          <ScalarProperty Name="annualprice" ColumnName="annualprice" />
+          <ScalarProperty Name="monthlyprice" ColumnName="monthlyprice" />
+          <ScalarProperty Name="packagename" ColumnName="packagename" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="personel_files_cat">
+      <EntityTypeMapping TypeName="project_managementModel.personel_files_cat">
+        <MappingFragment StoreEntitySet="personel_files_cat">
+          <ScalarProperty Name="updateby" ColumnName="updateby" />
+          <ScalarProperty Name="createdby" ColumnName="createdby" />
+          <ScalarProperty Name="updatedate" ColumnName="updatedate" />
+          <ScalarProperty Name="insertdate" ColumnName="insertdate" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="cat_order" ColumnName="cat_order" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="cat_name" ColumnName="cat_name" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="personneldocuments">
+      <EntityTypeMapping TypeName="project_managementModel.personneldocument">
+        <MappingFragment StoreEntitySet="personneldocument">
+          <ScalarProperty Name="cat_id" ColumnName="cat_id" />
+          <ScalarProperty Name="documentid" ColumnName="documentid" />
+          <ScalarProperty Name="doctype" ColumnName="doctype" />
+          <ScalarProperty Name="url" ColumnName="url" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="notes" ColumnName="notes" />
+          <ScalarProperty Name="insertdate" ColumnName="insertdate" />
+          <ScalarProperty Name="expdate" ColumnName="expdate" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="doc_order" ColumnName="doc_order" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="settings">
+      <EntityTypeMapping TypeName="project_managementModel.setting">
+        <MappingFragment StoreEntitySet="settings">
+          <ScalarProperty Name="categoryid" ColumnName="categoryid" />
+          <ScalarProperty Name="updateby" ColumnName="updateby" />
+          <ScalarProperty Name="createdby" ColumnName="createdby" />
+          <ScalarProperty Name="updatedate" ColumnName="updatedate" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="notes" ColumnName="notes" />
+          <ScalarProperty Name="insertdate" ColumnName="insertdate" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="settings_categories">
+      <EntityTypeMapping TypeName="project_managementModel.settings_categories">
+        <MappingFragment StoreEntitySet="settings_categories">
+          <ScalarProperty Name="updateby" ColumnName="updateby" />
+          <ScalarProperty Name="createdby" ColumnName="createdby" />
+          <ScalarProperty Name="updatedate" ColumnName="updatedate" />
+          <ScalarProperty Name="insertdate" ColumnName="insertdate" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="cat_order" ColumnName="cat_order" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Shift_Roster">
+      <EntityTypeMapping TypeName="project_managementModel.Shift_Roster">
+        <MappingFragment StoreEntitySet="Shift_Roster">
+          <ScalarProperty Name="employeeid" ColumnName="employeeid" />
+          <ScalarProperty Name="insertdate" ColumnName="insertdate" />
+          <ScalarProperty Name="createdby" ColumnName="createdby" />
+          <ScalarProperty Name="shiftfile" ColumnName="shiftfile" />
+          <ScalarProperty Name="remarks" ColumnName="remarks" />
+          <ScalarProperty Name="shiftto" ColumnName="shiftto" />
+          <ScalarProperty Name="shiftfrom" ColumnName="shiftfrom" />
+          <ScalarProperty Name="employeeshift" ColumnName="employeeshift" />
+          <ScalarProperty Name="Departmentid" ColumnName="Departmentid" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="StickyNotes">
+      <EntityTypeMapping TypeName="project_managementModel.StickyNote">
+        <MappingFragment StoreEntitySet="StickyNotes">
+          <ScalarProperty Name="color" ColumnName="color" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="updateby" ColumnName="updateby" />
+          <ScalarProperty Name="createdby" ColumnName="createdby" />
+          <ScalarProperty Name="updatedate" ColumnName="updatedate" />
+          <ScalarProperty Name="insertdate" ColumnName="insertdate" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="title" ColumnName="title" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Superadmins">
+      <EntityTypeMapping TypeName="project_managementModel.Superadmin">
+        <MappingFragment StoreEntitySet="Superadmin">
+          <ScalarProperty Name="insertdate" ColumnName="insertdate" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="userrole" ColumnName="userrole" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="project_managementModel.sysdiagram">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="definition" ColumnName="definition" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="useraccounts">
+      <EntityTypeMapping TypeName="project_managementModel.useraccount">
+        <MappingFragment StoreEntitySet="useraccount">
+          <ScalarProperty Name="insertdate" ColumnName="insertdate" />
+          <ScalarProperty Name="usertype" ColumnName="usertype" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="notes" ColumnName="notes" />
+          <ScalarProperty Name="address" ColumnName="address" />
+          <ScalarProperty Name="phone" ColumnName="phone" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Offlinerequests">
+      <EntityTypeMapping TypeName="project_managementModel.Offlinerequest">
+        <MappingFragment StoreEntitySet="Offlinerequest">
+          <ScalarProperty Name="insertdate" ColumnName="insertdate" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="created" ColumnName="created" />
+          <ScalarProperty Name="paymentby" ColumnName="paymentby" />
+          <ScalarProperty Name="package" ColumnName="package" />
+          <ScalarProperty Name="company" ColumnName="company" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

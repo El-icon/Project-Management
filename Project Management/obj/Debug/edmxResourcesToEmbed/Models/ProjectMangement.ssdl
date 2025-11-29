@@ -1,0 +1,841 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="project_managementModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="ActivityLog">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="title" Type="varchar(max)" />
+    <Property Name="message" Type="varchar(max)" />
+    <Property Name="code" Type="varchar(max)" />
+    <Property Name="error" Type="varchar(max)" />
+    <Property Name="url" Type="varchar(max)" />
+    <Property Name="source" Type="varchar(max)" />
+    <Property Name="logtype" Type="varchar(max)" />
+    <Property Name="status" Type="varchar(max)" />
+    <Property Name="notes" Type="varchar(max)" />
+    <Property Name="loglevel" Type="varchar(max)" />
+    <Property Name="insertdate" Type="varchar(max)" />
+    <Property Name="insertuser" Type="varchar(max)" />
+  </EntityType>
+  <EntityType Name="Adminfaq">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="articletitle" Type="varchar" MaxLength="200" />
+    <Property Name="description" Type="varchar(max)" />
+    <Property Name="files" Type="varchar" MaxLength="200" />
+    <Property Name="categoryid" Type="varchar" MaxLength="200" />
+    <Property Name="insertdate" Type="varchar" MaxLength="200" />
+    <Property Name="doc_order" Type="varchar" MaxLength="200" />
+    <Property Name="expdate" Type="date" />
+    <Property Name="notes" Type="varchar" MaxLength="200" />
+    <Property Name="status" Type="varchar" MaxLength="200" />
+    <Property Name="url" Type="varchar" MaxLength="200" />
+    <Property Name="doctype" Type="varchar" MaxLength="200" />
+    <Property Name="updatedate" Type="datetime" />
+    <Property Name="createdby" Type="varchar" MaxLength="200" />
+    <Property Name="updateby" Type="varchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="Adminfaqcategory">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="categoryname" Type="varchar" MaxLength="200" />
+    <Property Name="status" Type="varchar" MaxLength="200" />
+    <Property Name="insertdate" Type="datetime" />
+    <Property Name="updatedate" Type="datetime" />
+    <Property Name="createdby" Type="varchar" MaxLength="200" />
+    <Property Name="updateby" Type="varchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="Appreciatiion">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="award" Type="varchar" MaxLength="200" />
+    <Property Name="employeeid" Type="varchar" MaxLength="200" />
+    <Property Name="date" Type="varchar" MaxLength="200" />
+    <Property Name="summary" Type="varchar" MaxLength="200" />
+    <Property Name="photo" Type="varchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="billing">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="companyid" Type="varchar" MaxLength="200" />
+    <Property Name="packageid" Type="varchar" MaxLength="200" />
+    <Property Name="paymentdate" Type="varchar" MaxLength="200" />
+    <Property Name="nextpaymentdate" Type="varchar" MaxLength="200" />
+    <Property Name="transactionid" Type="varchar" MaxLength="200" />
+    <Property Name="amount" Type="varchar" MaxLength="200" />
+    <Property Name="paymentgateway" Type="varchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="Calendar">
+    <Key>
+      <PropertyRef Name="EventID" />
+    </Key>
+    <Property Name="EventID" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="Subject" Type="varchar" MaxLength="200" />
+    <Property Name="StartDateTime" Type="datetime" />
+    <Property Name="EndDateTime" Type="datetime" />
+    <Property Name="Description" Type="varchar(max)" />
+    <Property Name="Location" Type="varchar" MaxLength="200" />
+    <Property Name="IsFullDay" Type="bit" />
+    <Property Name="CreatedBy" Type="varchar" MaxLength="200" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="ThemeColor" Type="varchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="Clients">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="200" />
+    <Property Name="email" Type="varchar" MaxLength="200" />
+    <Property Name="country" Type="varchar" MaxLength="200" />
+    <Property Name="mobile" Type="varchar" MaxLength="200" />
+    <Property Name="gender" Type="varchar" MaxLength="200" />
+    <Property Name="Language" Type="varchar" MaxLength="200" />
+    <Property Name="clientcategory" Type="varchar" MaxLength="200" />
+    <Property Name="clientsubcategory" Type="varchar" MaxLength="200" />
+    <Property Name="Companyname" Type="varchar" MaxLength="200" />
+    <Property Name="companywebsite" Type="varchar" MaxLength="200" />
+    <Property Name="taxname" Type="varchar" MaxLength="200" />
+    <Property Name="gstvatnumber" Type="varchar" MaxLength="200" />
+    <Property Name="companyphone" Type="varchar" MaxLength="200" />
+    <Property Name="city" Type="varchar" MaxLength="200" />
+    <Property Name="state" Type="varchar" MaxLength="200" />
+    <Property Name="postalcode" Type="varchar" MaxLength="200" />
+    <Property Name="companyaddress" Type="varchar" MaxLength="200" />
+    <Property Name="shippingaddress" Type="varchar" MaxLength="200" />
+    <Property Name="addedby" Type="varchar" MaxLength="200" />
+    <Property Name="note" Type="varchar" MaxLength="200" />
+    <Property Name="insertdate" Type="varchar" MaxLength="200" />
+    <Property Name="employeeid" Type="varchar" MaxLength="200" />
+    <Property Name="companyid" Type="varchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="Companies">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="packageid" Type="varchar" MaxLength="200" />
+    <Property Name="companyname" Type="varchar" MaxLength="200" />
+    <Property Name="companyemail" Type="varchar" MaxLength="200" />
+    <Property Name="companyphone" Type="varchar" MaxLength="200" />
+    <Property Name="companywebsite" Type="varchar" MaxLength="200" />
+    <Property Name="timezone" Type="varchar" MaxLength="200" />
+    <Property Name="language" Type="varchar" MaxLength="200" />
+    <Property Name="currency" Type="varchar" MaxLength="200" />
+    <Property Name="address" Type="varchar" MaxLength="200" />
+    <Property Name="acctname" Type="varchar" MaxLength="200" />
+    <Property Name="acctemail" Type="varchar" MaxLength="200" />
+    <Property Name="packageid1" Type="varchar" MaxLength="200" />
+    <Property Name="details" Type="varchar" MaxLength="200" />
+    <Property Name="insertdate" Type="varchar" MaxLength="200" />
+    <Property Name="status" Type="varchar" MaxLength="200" />
+    <Property Name="photo" Type="varchar(max)" />
+    <Property Name="url" Type="varchar" MaxLength="200" />
+    <Property Name="expdate" Type="varchar" MaxLength="200" />
+    <Property Name="employees" Type="varchar" MaxLength="200" />
+    <Property Name="clients" Type="varchar" MaxLength="200" />
+    <Property Name="invoices" Type="varchar" MaxLength="200" />
+    <Property Name="storage" Type="varchar" MaxLength="200" />
+    <Property Name="estimates" Type="varchar" MaxLength="200" />
+    <Property Name="projects" Type="varchar" MaxLength="200" />
+    <Property Name="tasks" Type="varchar" MaxLength="200" />
+    <Property Name="leads" Type="varchar" MaxLength="200" />
+    <Property Name="orders" Type="varchar" MaxLength="200" />
+    <Property Name="tickets" Type="varchar" MaxLength="200" />
+    <Property Name="contacts" Type="varchar" MaxLength="200" />
+    <Property Name="amount" Type="varchar" MaxLength="200" />
+    <Property Name="paymentdate" Type="varchar" MaxLength="200" />
+    <Property Name="nextpaymentdate" Type="varchar" MaxLength="200" />
+    <Property Name="licenceexpireson" Type="varchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="company001">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="200" />
+    <Property Name="email" Type="varchar" MaxLength="200" />
+    <Property Name="mobile" Type="varchar" MaxLength="200" />
+    <Property Name="officemobile" Type="varchar" MaxLength="200" />
+    <Property Name="gstvatnumber" Type="varchar" MaxLength="200" />
+    <Property Name="taxname" Type="varchar" MaxLength="200" />
+    <Property Name="website" Type="varchar" MaxLength="200" />
+    <Property Name="country" Type="varchar" MaxLength="200" />
+    <Property Name="state" Type="varchar" MaxLength="200" />
+    <Property Name="city" Type="varchar" MaxLength="200" />
+    <Property Name="postalcode" Type="varchar" MaxLength="200" />
+    <Property Name="address" Type="varchar" MaxLength="200" />
+    <Property Name="shippingaddress" Type="varchar" MaxLength="200" />
+    <Property Name="addedby" Type="varchar" MaxLength="200" />
+    <Property Name="note" Type="varchar" MaxLength="200" />
+    <Property Name="insertdate" Type="varchar" MaxLength="200" />
+    <Property Name="status" Type="varchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="Deals">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="leadcontactid" Type="varchar" MaxLength="200" />
+    <Property Name="name" Type="varchar" MaxLength="200" />
+    <Property Name="pipeline" Type="varchar" MaxLength="200" />
+    <Property Name="dealstages" Type="varchar" MaxLength="200" />
+    <Property Name="dealvalue" Type="varchar" MaxLength="200" />
+    <Property Name="closedate" Type="varchar" MaxLength="200" />
+    <Property Name="dealcategory" Type="varchar" MaxLength="200" />
+    <Property Name="dealagent" Type="varchar" MaxLength="200" />
+    <Property Name="product" Type="varchar" MaxLength="200" />
+    <Property Name="dealwatcher" Type="varchar" MaxLength="200" />
+    <Property Name="insertdate" Type="varchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="Department">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="200" />
+    <Property Name="parent" Type="varchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="Designation">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="200" />
+    <Property Name="parent" Type="varchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="documents">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="200" />
+    <Property Name="description" Type="varchar(max)" />
+    <Property Name="insertdate" Type="datetime" />
+    <Property Name="notes" Type="varchar" MaxLength="200" />
+    <Property Name="status" Type="varchar" MaxLength="200" />
+    <Property Name="updatedate" Type="datetime" />
+    <Property Name="createdby" Type="varchar" MaxLength="200" />
+    <Property Name="updateby" Type="varchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="Employees">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="200" />
+    <Property Name="dob" Type="varchar" MaxLength="200" />
+    <Property Name="designation" Type="varchar" MaxLength="200" />
+    <Property Name="department" Type="varchar" MaxLength="200" />
+    <Property Name="email" Type="varchar" MaxLength="200" />
+    <Property Name="country" Type="varchar" MaxLength="200" />
+    <Property Name="mobile" Type="varchar" MaxLength="200" />
+    <Property Name="gender" Type="varchar" MaxLength="200" />
+    <Property Name="joiningdate" Type="varchar" MaxLength="200" />
+    <Property Name="reportingto" Type="varchar" MaxLength="200" />
+    <Property Name="Language" Type="varchar" MaxLength="200" />
+    <Property Name="status" Type="varchar" MaxLength="200" />
+    <Property Name="userrole" Type="varchar" MaxLength="200" />
+    <Property Name="insertdate" Type="varchar" MaxLength="200" />
+    <Property Name="about" Type="varchar" MaxLength="200" />
+    <Property Name="hourlyrate" Type="varchar" MaxLength="200" />
+    <Property Name="slackmemberid" Type="varchar" MaxLength="200" />
+    <Property Name="skills" Type="varchar" MaxLength="200" />
+    <Property Name="probationenddate" Type="varchar" MaxLength="200" />
+    <Property Name="noticeperiodstartdate" Type="varchar" MaxLength="200" />
+    <Property Name="noticeperiodenddate" Type="varchar" MaxLength="200" />
+    <Property Name="employmenttype" Type="varchar" MaxLength="200" />
+    <Property Name="maritalstatus" Type="varchar" MaxLength="200" />
+    <Property Name="businessaddress" Type="varchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="Lead_Contact">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="200" />
+    <Property Name="email" Type="varchar" MaxLength="200" />
+    <Property Name="leadsource" Type="varchar" MaxLength="200" />
+    <Property Name="addedby" Type="varchar" MaxLength="200" />
+    <Property Name="leadowner" Type="varchar" MaxLength="200" />
+    <Property Name="insertdate" Type="varchar" MaxLength="200" />
+    <Property Name="companyid" Type="varchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="Leave">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="200" />
+    <Property Name="leavetype" Type="varchar" MaxLength="200" />
+    <Property Name="status" Type="varchar" MaxLength="200" />
+    <Property Name="Duration" Type="varchar" MaxLength="200" />
+    <Property Name="date" Type="varchar" MaxLength="200" />
+    <Property Name="leavefile" Type="varchar" MaxLength="200" />
+    <Property Name="createdby" Type="varchar" MaxLength="200" />
+    <Property Name="reasonforabsence" Type="varchar" MaxLength="200" />
+    <Property Name="insertdate" Type="varchar" MaxLength="200" />
+    <Property Name="employeeid" Type="varchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="notifications">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="sender" Type="varchar" MaxLength="200" />
+    <Property Name="receiver" Type="varchar" MaxLength="200" />
+    <Property Name="title" Type="varchar" MaxLength="200" />
+    <Property Name="description" Type="varchar" MaxLength="200" />
+    <Property Name="isread" Type="varchar" MaxLength="200" />
+    <Property Name="insertuser" Type="varchar" MaxLength="200" />
+    <Property Name="insertdate" Type="datetime" />
+    <Property Name="status" Type="varchar" MaxLength="200" />
+    <Property Name="notes" Type="varchar" MaxLength="200" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'project_management.dbo.Offlinerequest' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="Offlinerequest">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="company" Type="varchar" MaxLength="200" />
+    <Property Name="package" Type="varchar" MaxLength="200" />
+    <Property Name="paymentby" Type="varchar" MaxLength="200" />
+    <Property Name="created" Type="varchar" MaxLength="200" />
+    <Property Name="status" Type="varchar" MaxLength="200" />
+    <Property Name="insertdate" Type="varchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="Packages">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="packagename" Type="varchar" MaxLength="200" />
+    <Property Name="monthlyprice" Type="varchar" MaxLength="200" />
+    <Property Name="annualprice" Type="varchar" MaxLength="200" />
+    <Property Name="currency" Type="varchar" MaxLength="200" />
+    <Property Name="filestoragemb" Type="varchar" MaxLength="200" />
+    <Property Name="maxemployees" Type="varchar" MaxLength="200" />
+    <Property Name="moduleinpackage1" Type="bit" Nullable="false" />
+    <Property Name="moduleinpackage2" Type="bit" Nullable="false" />
+    <Property Name="moduleinpackage3" Type="bit" Nullable="false" />
+    <Property Name="moduleinpackage4" Type="bit" Nullable="false" />
+    <Property Name="moduleinpackage5" Type="bit" Nullable="false" />
+    <Property Name="moduleinpackage6" Type="bit" Nullable="false" />
+    <Property Name="moduleinpackage7" Type="bit" Nullable="false" />
+    <Property Name="moduleinpackage8" Type="bit" Nullable="false" />
+    <Property Name="moduleinpackage9" Type="bit" Nullable="false" />
+    <Property Name="moduleinpackage10" Type="bit" Nullable="false" />
+    <Property Name="moduleinpackage11" Type="bit" Nullable="false" />
+    <Property Name="moduleinpackage12" Type="bit" Nullable="false" />
+    <Property Name="moduleinpackage13" Type="bit" Nullable="false" />
+    <Property Name="moduleinpackage14" Type="bit" Nullable="false" />
+    <Property Name="moduleinpackage15" Type="bit" Nullable="false" />
+    <Property Name="moduleinpackage16" Type="bit" Nullable="false" />
+    <Property Name="moduleinpackage17" Type="bit" Nullable="false" />
+    <Property Name="moduleinpackage18" Type="bit" Nullable="false" />
+    <Property Name="moduleinpackage19" Type="bit" Nullable="false" />
+    <Property Name="moduleinpackage20" Type="bit" Nullable="false" />
+    <Property Name="moduleinpackage21" Type="bit" Nullable="false" />
+    <Property Name="moduleinpackage22" Type="bit" Nullable="false" />
+    <Property Name="moduleinpackage23" Type="bit" Nullable="false" />
+    <Property Name="moduleinpackage24" Type="bit" Nullable="false" />
+    <Property Name="moduleinpackage25" Type="bit" Nullable="false" />
+    <Property Name="moduleinpackage26" Type="bit" Nullable="false" />
+    <Property Name="moduleinpackage27" Type="bit" Nullable="false" />
+    <Property Name="moduleinpackage28" Type="bit" Nullable="false" />
+    <Property Name="moduleinpackage29" Type="bit" Nullable="false" />
+    <Property Name="moduleinpackage30" Type="bit" Nullable="false" />
+    <Property Name="moduleinpackage31" Type="bit" Nullable="false" />
+    <Property Name="moduleinpackage32" Type="bit" Nullable="false" />
+    <Property Name="moduleinpackage33" Type="bit" Nullable="false" />
+    <Property Name="moduleinpackage34" Type="bit" Nullable="false" />
+    <Property Name="status" Type="varchar" MaxLength="200" />
+    <Property Name="insertdate" Type="varchar" MaxLength="200" />
+    <Property Name="packagetype" Type="varchar" MaxLength="200" />
+    <Property Name="description" Type="varchar(max)" />
+    <Property Name="packagecategory" Type="varchar" MaxLength="200" />
+    <Property Name="paymentdate" Type="varchar" MaxLength="200" />
+    <Property Name="nextpaymentdate" Type="varchar" MaxLength="200" />
+    <Property Name="licenceexpireson" Type="varchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="personel_files_cat">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="cat_name" Type="varchar" MaxLength="200" />
+    <Property Name="description" Type="varchar(max)" />
+    <Property Name="cat_order" Type="varchar" MaxLength="200" />
+    <Property Name="status" Type="varchar" MaxLength="200" />
+    <Property Name="insertdate" Type="datetime" />
+    <Property Name="updatedate" Type="datetime" />
+    <Property Name="createdby" Type="varchar" MaxLength="200" />
+    <Property Name="updateby" Type="varchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="personneldocument">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="doc_order" Type="varchar" MaxLength="200" />
+    <Property Name="description" Type="varchar(max)" />
+    <Property Name="expdate" Type="date" />
+    <Property Name="insertdate" Type="datetime" />
+    <Property Name="notes" Type="varchar" MaxLength="200" />
+    <Property Name="status" Type="varchar" MaxLength="200" />
+    <Property Name="url" Type="varchar" MaxLength="200" />
+    <Property Name="doctype" Type="varchar" MaxLength="200" />
+    <Property Name="documentid" Type="varchar" MaxLength="200" />
+    <Property Name="cat_id" Type="varchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="settings">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="200" />
+    <Property Name="description" Type="varchar(max)" />
+    <Property Name="insertdate" Type="datetime" />
+    <Property Name="notes" Type="varchar" MaxLength="200" />
+    <Property Name="status" Type="varchar" MaxLength="200" />
+    <Property Name="updatedate" Type="datetime" />
+    <Property Name="createdby" Type="varchar" MaxLength="200" />
+    <Property Name="updateby" Type="varchar" MaxLength="200" />
+    <Property Name="categoryid" Type="varchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="settings_categories">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="200" />
+    <Property Name="description" Type="varchar(max)" />
+    <Property Name="cat_order" Type="varchar" MaxLength="200" />
+    <Property Name="status" Type="varchar" MaxLength="200" />
+    <Property Name="insertdate" Type="datetime" />
+    <Property Name="updatedate" Type="datetime" />
+    <Property Name="createdby" Type="varchar" MaxLength="200" />
+    <Property Name="updateby" Type="varchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="Shift_Roster">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="Departmentid" Type="varchar" MaxLength="200" />
+    <Property Name="employeeshift" Type="varchar" MaxLength="200" />
+    <Property Name="shiftfrom" Type="varchar" MaxLength="200" />
+    <Property Name="shiftto" Type="varchar" MaxLength="200" />
+    <Property Name="remarks" Type="varchar" MaxLength="200" />
+    <Property Name="shiftfile" Type="varchar" MaxLength="200" />
+    <Property Name="createdby" Type="varchar" MaxLength="200" />
+    <Property Name="insertdate" Type="varchar" MaxLength="200" />
+    <Property Name="employeeid" Type="varchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="StickyNotes">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="title" Type="varchar" MaxLength="200" />
+    <Property Name="status" Type="varchar" MaxLength="200" />
+    <Property Name="insertdate" Type="datetime" />
+    <Property Name="updatedate" Type="datetime" />
+    <Property Name="createdby" Type="varchar" MaxLength="200" />
+    <Property Name="updateby" Type="varchar" MaxLength="200" />
+    <Property Name="description" Type="varchar(max)" />
+    <Property Name="color" Type="varchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="Superadmin">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="200" />
+    <Property Name="email" Type="varchar" MaxLength="200" />
+    <Property Name="userrole" Type="varchar" MaxLength="200" />
+    <Property Name="status" Type="varchar" MaxLength="200" />
+    <Property Name="insertdate" Type="varchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="useraccount">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="200" />
+    <Property Name="email" Type="varchar" MaxLength="200" />
+    <Property Name="password" Type="varchar" MaxLength="200" />
+    <Property Name="phone" Type="varchar" MaxLength="200" />
+    <Property Name="address" Type="varchar" MaxLength="200" />
+    <Property Name="notes" Type="varchar" MaxLength="200" />
+    <Property Name="status" Type="varchar" MaxLength="200" />
+    <Property Name="usertype" Type="varchar" MaxLength="200" />
+    <Property Name="insertdate" Type="varchar" MaxLength="200" />
+  </EntityType>
+  <Association Name="FK_Adminfaq_Adminfaqcategory">
+    <End Role="Adminfaqcategory" Type="Self.Adminfaqcategory" Multiplicity="0..1" />
+    <End Role="Adminfaq" Type="Self.Adminfaq" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Adminfaqcategory">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Adminfaq">
+        <PropertyRef Name="categoryid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Appreciatiion_Employees">
+    <End Role="Employees" Type="Self.Employees" Multiplicity="0..1" />
+    <End Role="Appreciatiion" Type="Self.Appreciatiion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employees">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Appreciatiion">
+        <PropertyRef Name="employeeid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_billing_Companies">
+    <End Role="Companies" Type="Self.Companies" Multiplicity="0..1" />
+    <End Role="billing" Type="Self.billing" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Companies">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="billing">
+        <PropertyRef Name="companyid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_billing_Packages">
+    <End Role="Packages" Type="Self.Packages" Multiplicity="0..1" />
+    <End Role="billing" Type="Self.billing" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Packages">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="billing">
+        <PropertyRef Name="packageid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Clients_company001">
+    <End Role="company001" Type="Self.company001" Multiplicity="0..1" />
+    <End Role="Clients" Type="Self.Clients" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="company001">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Clients">
+        <PropertyRef Name="companyid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Companies_Packages1">
+    <End Role="Packages" Type="Self.Packages" Multiplicity="0..1" />
+    <End Role="Companies" Type="Self.Companies" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Packages">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Companies">
+        <PropertyRef Name="packageid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Deals_Lead_Contact">
+    <End Role="Lead_Contact" Type="Self.Lead_Contact" Multiplicity="0..1" />
+    <End Role="Deals" Type="Self.Deals" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Lead_Contact">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Deals">
+        <PropertyRef Name="leadcontactid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Lead_Contact_company001">
+    <End Role="company001" Type="Self.company001" Multiplicity="0..1" />
+    <End Role="Lead_Contact" Type="Self.Lead_Contact" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="company001">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Lead_Contact">
+        <PropertyRef Name="companyid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Lead_Contact_Employees1">
+    <End Role="Employees" Type="Self.Employees" Multiplicity="0..1" />
+    <End Role="Lead_Contact" Type="Self.Lead_Contact" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employees">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Lead_Contact">
+        <PropertyRef Name="addedby" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Lead_Contact_Employees2">
+    <End Role="Employees" Type="Self.Employees" Multiplicity="0..1" />
+    <End Role="Lead_Contact" Type="Self.Lead_Contact" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employees">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Lead_Contact">
+        <PropertyRef Name="leadowner" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Leave_Employees">
+    <End Role="Employees" Type="Self.Employees" Multiplicity="0..1" />
+    <End Role="Leave" Type="Self.Leave" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employees">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Leave">
+        <PropertyRef Name="employeeid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_notifications_useraccount">
+    <End Role="useraccount" Type="Self.useraccount" Multiplicity="0..1" />
+    <End Role="notifications" Type="Self.notifications" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="useraccount">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="notifications">
+        <PropertyRef Name="insertuser" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_personneldocument_documents">
+    <End Role="documents" Type="Self.documents" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="personneldocument" Type="Self.personneldocument" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="documents">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="personneldocument">
+        <PropertyRef Name="documentid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_personneldocument_personel_files_cat">
+    <End Role="personel_files_cat" Type="Self.personel_files_cat" Multiplicity="0..1" />
+    <End Role="personneldocument" Type="Self.personneldocument" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="personel_files_cat">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="personneldocument">
+        <PropertyRef Name="cat_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_settings_settings_categories">
+    <End Role="settings_categories" Type="Self.settings_categories" Multiplicity="0..1" />
+    <End Role="settings" Type="Self.settings" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="settings_categories">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="settings">
+        <PropertyRef Name="categoryid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Shift_Roster_Department">
+    <End Role="Department" Type="Self.Department" Multiplicity="0..1" />
+    <End Role="Shift_Roster" Type="Self.Shift_Roster" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Department">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Shift_Roster">
+        <PropertyRef Name="Departmentid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Shift_Roster_Employees">
+    <End Role="Employees" Type="Self.Employees" Multiplicity="0..1" />
+    <End Role="Shift_Roster" Type="Self.Shift_Roster" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employees">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Shift_Roster">
+        <PropertyRef Name="employeeid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+  <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <EntityContainer Name="project_managementModelStoreContainer">
+    <EntitySet Name="ActivityLog" EntityType="Self.ActivityLog" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Adminfaq" EntityType="Self.Adminfaq" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Adminfaqcategory" EntityType="Self.Adminfaqcategory" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Appreciatiion" EntityType="Self.Appreciatiion" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="billing" EntityType="Self.billing" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Calendar" EntityType="Self.Calendar" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Clients" EntityType="Self.Clients" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Companies" EntityType="Self.Companies" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="company001" EntityType="Self.company001" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Deals" EntityType="Self.Deals" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Department" EntityType="Self.Department" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Designation" EntityType="Self.Designation" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="documents" EntityType="Self.documents" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Employees" EntityType="Self.Employees" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Lead_Contact" EntityType="Self.Lead_Contact" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Leave" EntityType="Self.Leave" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="notifications" EntityType="Self.notifications" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Packages" EntityType="Self.Packages" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="personel_files_cat" EntityType="Self.personel_files_cat" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="personneldocument" EntityType="Self.personneldocument" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="settings" EntityType="Self.settings" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="settings_categories" EntityType="Self.settings_categories" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Shift_Roster" EntityType="Self.Shift_Roster" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="StickyNotes" EntityType="Self.StickyNotes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Superadmin" EntityType="Self.Superadmin" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="useraccount" EntityType="Self.useraccount" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Offlinerequest" EntityType="Self.Offlinerequest" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Offlinerequest].[id] AS [id], 
+    [Offlinerequest].[company] AS [company], 
+    [Offlinerequest].[package] AS [package], 
+    [Offlinerequest].[paymentby] AS [paymentby], 
+    [Offlinerequest].[created] AS [created], 
+    [Offlinerequest].[status] AS [status], 
+    [Offlinerequest].[insertdate] AS [insertdate]
+    FROM [dbo].[Offlinerequest] AS [Offlinerequest]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK_Adminfaq_Adminfaqcategory" Association="Self.FK_Adminfaq_Adminfaqcategory">
+      <End Role="Adminfaqcategory" EntitySet="Adminfaqcategory" />
+      <End Role="Adminfaq" EntitySet="Adminfaq" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Appreciatiion_Employees" Association="Self.FK_Appreciatiion_Employees">
+      <End Role="Employees" EntitySet="Employees" />
+      <End Role="Appreciatiion" EntitySet="Appreciatiion" />
+    </AssociationSet>
+    <AssociationSet Name="FK_billing_Companies" Association="Self.FK_billing_Companies">
+      <End Role="Companies" EntitySet="Companies" />
+      <End Role="billing" EntitySet="billing" />
+    </AssociationSet>
+    <AssociationSet Name="FK_billing_Packages" Association="Self.FK_billing_Packages">
+      <End Role="Packages" EntitySet="Packages" />
+      <End Role="billing" EntitySet="billing" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Clients_company001" Association="Self.FK_Clients_company001">
+      <End Role="company001" EntitySet="company001" />
+      <End Role="Clients" EntitySet="Clients" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Companies_Packages1" Association="Self.FK_Companies_Packages1">
+      <End Role="Packages" EntitySet="Packages" />
+      <End Role="Companies" EntitySet="Companies" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Deals_Lead_Contact" Association="Self.FK_Deals_Lead_Contact">
+      <End Role="Lead_Contact" EntitySet="Lead_Contact" />
+      <End Role="Deals" EntitySet="Deals" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Lead_Contact_company001" Association="Self.FK_Lead_Contact_company001">
+      <End Role="company001" EntitySet="company001" />
+      <End Role="Lead_Contact" EntitySet="Lead_Contact" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Lead_Contact_Employees1" Association="Self.FK_Lead_Contact_Employees1">
+      <End Role="Employees" EntitySet="Employees" />
+      <End Role="Lead_Contact" EntitySet="Lead_Contact" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Lead_Contact_Employees2" Association="Self.FK_Lead_Contact_Employees2">
+      <End Role="Employees" EntitySet="Employees" />
+      <End Role="Lead_Contact" EntitySet="Lead_Contact" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Leave_Employees" Association="Self.FK_Leave_Employees">
+      <End Role="Employees" EntitySet="Employees" />
+      <End Role="Leave" EntitySet="Leave" />
+    </AssociationSet>
+    <AssociationSet Name="FK_notifications_useraccount" Association="Self.FK_notifications_useraccount">
+      <End Role="useraccount" EntitySet="useraccount" />
+      <End Role="notifications" EntitySet="notifications" />
+    </AssociationSet>
+    <AssociationSet Name="FK_personneldocument_documents" Association="Self.FK_personneldocument_documents">
+      <End Role="documents" EntitySet="documents" />
+      <End Role="personneldocument" EntitySet="personneldocument" />
+    </AssociationSet>
+    <AssociationSet Name="FK_personneldocument_personel_files_cat" Association="Self.FK_personneldocument_personel_files_cat">
+      <End Role="personel_files_cat" EntitySet="personel_files_cat" />
+      <End Role="personneldocument" EntitySet="personneldocument" />
+    </AssociationSet>
+    <AssociationSet Name="FK_settings_settings_categories" Association="Self.FK_settings_settings_categories">
+      <End Role="settings_categories" EntitySet="settings_categories" />
+      <End Role="settings" EntitySet="settings" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Shift_Roster_Department" Association="Self.FK_Shift_Roster_Department">
+      <End Role="Department" EntitySet="Department" />
+      <End Role="Shift_Roster" EntitySet="Shift_Roster" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Shift_Roster_Employees" Association="Self.FK_Shift_Roster_Employees">
+      <End Role="Employees" EntitySet="Employees" />
+      <End Role="Shift_Roster" EntitySet="Shift_Roster" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

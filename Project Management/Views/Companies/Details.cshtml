@@ -1,0 +1,336 @@
+﻿@model Project_Management.Models.Company
+
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    Project_Management.Models.project_managementEntities db = new Project_Management.Models.project_managementEntities();
+    Project_Management.Controllers.PackagesController tech = new Project_Management.Controllers.PackagesController();
+
+    int sn = 0;
+}
+<main>
+    <div class="col-xl-12">
+        <div class="card">
+            <div class="card-body">
+
+                <h4 class="card-title">
+                    COMPANY DETAILS TABS
+                </h4>
+                @*<p class="card-title-desc">Example of custom tabs</p>*@
+
+                <!-- Nav tabs -->
+                <ul class="nav nav-tabs nav-tabs-custom nav-justified" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active" data-bs-toggle="tab" href="#home1" role="tab">
+                            <span class="d-block d-sm-none"><i class="fas fa-home"></i></span>
+                            <span class="d-none d-sm-block">Company Details</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-bs-toggle="tab" href="#profile1" role="tab">
+                            <span class="d-block d-sm-none"><i class="far fa-user"></i></span>
+                            <span class="d-none d-sm-block">Billing</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-bs-toggle="tab" href="#messages1" role="tab">
+                            <span class="d-block d-sm-none"><i class="far fa-envelope"></i></span>
+                            <span class="d-none d-sm-block">Registered Company Details</span>
+                        </a>
+                    </li>
+                </ul>
+
+                <!-- Tab panes -->
+                <div class="tab-content p-3 text-muted">
+                    <div class="tab-pane active" id="home1" role="tabpanel">
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="card">
+                                    <div class="card-header">
+                                        COMPANY INFORMATION
+                                    </div>
+                                    <div class="card-body d-flex align-items-center">
+                                        <div class="me-3">
+                                            @if (Model.photo != null)
+                                            {
+                                                <img src="@Model.photo" alt=""
+                                                     class="avatar-lg mx-auto img-thumbnail rounded-circle">
+                                                <div class="online-circle">
+                                                    <i class="fas fa-circle text-success"></i>
+                                                </div>
+                                            }
+                                            else
+                                            {
+                                                <img src="~/Content/img/avatar-2.jpg" alt=""
+                                                     class="avatar-lg mx-auto img-thumbnail rounded-circle">
+                                                <div class="online-circle">
+                                                    <i class="fas fa-circle text-success"></i>
+                                                </div>
+                                            }
+                                        </div>
+                                        <div>
+                                            <h5 class="card-title mb-1">@Model.companyname</h5>
+                                            @*<span class="badge bg-success">Edit Profile</span>*@
+                                            <span class="badge bg-danger" data-toggle="modal" data-target="#photo">Change Picture</span>
+                                            <p class="text-muted mb-1">Created: @Model.insertdate</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="card mt-3">
+                                    <div class="card-body">
+                                        <div class="card-header">
+                                            PACKAGE INFORMATION
+                                        </div>
+                                        <p class="mb-1">PACKAGE NAME: @Model.Package.packagename</p>
+                                        <p class="mb-1">PACKAGE TYPE: @Model.Package.packagetype</p>
+                                        <p class="mb-1">PACKAGE CATEGORY: @Model.Package.packagecategory</p>
+                                        <p class="mb-1">MONTHLY PRICE: @Model.Package.monthlyprice</p>
+                                        <p class="mb-1">ANNUAL PRICE: @Model.Package.annualprice</p>
+                                        <p class="mb-1">AMOUNT: @Model.amount</p>
+                                        <p class="mb-1">PAYMENT DATE: @Model.paymentdate</p>
+                                        <p class="mb-1">NEXT PAYMENT DATE: @Model.nextpaymentdate</p>
+                                        <p class="mb-1">LICENCE EXPIRES ON: @Model.licenceexpireson</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row g-3 mt-3">
+                            <div class="col-md-6">
+                                <div class="card">
+                                    <div class="card-header">
+                                        Company Details
+                                    </div>
+                                    <div class="card-body">
+                                        <p><strong>COMPANY EMAIL:</strong> @Model.companyemail</p>
+                                        <p><strong>COMPANY PHONE:</strong>  @Model.companyphone</p>
+                                        <p><strong>COMPANY WEBSITE:</strong>  @Model.companywebsite</p>
+                                        <p><strong>COMPANY ADDRESS:</strong>  @Model.address</p>
+                                        <p><strong>DEFAULT CURRENCY:</strong>  @Model.currency</p>
+                                        <p><strong>DEFAULT TIMEZONE:</strong>  @Model.timezone</p>
+                                        <p><strong>STATUS:</strong> <span class="status-dot"></span> @Model.status</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="card">
+                                    <div class="card-header">
+                                        Statistics
+                                    </div>
+                                    <div class="card-body">
+                                        <ul class="list-group list-group-flush">
+                                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                                🧑 Employees <span>12 / 20</span>     @*@db.ActivityLogs.Take(10).Count()*@
+                                            </li>
+                                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                                💾 Storage <span>Not Used / 0 MB</span>
+                                            </li>
+                                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                                👥 Clients <span>11</span>
+                                            </li>
+                                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                                🧾 Invoices <span>21</span>
+                                            </li>
+                                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                                📄 Estimates <span>2</span>
+                                            </li>
+                                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                                📁 Projects <span>10</span>
+                                            </li>
+                                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                                ✅ Tasks <span>50</span>
+                                            </li>
+                                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                                📌 Leads <span>11</span>
+                                            </li>
+                                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                                📦 Orders <span>0</span>
+                                            </li>
+                                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                                🎟️ Tickets <span>0</span>
+                                            </li>
+                                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                                📑 Contracts <span>10</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="tab-pane" id="profile1" role="tabpanel">
+
+
+                        <div class="table-rep-plugin">
+                            <div class="table-responsive mb-0" data-pattern="priority-columns">
+
+                                <table id="datatable-buttons"
+                                       class="table table-striped table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th>
+                                                SN
+                                            </th>
+                                            <th>
+                                                COMPANY
+                                            </th>
+                                            <th>
+                                                PACKAGE
+                                            </th>
+                                            <th>
+                                                PAYMENT DATE
+                                            </th>
+                                            <th>
+                                                NEXT PAYMENT DATE
+                                            </th>
+                                            <th>
+                                                TRANSACTION ID
+                                            </th>
+                                            <th>
+                                                AMOUNT
+                                            </th>
+                                            <th>
+                                                PAYMENT GATEWAY
+                                            </th>
+                                            <th>ACTIONS</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var item in db.billings)
+                                        {
+                                            sn++;
+                                            <tr>
+                                                <td>
+                                                    @sn
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.Company.companyname)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.Package.packagename)
+                                                </td>
+                                                <td>
+                                                    @Convert.ToDateTime(item.paymentdate).ToShortDateString()
+                                                </td>
+                                                <td>
+                                                    @Convert.ToDateTime(item.nextpaymentdate).ToShortDateString()
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.transactionid)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.amount)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.paymentgateway)
+                                                </td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="messages1" role="tabpanel">
+
+                        <div class="container mt-12">
+                            <h4>Statistics</h4>
+                            <p>
+                                Here are the details of the registered company. You’ll find information about the browser and desktop used during company registration.
+                                This helps detect bots and shows which browsers companies use most for registration.
+                            </p>
+
+                            <div class="table-responsive">
+                                <table class="table table-bordered align-middle">
+                                    <thead class="table-light">
+                                        <tr>
+                                            <th style="width: 30%;">Type</th>
+                                            <th>Value</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr><td>User Agent</td><td>Symfony</td></tr>
+                                        <tr><td>isMobile</td><td class="status-icon status-no">❌</td></tr>
+                                        <tr><td>isTablet</td><td class="status-icon status-no">❌</td></tr>
+                                        <tr><td>isDesktop</td><td class="status-icon status-yes">✅</td></tr>
+                                        <tr><td>isBot</td><td class="status-icon status-no">❌</td></tr>
+                                        <tr><td>isChrome</td><td class="status-icon status-no">❌</td></tr>
+                                        <tr><td>isFirefox</td><td class="status-icon status-no">❌</td></tr>
+                                        <tr><td>isOpera</td><td class="status-icon status-no">❌</td></tr>
+                                        <tr><td>isSafari</td><td class="status-icon status-no">❌</td></tr>
+                                        <tr><td>isEdge</td><td class="status-icon status-no">❌</td></tr>
+                                        <tr><td>isInApp</td><td class="status-icon status-no">❌</td></tr>
+                                        <tr><td>isIE</td><td class="status-icon status-no">❌</td></tr>
+                                        <tr><td>Browser Name</td><td>-</td></tr>
+                                        <tr><td>Browser Family</td><td>Unknown</td></tr>
+                                        <tr><td>Browser Version</td><td>-</td></tr>
+                                        <tr><td>Browser Version Major</td><td>-</td></tr>
+                                        <tr><td>Browser Version Minor</td><td>-</td></tr>
+                                        <tr><td>Browser Version Patch</td><td>-</td></tr>
+                                        <tr><td>Browser Engine</td><td>Unknown</td></tr>
+                                        <tr><td>Platform Name</td><td>-</td></tr>
+                                        <tr><td>Platform Family</td><td>Unknown</td></tr>
+                                        <tr><td>Platform Version</td><td>-</td></tr>
+                                        <tr><td>Platform Version Major</td><td>-</td></tr>
+                                        <tr><td>Platform Version Minor</td><td>-</td></tr>
+                                        <tr><td>Platform Version Patch</td><td>-</td></tr>
+                                        <tr><td>isWindows</td><td class="status-icon status-no">❌</td></tr>
+                                        <tr><td>isLinux</td><td class="status-icon status-no">❌</td></tr>
+                                        <tr><td>isMac</td><td class="status-icon status-no">❌</td></tr>
+                                        <tr><td>isAndroid</td><td class="status-icon status-no">❌</td></tr>
+                                        <tr><td>Device Family</td><td>Unknown</td></tr>
+                                        <tr><td>Device Model</td><td>-</td></tr>
+                                        <tr><td>Registered From IP</td><td>-</td></tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+
+</main>
+<script>
+    document.getElementById('dates').valueAsDate = new Date();
+</script>
+
+
+<div id="photo" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Upload Company Picture</h4>
+            </div>
+            <div class="modal-body">
+                <p class="text-center">
+                    Please Select Picture to upload
+                </p>
+                <form class="" action="@Url.Action("uploadProfilePicture","Companies")" method="post" enctype="multipart/form-data">
+                    <input type="file" class="form-control" name="file" />
+                    <input type="hidden" name="id" value="@Model.id" class="form-control" />
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-success">Submit</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+
+    </div>
+</div>

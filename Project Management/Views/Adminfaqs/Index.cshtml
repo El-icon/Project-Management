@@ -1,0 +1,508 @@
+﻿@model IEnumerable<Project_Management.Models.Adminfaq>
+
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    Project_Management.Models.project_managementEntities db = new Project_Management.Models.project_managementEntities();
+    Project_Management.Controllers.PackagesController tech = new Project_Management.Controllers.PackagesController();
+
+    int sn = 0;
+}
+
+@using Project_Management.setup;
+
+<div class="row">
+    <div class="col-12">
+
+        <div class="row mb-4">
+            <div class="col-lg-3">
+                <div class="card mb-0  h-100">
+                    <div class="card-body">
+                        <button class="btn font-16 btn-primary w-100" id="btn-new-event" data-toggle="modal" data-target="#category">
+                            <i class="mdi mdi-plus-circle-outline"></i>
+                            Manage Category
+                        </button>
+
+
+                        <div id="external-events" class="m-t-20">
+                            <br>
+                            <p class="text-muted">
+                                <h4 class="card-title">CATEGORY LIST</h4>
+                            </p>
+                            @*<button class="btn font-16 btn-primary w-100" id="btn-new-event">
+                                    <i class="mdi mdi-plus-circle-outline"></i>
+                                    View All Category
+                                </button>*@
+                            @foreach (var item in db.Adminfaqcategories.OrderByDescending(p => p.categoryname).ToList())
+                            {
+                                <div class="external-event fc-event bg-success text-white" data-class="bg-success">
+                                    <i class="mdi mdi-checkbox-blank-circle font-size-11 me-2"></i>
+                                    @Html.DisplayFor(modelItem => item.categoryname)
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-9">
+                <div class="card mb-0">
+                    <div class="card-body">
+                        <div id="calendar">
+
+                            <h4 class="card-title">Admin FAQ</h4>
+                            <br />
+
+                            <button class="btn btn-success waves-effect waves-light"
+                                    data-toggle="modal" data-target="#create">
+                                <i class="mdi mdi-plus-circle-outline"></i>
+                                Add Admin FAQ
+                            </button>
+
+                            <br />
+                            <br />
+
+
+                            <div class="table-rep-plugin">
+                                <div class="table-responsive mb-0" data-pattern="priority-columns">
+
+                                    <table id="datatable-buttons"
+                                           class="table table-striped table-bordered">
+                                        <thead>
+                                            <tr>
+                                                <th>
+                                                    SN
+                                                </th>
+                                                <th>
+                                                    ARTICLE TITLE
+                                                </th>
+                                                <th>
+                                                    ARTICLE CATEGORY
+                                                </th>
+                                                <th>
+                                                    ACTION
+                                                </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach (var item in Model)
+                                            {
+                                                sn++;
+                                                <tr>
+                                                    <td>
+                                                        @sn
+                                                    </td>
+                                                    <td>
+                                                        <a href="@Url.Action("Details", "Adminfaqs", new { id = item.id })">
+                                                            @item.articletitle
+                                                        </a>
+                                                    </td>
+
+                                                    <td>
+                                                        @(item.Adminfaqcategory?.categoryname ?? "(no category)")
+                                                    </td>
+
+                                                    <!-- =====  ACTIONS  ===== -->
+                                                    <td class="align-middle text-center">
+                                                         <a href="@Url.Action("Edit", "Adminfaqs", new { id = item.id })" class="btn btn-sm btn-info"><i class="fa fa-edit"></i></a>
+
+                                                        <a href="@Url.Action("Details", "Adminfaqs", new { id = item.id })" class="btn btn-sm btn-success"><i class="fa fa-info"></i></a>
+
+
+                                                        <!-- Delete Button -->
+                                                        <a href="#delete_@item.id" data-bs-toggle="modal" class="btn btn-sm btn-danger" title="Delete">
+                                                            <i class="fa fa-trash"></i>
+                                                        </a>
+
+                                                        <!-- Delete Modal -->
+                                                        <div id="delete_@item.id" class="modal fade" tabindex="-1" aria-hidden="true">
+                                                            <div class="modal-dialog modal-dialog-centered">
+                                                                <div class="modal-content shadow-lg border-0 rounded-4">
+
+                                                                    <!-- Header -->
+                                                                    <div class="modal-header bg-danger text-white justify-content-center">
+                                                                        <h5 class="modal-title fw-bold">
+                                                                            <i class="mdi mdi-alert-circle-outline me-2"></i>Are you sure?
+                                                                        </h5>
+                                                                    </div>
+
+                                                                    <!-- Body -->
+                                                                    <div class="modal-body text-center p-4">
+                                                                        <div class="mb-3">
+                                                                            <i class="mdi mdi-delete-circle text-danger" style="font-size: 4rem;"></i>
+                                                                        </div>
+                                                                        <p class="text-muted mb-0">
+                                                                            You will <strong>not</strong> be able to recover the deleted record!
+                                                                        </p>
+                                                                        <h6 class="mt-2 text-danger">@item.articletitle</h6>
+                                                                    </div>
+
+                                                                    <!-- Footer -->
+                                                                    <div class="modal-footer border-0">
+                                                                        @using (Html.BeginForm("DeleteAdminfaqs", "Adminfaqs", FormMethod.Post, new { @class = "w-100" }))
+                                                                        {
+                                                                            @Html.AntiForgeryToken()
+                                                                            <input type="hidden" name="id" value="@item.id" />
+                                                                            <div class="d-flex justify-content-center gap-2">
+                                                                                <button type="submit" class="btn btn-danger btn-lg px-4">
+                                                                                    <i class="mdi mdi-check-circle me-1"></i>Yes, Delete It!
+                                                                                </button>
+                                                                                <button type="button" class="btn btn-secondary btn-lg px-4" data-bs-dismiss="modal">
+                                                                                    <i class="mdi mdi-close-circle me-1"></i>Cancel
+                                                                                </button>
+                                                                            </div>
+                                                                        }
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+
+                                                    </td>
+                                                </tr>
+                                            }
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!---------------------- CREATE ADMINFAQS ------------------------>
+<div id="create" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-xl">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h6>
+                    Create Adminfaqs
+                </h6>
+            </div>
+            <div class="modal-body">
+                <form method="post" action="@Url.Action("Create","Adminfaqs")" enctype="multipart/form-data">
+                    @*<input type="hidden" name="id" value="@Model.id" />*@
+                    @Html.AntiForgeryToken()
+
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label for="packageName">Article Title</label>
+                                <input type="text" class="form-control" id="articletitle" name="articletitle" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="packageType">
+                                    Category
+                                </label>
+                                <select class="form-control" name="categoryid" required="">
+                                    <option> Select Category</option>
+                                    @foreach (var item in db.Adminfaqcategories.ToList())
+                                    {
+                                        <option value="@item.id">@item.categoryname </option>
+                                    }
+                                </select>
+                            </div>
+                        </div>
+
+                        <br>
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <label for="packageType">
+                                    Description
+                                </label>
+                                <textarea class="form-control" aria-label="With textarea" rows="5" id="description" name="description" required></textarea>
+
+                            </div>
+                        </div>
+
+                        <br>
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <label for="maxEmployees">
+                                    Add Files
+                                </label>
+
+                                <input type="file" name="file" id="file" class="form-control" accept=".pdf,image/*" required />
+
+                                <!-- Preview Container -->
+                                <div id="previewContainer" style="margin-top:10px; display:none;">
+                                    <img id="previewImg" src="#" alt="Image Preview" style="max-width:300px; display:none;" />
+                                    <object id="previewPdf" type="application/pdf" width="600" height="400" style="display:none; width:100%;"></object>
+                                </div>
+
+
+
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <br />
+                    <div class="row">
+                        <div class="col-md-12 text-center">
+                            <input type="submit" value="Create" class="btn btn-success" />
+                            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<!----------------------CATEGORY------------------------>
+<div id="category" class="modal fade" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header bg-gradient-primary text-white">
+                <h5 class="modal-title">
+                    <i class="mdi mdi-tag-multiple me-2"></i>Admin FAQ Category
+                </h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+            </div>
+
+
+            <!-- CREATE FORM -->
+            @using (Html.BeginForm("Adminfaqscategory", "Adminfaqs", FormMethod.Post, new { @class = "needs-validation", novalidate = "true" }))
+            {
+                @Html.AntiForgeryToken()
+                <div class="modal-body">
+                    <!--  CATEGORY TABLE  -->
+                    <div class="table-responsive">
+                        <table class="table table-editable table-nowrap align-middle table-edits">
+                            <thead class="table-light">
+                                <tr>
+                                    <th style="width: 80px">SN</th>
+                                    <th>Category Name</th>
+                                    <th style="width: 100px">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @{ sn = 0; }
+                                @foreach (var cat in db.Adminfaqcategories.OrderBy(p => p.categoryname))
+                                {
+                                    sn++;
+                                    <tr data-id="@cat.id">
+                                        <td>@sn</td>
+
+                                        <!--  INLINE-EDIT CELL  -->
+                                        <td data-field="name">
+                                            <span class="cat-text" data-id="@cat.id">@cat.categoryname</span>
+                                            <input type="text"
+                                                   class="form-control form-control-sm d-none cat-input"
+                                                   data-id="@cat.id"
+                                                   value="@cat.categoryname" />
+                                        </td>
+
+                                        <!--  ACTION BUTTONS  -->
+                                        <td style="width: 120px">
+                                            <div class="btn-group btn-group-sm" role="group">
+                                                <!-- EDIT -->
+                                                <a href="#" class="btn btn-outline-secondary btn-sm btn-edit" data-id="@cat.id" title="Edit">
+                                                    <i class="fas fa-pencil-alt"></i>
+                                                </a>
+
+                                                <!-- SAVE (initially hidden) -->
+                                                <a href="#" class="btn btn-outline-success btn-sm btn-save d-none" data-id="@cat.id" title="Save">
+                                                    <i class="fas fa-check"></i>
+                                                </a>
+
+                                                <!-- CANCEL (initially hidden) -->
+                                                <a href="#" class="btn btn-outline-warning btn-sm btn-cancel d-none" data-id="@cat.id" title="Cancel">
+                                                    <i class="fas fa-times"></i>
+                                                </a>
+
+                                                <!-- DELETE (unchanged) -->
+                                                <a href="#" data-bs-toggle="modal" data-bs-target="#delete_@cat.id"
+                                                   class="btn btn-outline-danger btn-sm" title="Delete">
+                                                    <i class="mdi mdi-delete"></i>
+                                                </a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <hr class="my-4">
+
+                    <!-- ADD NEW -->
+                    <h6 class="text-muted mb-3">Add New Category</h6>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <label for="categoryName" class="form-label">Category Name</label>
+                            <input type="text" class="form-control" id="categoryName" name="categoryname"
+                                   placeholder="e.g. General" required>
+                            <div class="invalid-feedback">Please provide a category name.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-success">
+                        <i class="mdi mdi-check-circle me-1"></i>Create
+                    </button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            }
+
+            <!-- Client-side validation script -->
+            <script>
+                (function () {
+                    'use strict';
+                    window.addEventListener('load', function () {
+                        var forms = document.getElementsByClassName('needs-validation');
+                        Array.prototype.forEach.call(forms, function (form) {
+                            form.addEventListener('submit', function (event) {
+                                if (!form.checkValidity()) {
+                                    event.preventDefault();
+                                    event.stopPropagation();
+                                }
+                                form.classList.add('was-validated');
+                            }, false);
+                        });
+                    }, false);
+                })();
+            </script>
+
+
+
+            <!--  CENTRED  DELETE CONFIRMATION  -->
+            @foreach (var cat in db.Adminfaqcategories.OrderBy(p => p.categoryname))
+            {
+                <!--  WIDER + BUTTONS ON SAME LINE  -->
+                <div id="delete_@cat.id" class="modal fade" tabindex="-1" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content shadow-lg border-0 rounded-4">
+                            <div class="modal-header bg-danger text-white justify-content-center">
+                                <h5 class="modal-title fw-bold">
+                                    <i class="mdi mdi-alert-circle-outline me-2"></i>Are you sure?
+                                </h5>
+                            </div>
+                            <div class="modal-body text-center p-4">
+                                <div class="mb-3">
+                                    <i class="mdi mdi-delete-circle text-danger" style="font-size: 4rem;"></i>
+                                </div>
+                                <p class="text-muted mb-0">
+                                    You will <strong>not</strong> be able to recover the deleted record!
+                                </p>
+                                <h6 class="mt-2 text-danger">@cat.categoryname</h6>
+                            </div>
+                            <div class="modal-footer border-0">
+                                @using (Html.BeginForm("deleteAdminfaqscat", "Adminfaqs", FormMethod.Post, new { @class = "w-100" }))
+                                {
+                                    @Html.AntiForgeryToken()
+                                    <input type="hidden" name="id" value="@cat.id" />
+                                    <div class="d-flex justify-content-center gap-2">
+                                        <button type="submit" class="btn btn-danger btn-lg px-4">
+                                            <i class="mdi mdi-check-circle me-1"></i>Yes, Delete It!
+                                        </button>
+                                        <button type="button" class="btn btn-secondary btn-lg px-4" data-bs-dismiss="modal">
+                                            <i class="mdi mdi-close-circle me-1"></i>Cancel
+                                        </button>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+
+
+@*@section Scripts{
+        <script>
+            $(function () {
+                /* EDIT – show Save/Cancel, hide Edit, insert input */
+                $(document).on('click', '.btn-edit', function (e) {
+                    e.preventDefault();
+                    var id = $(this).data('id');
+
+                    // insert input next to text
+                    if ($('.cat-input[data-id="' + id + '"]').length === 0) {
+                        $(this).before(
+                            '<input type="text" class="form-control form-control-sm cat-input" data-id="' + id + '" value="' +
+                            $('.cat-text[data-id="' + id + '"]').text() + '">'
+                        );
+                    }
+
+                    $('.cat-text[data-id="' + id + '"]').addClass('d-none');
+                    $('.cat-input[data-id="' + id + '"]').removeClass('d-none').focus();
+
+                    // buttons
+                    $(this).addClass('d-none');
+                    $('.btn-save[data-id="' + id + '"]').removeClass('d-none');
+                    $('.btn-cancel[data-id="' + id + '"]').removeClass('d-none');
+                });
+
+                /* SAVE – explicit click */
+                $(document).on('click', '.btn-save', function (e) {
+                    e.preventDefault();
+                    var id = $(this).data('id');
+                    var name = $('.cat-input[data-id="' + id + '"]').val().trim();
+
+                    if (!name) { alert("Category name is required"); return; }
+
+                    $.ajax({
+                        url: "/Adminfaqs/UpdateCategory",
+                        type: "POST",
+                        data: {
+                            id: id,
+                            categoryname: name,
+                            __RequestVerificationToken: $('[name=__RequestVerificationToken"]').val()
+                        },
+                        success: function (result) {
+                            if (result.success) {
+                                // update visible text
+                                $('.cat-text[data-id="' + id + '"]').text(name);
+                                // remove input
+                                $('.cat-input[data-id="' + id + '"]').remove();
+                                // buttons back
+                                $('.btn-save[data-id="' + id + '"]').addClass('d-none');
+                                $('.btn-cancel[data-id="' + id + '"]').addClass('d-none');
+                                $('.btn-edit[data-id="' + id + '"]').removeClass('d-none');
+                                toastr.success("Category updated");
+                            } else {
+                                alert(result.message || "Update failed");
+                            }
+                        },
+                        error: function (xhr) {
+                            console.error(xhr.responseText);
+                            alert("Server error – check console");
+                        }
+                    });
+                });
+
+                /* CANCEL – restore original text, remove input */
+                $(document).on('click', '.btn-cancel', function (e) {
+                    e.preventDefault();
+                    var id = $(this).data('id');
+
+                    // remove input
+                    $('.cat-input[data-id="' + id + '"]').remove();
+                    // show text
+                    $('.cat-text[data-id="' + id + '"]').removeClass('d-none');
+                    // buttons back
+                    $(this).addClass('d-none');
+                    $('.btn-save[data-id="' + id + '"]').addClass('d-none');
+                    $('.btn-edit[data-id="' + id + '"]').removeClass('d-none');
+                });
+            });
+        </script>
+    }*@

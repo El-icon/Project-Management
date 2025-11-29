@@ -1,0 +1,399 @@
+﻿@model IEnumerable<Project_Management.Models.Calendar>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    Project_Management.Models.project_managementEntities db = new Project_Management.Models.project_managementEntities();
+    Project_Management.Controllers.PackagesController tech = new Project_Management.Controllers.PackagesController();
+
+    //int sn = 0;
+}
+<div class="row">
+    <div class="col-12">
+
+        <div class="row mb-4">
+            <div class="col-lg-3">
+                <div class="card mb-0  h-100">
+                    <div class="card-body">
+                        <button class="btn font-16 btn-primary w-100" id="btn-new-event">
+                            <i class="mdi mdi-plus-circle-outline"></i> Create
+                            New Event
+                        </button>
+
+
+                        <div id="external-events" class="m-t-20">
+                            <br>
+                            <p class="text-muted">
+                                Drag and drop your event or click in the calendar
+                            </p>
+                            @foreach (var eventItem in Model)
+                            {
+                                <div class="external-event fc-event @eventItem.ThemeColor" data-class="@eventItem.ThemeColor">
+                                    <i class="mdi mdi-checkbox-blank-circle font-size-11 me-2"></i>@eventItem.Subject
+                                </div>
+                            }
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-9">
+                <div class="card mb-0">
+                    <div class="card-body">
+                        <div id="calendar"></div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div style='clear:both'></div>
+
+        <!-- Add New Event MODAL -->
+        <div class="modal fade" id="event-modal" tabindex="-1">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+
+                        <h5 class="modal-title" id="modal-title">Event</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body p-4">
+                        <form class="needs-validation" name="event-form" id="form-event" novalidate>
+                            <input type="hidden" id="event-id" />
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="mb-3">
+                                        <label class="form-label">Event Name</label>
+                                        <input class="form-control" placeholder="Insert Event Name"
+                                               type="text" name="title" id="event-title" required
+                                               value="" />
+                                        <div class="invalid-feedback">
+                                            Please provide a valid event
+                                            name
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="mb-3">
+                                        <label class="form-label">Category</label>
+                                        <select class="form-select" name="category" id="event-category" required>
+                                            <option value="bg-danger" selected>Danger</option>
+                                            <option value="bg-success">Success</option>
+                                            <option value="bg-primary">Primary</option>
+                                            <option value="bg-info">Info</option>
+                                            <option value="bg-dark">Dark</option>
+                                            <option value="bg-warning">Warning</option>
+                                        </select>
+                                        <div class="invalid-feedback">
+                                            Please select a valid event
+                                            category
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="mb-3">
+                                        <label class="form-label">Start Date & Time</label>
+                                        <input type="datetime-local" class="form-control" id="event-start" required />
+                                        <div class="invalid-feedback">
+                                            Please select a start date and time
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="mb-3">
+                                        <label class="form-label">End Date & Time</label>
+                                        <input type="datetime-local" class="form-control" id="event-end" required />
+                                        <div class="invalid-feedback">
+                                            Please select an end date and time
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row mt-2">
+                                <div class="col-6">
+                                    <button type="button" class="btn btn-danger"
+                                            id="btn-delete-event">
+                                        Delete
+                                    </button>
+                                </div>
+                                <div class="col-6 text-end">
+                                    <button type="button" class="btn btn-light me-1"
+                                            data-bs-dismiss="modal">
+                                        Close
+                                    </button>
+                                    <button type="submit" class="btn btn-success"
+                                            id="btn-save-event">
+                                        Save
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <!-- Add New Event MODAL -->
+            <div class="modal fade" id="event-modal" tabindex="-1">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="modal-title">Event</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body p-4">
+                            <form class="needs-validation" name="event-form" id="form-event" novalidate>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="mb-3">
+                                            <label class="form-label">Event Name</label>
+                                            <input class="form-control" placeholder="Insert Event Name" type="text" name="title" id="event-title" required value="" />
+                                            <div class="invalid-feedback">
+                                                Please provide a valid event name
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="mb-3">
+                                            <label class="form-label">Category</label>
+                                            <select class="form-select" name="category" id="event-category">
+                                                <option value="bg-danger" selected>Danger</option>
+                                                <option value="bg-success">Success</option>
+                                                <option value="bg-primary">Primary</option>
+                                                <option value="bg-info">Info</option>
+                                                <option value="bg-dark">Dark</option>
+                                                <option value="bg-warning">Warning</option>
+                                            </select>
+                                            <div class="invalid-feedback">
+                                                Please select a valid event category
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="mb-3">
+                                            <label class="form-label">Start Date & Time</label>
+                                            <input type="datetime-local" class="form-control" id="event-start" required />
+                                            <div class="invalid-feedback">
+                                                Please select a start date and time
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="mb-3">
+                                            <label class="form-label">End Date & Time</label>
+                                            <input type="datetime-local" class="form-control" id="event-end" required />
+                                            <div class="invalid-feedback">
+                                                Please select an end date and time
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row mt-2">
+                                    <div class="col-6">
+                                        <button type="button" class="btn btn-danger" id="btn-delete-event">
+                                            Delete
+                                        </button>
+                                    </div>
+                                    <div class="col-6 text-end">
+                                        <button type="button" class="btn btn-light me-1" data-bs-dismiss="modal">
+                                            Close
+                                        </button>
+                                        <button type="submit" class="btn btn-success" id="btn-save-event">
+                                            Save
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+
+            // ✅ Load external events on page load
+            loadExternalEvents();
+
+            let currentEventId = null;
+
+            // ✅ Show modal when "Create New Event" button is clicked
+            $('#btn-new-event').click(function () {
+                currentEventId = null;
+                $('#event-modal').modal('show');
+                $('#event-title').val('');
+                $('#event-category').val('bg-danger');
+                $('#modal-title').text('Add Event');
+                $('#btn-delete-event').hide(); // hide delete when adding
+            });
+
+            // ✅ Handle event click from left list (to Edit/Delete)
+            $('#external-events').on('click', '.external-event', function () {
+                currentEventId = $(this).data('id');
+                let title = $(this).data('title');
+                let category = $(this).data('class');
+
+                $('#event-title').val(title);
+                $('#event-category').val(category);
+                $('#modal-title').text('Edit Event');
+                $('#btn-delete-event').show(); // show delete button
+
+                $('#event-modal').modal('show');
+            });
+
+            // ✅ Save (Add or Edit) Event
+            $form.on("submit", function (e) {
+                e.preventDefault();
+                var title = $("#event-title").val().trim();
+                var category = $("#event-category").val();
+                var start = $("#event-start").val();
+                var end = $("#event-end").val();
+
+                // Manually parse datetime-local input values
+                var startDate = new Date(start.replace('T', ' '));
+                var endDate = new Date(end.replace('T', ' '));
+
+                console.log("Event Title:", title);
+                console.log("Event Category:", category);
+                console.log("Start Date & Time from input:", start);
+                console.log("End Date & Time from input:", end);
+                console.log("Parsed Start Date & Time:", startDate);
+                console.log("Parsed End Date & Time:", endDate);
+
+                if (!title || isNaN(startDate.getTime()) || isNaN(endDate.getTime())) {
+                    Swal.fire({ icon: 'warning', title: 'Missing Fields', text: 'Please provide a valid event name and dates.' });
+                    return;
+                }
+
+                var eventData = {
+                    EventID: currentEvent ? currentEvent.id : null,
+                    Subject: title,
+                    StartDateTime: startDate.toISOString(),
+                    EndDateTime: endDate.toISOString(),
+                    ThemeColor: category
+                };
+
+                console.log("Event Data to be sent:", eventData);
+
+                const url = currentEvent ? '/Calendars/EditEvent' : '/Calendars/CreateEvent';
+
+                $.ajax({
+                    url: url,
+                    type: 'POST',
+                    data: JSON.stringify(eventData),
+                    contentType: 'application/json',
+                    success: function (response) {
+                        console.log("Server Response:", response);
+                        if (response.success) {
+                            $modal.modal('hide');
+                            Swal.fire({
+                                icon: 'success',
+                                title: response.message,
+                                toast: true,
+                                position: 'top-end',
+                                timer: 2500,
+                                showConfirmButton: false
+                            });
+                            loadExternalEvents();
+                        } else {
+                            Swal.fire({ icon: 'error', title: 'Error', text: response.message });
+                        }
+                    },
+                    error: function (xhr, status, error) {
+                        console.error("AJAX Error:", status, error);
+                        Swal.fire({ icon: 'error', title: 'AJAX Error', text: error });
+                    }
+                });
+            });
+
+            // ✅ Delete Event
+            $('#btn-delete-event').click(function () {
+                if (!currentEventId) return;
+
+                Swal.fire({
+                    title: 'Are you sure?',
+                    text: "This event will be permanently deleted.",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Yes, delete it!'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        $.ajax({
+                            url: '/Calendars/DeleteEvent',
+                            type: 'DELETE',
+                            data: JSON.stringify({ eventId: currentEventId }),
+                            contentType: 'application/json',
+                            success: function (response) {
+                                if (response.success) {
+                                    $('#event-modal').modal('hide');
+                                    Swal.fire({
+                                        icon: 'success',
+                                        title: 'Deleted!',
+                                        text: response.message,
+                                        toast: true,
+                                        position: 'top-end',
+                                        timer: 2000,
+                                        showConfirmButton: false
+                                    });
+                                    loadExternalEvents();
+                                } else {
+                                    Swal.fire({
+                                        icon: 'error',
+                                        title: 'Error',
+                                        text: response.message
+                                    });
+                                }
+                            }
+                        });
+                    }
+                });
+            });
+
+            // ✅ Load events into the external list
+            function loadExternalEvents() {
+                $.ajax({
+                    url: '/Calendars/GetEvents',
+                    type: 'GET',
+                    success: function (events) {
+                        // Clear sidebar events
+                        var container = $('#external-events');
+                        container.find('.external-event').remove();
+
+                        // Add sidebar events
+                        events.forEach(function (ev) {
+                            var eventHtml = `<div class="external-event fc-event ${ev.className}" data-id="${ev.id}" data-title="${ev.title}" data-class="${ev.className}">
+                    <i class="mdi mdi-checkbox-blank-circle font-size-11 me-2"></i>${ev.title}
+                </div>`;
+                            container.append(eventHtml);
+                        });
+
+                        // Clear calendar events
+                        calendar.getEvents().forEach(e => e.remove());
+
+                        // Add events to calendar
+                        events.forEach(function (ev) {
+                            calendar.addEvent({
+                                id: ev.id,
+                                title: ev.title,
+                                start: ev.start,
+                                end: ev.end,
+                                allDay: ev.allDay || false,
+                                className: ev.className
+                            });
+                        });
+                    },
+                    error: function () {
+                        console.error('Failed to load external events.');
+                    }
+                });
+            }
+        });
+    </script>
+}

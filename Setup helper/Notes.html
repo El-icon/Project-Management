@@ -1,0 +1,84 @@
+Admin FAQ
+edit field not working
+i wanted jquery edit by clicking
+
+how to select a particular payment under company
+how counter the number of filed in a partivular colume
+admin faq
+--------------------------------------------------------------------
+check manage category
+edit category
+--------------------------------------------------------------------
+refresh jquery after u click save
+----------------------------------------------------------------}
+Sticky Note
+
+----------------------------------------------------------------}
+ask Hyedima about export to pdf and excell full package
+
+----------------------------------------------------------------}
+I want the full corrected view with the wrapper and other div you remove to be kept in place,
+
+
+Perfect 👍 thanks for clarifying.
+
+I’ll give you the full corrected view with:
+
+✅ Your <div class="table-rep-plugin"> wrapper kept.
+
+✅ The <div class="table-responsive mb-0" data-pattern="priority-columns"> intact.
+
+✅ All original structure and styling preserved.
+
+✅ Fixed checkbox rendering (bool → checked="checked").
+
+✅ Unique IDs for checkboxes inside each row.
+
+Here’s the corrected Index.cshtml in full:
+
+----------------------------------------------------------------}
+
+
+----------------------------------------------------------------}
+documents
+- id  (PK, varchar 200)
+- name
+- description
+- insertdate
+- updatedate
+- notes
+- status
+- createdby
+- updateby
+
+personneldocument
+- id  (PK, varchar 200)
+- documentid  (FK → documents.id)
+- cat_id      (FK → personel_files_cat.id)
+- doc_order
+- description
+- expdate
+- insertdate
+- notes
+- status
+- url
+- doctype
+
+personel_files_cat
+- id  (PK, varchar 200)
+- cat_name
+- description
+- cat_order
+- status
+- insertdate
+- updatedate
+- createdby
+- updateby
+
+----------------------------------------------------------------}
+
+
+× Error! Delete failed: Object reference not set to an instance of an object.
+
+ 
+ 

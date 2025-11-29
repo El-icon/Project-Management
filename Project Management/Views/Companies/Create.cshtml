@@ -1,0 +1,286 @@
+﻿@model Project_Management.Models.Company
+
+@{
+    Layout = null;
+}
+
+
+
+<!----------------------CREATE------------------------>
+<div id="create" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-xl">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h6>
+                    Create Company
+                </h6>
+            </div>
+            <div class="modal-body">
+                <form class="custom-validation" action="@Url.Action("create","Conpanies")" method="post">
+                    @Html.AntiForgeryToken()
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <label for="packageName">Company Name</label>
+                                <input type="text" class="form-control" id="conapnyname" name="companyname" required>
+                            </div>
+                            <div class="col-md-3">
+                                <label for="packageType">
+                                    Company Email
+                                </label>
+                                <input type="text" class="form-control" id="conapanyemail" name="conapanyemail" required>
+                            </div>
+                            <div class="col-md-3">
+                                <label for="packageType">
+                                    Company Phone
+                                </label>
+                                <input type="text" class="form-control" id="conapanyphone" name="conapanyphone" required>
+                            </div>
+                        </div>
+
+                        <br>
+
+                        <div class="row">
+                            <div class="col-md-3">
+                                <label for="maxEmployees">Company Website</label>
+                                <input type="text" class="form-control" id="companywebsite" name="companywebsite">
+                            </div>
+                            <div class="col-md-3">
+                                <label for="storageUnit">Default Currency</label>
+                                <select required id="currency" name="currency" class="form-control">
+                                    <option disabled selected>Please Select</option>
+                                    <option value="N (NAIRA)">N (NAIRA)</option>
+                                    <option value="$ (USD)">$ (USD)</option>
+                                    <option value="€ (EUR)">€ (EUR)</option>
+                                    <option value="£ (GBP)">£ (GBP)</option>
+                                </select>
+                            </div>
+                            <div class="col-md-3">
+                                <label for="storageUnit">Default Timezone</label>
+                                <select required id="timezone" name="timezone" class="form-control">
+                                    <option disabled selected>Please Select</option>
+                                    <option value="Africa/Nigeria">Africa/Nigeria</option>
+                                    <option value="Asia/Kokata">Asia/Kokata</option>
+                                    <option value="America/NewYork">America/NewYork</option>
+                                    <option value="Europe/Berlin">Europe/Berlin</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="col-md-3">
+                            <div class="col-md-12 bg-dark">
+                                <div class="form-group">
+                                    <center>
+                                        <br />
+                                        @*@if (Model.photo != null)
+                                            {
+                                                <img src="@Model.photo" alt=""
+                                                     class="avatar-lg mx-auto img-thumbnail rounded-circle">
+                                                <div class="online-circle">
+                                                    <i class="fas fa-circle text-success"></i>
+                                                </div>
+                                            }
+                                            else
+                                            {
+                                                <img src="~/Content/dist/assets/images/users/avatar-2.jpg" alt=""
+                                                     class="avatar-lg mx-auto img-thumbnail rounded-circle">
+                                                <div class="online-circle">
+                                                    <i class="fas fa-circle text-success"></i>
+                                                </div>
+                                            }*@
+
+                                    </center>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <br>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label class="form-check-label" for="monthlyPlan">Language</label>
+                                <input type="text" class="form-control" id="language" name="language" required>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label class="form-check-label" for="status">Status</label>
+                                <select required id="currency" name="status" class="form-control">
+                                    <option disabled selected>Please Select</option>
+                                    <option value="Active">Active</option>
+                                    <option value="Suspended">InActive</option>
+                                    <option value="Suspended">Suspended</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <br />
+
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <label>
+                                        Company Address
+                                    </label>
+                                    <textarea class="form-control" aria-label="With textarea" rows="5" id="companyaddress" name="companyaddress"></textarea>
+                                </div>
+                            </div>
+                        </div>
+
+                        <br>
+
+                        <div class="row">
+
+                            <div class="col-md-6">
+                                <label class="form-check-label" for="monthlyPlan">Admin Name</label>
+                                <small>
+                                    Account Details ( First company admin )
+                                </small>
+                                <input type="text" class="form-control" id="acctname" name="acctname" required>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label class="form-check-label" for="monthlyPlan">Admin Email</label>
+                                <small>
+                                    Email ( Login details will be emailed to this email )
+                                </small>
+                                <input type="text" class="form-control" id="acctemail" name="acctemail" required>
+                            </div>
+                        </div>
+
+
+
+
+                    </div>
+
+                    <br />
+                    <div class="row">
+                        <div class="col-md-12 text-center">
+                            <input type="submit" value="Create" class="btn btn-success" />
+                            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Create</title>
+</head>
+<body>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <h4>Company</h4>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.LabelFor(model => model.id, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.id, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.id, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.companyname, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.companyname, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.companyname, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.packageid, "packageid", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownList("packageid", null, htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.packageid, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.details, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.details, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.details, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.insertdate, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.insertdate, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.insertdate, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.status, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.status, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.status, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.photo, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.photo, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.photo, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.url, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.url, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.url, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.expdate, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.expdate, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.expdate, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.employees, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.employees, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.employees, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.clients, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.clients, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.clients, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Create" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+    }
+
+    <div>
+        @Html.ActionLink("Back to List", "Index")
+    </div>
+</body>
+</html>

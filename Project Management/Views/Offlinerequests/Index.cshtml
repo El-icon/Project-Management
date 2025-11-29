@@ -1,0 +1,87 @@
+﻿@model IEnumerable<Project_Management.Models.Offlinerequest>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    int sn = 0;
+}
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+
+                <h4 class="card-title">Offline Request </h4>
+
+                <br />
+                <br />
+
+
+                <div class="table-rep-plugin">
+                    <div class="table-responsive mb-0" data-pattern="priority-columns">
+
+                        <table id="datatable-buttons"
+                               class="table table-striped table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        SN
+                                    </th>
+                                    <th>
+                                        COMPANY
+                                    </th>
+                                    <th>
+                                        PACKAGE
+                                    </th>
+                                    <th>
+                                        PAYMENT BY
+                                    </th>
+                                    <th>
+                                        CREATED
+                                    </th>
+                                    <th>
+                                        STATUS
+                                    </th>
+                                    <th>ACTION</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    sn++;
+                                    <tr>
+                                        <td>
+                                            @sn
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.company)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.package)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.paymentby)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.created)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.status)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.insertdate)
+                                        </td>
+                                        <td>
+                                            @Html.ActionLink("Edit", "Edit", new { id = item.id }) |
+                                            @Html.ActionLink("Details", "Details", new { id = item.id }) |
+                                            @Html.ActionLink("Delete", "Delete", new { id = item.id })
+                                        </td> 
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

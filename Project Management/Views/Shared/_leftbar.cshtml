@@ -1,0 +1,529 @@
+﻿
+@{
+    Project_Management.Models.project_managementEntities db = new Project_Management.Models.project_managementEntities();
+}
+
+<!-- ========== Left Sidebar Start ========== -->
+<div class="vertical-menu">
+
+    <div class="h-100">
+
+        <div class="user-wid text-center py-4">
+            <div class="user-img">
+                @*<img src="~/Content/Qovex/assets/images/users/avatar-2.jpg" alt="" class="avatar-md mx-auto rounded-circle">*@
+                <a href="@Url.Action("Index","Home")">
+                    <b class="logo-icon">
+                        <!-- Dark Logo icon -->
+                        <img src="~/Content/img/avatar-2.jpg" alt="" class="avatar-md mx-auto rounded-circle">
+
+                    </b>
+                </a>
+            </div>
+
+            <div class="mt-3">
+                <a href="" class="text-dark fw-medium font-size-16">@Session["email"]</a>
+                <p class="text-body mt-1 mb-0 font-size-13">WELLCOME</p>
+                <a href="@Url.Action("Index","Home")"
+                   class="btn btn-primary fw-medium font-size-16">
+                    <i class="mdi mdi-home"></i>
+                    <span>Dashboard</span>
+                </a>
+            </div>
+        </div>
+        <!--- Sidemenu -->
+        <div id="sidebar-menu">
+            <!-- Left Menu Start -->
+            <ul class="metismenu list-unstyled" id="side-menu">
+                @if (Session["usertype"] == null)
+                {
+
+                }
+                else
+                {
+                    string usertype = Session["usertype"].ToString();
+                    if (usertype == "")
+                    {
+
+                    }
+                    else
+                    if (usertype == "WORKER")
+                    {
+                        <div id="sidebar-menu">
+                            <!-- Left Menu Start -->
+                            <ul class="metismenu list-unstyled" id="side-menu">
+                                <li class="menu-title">Dashboard</li>
+
+                                @*<li class="bg-primary">
+                                    <a href="javascript: void(0);" class="waves-effect">
+                                        <i class="mdi mdi-airplay"></i>
+                                        <span class="badge rounded-pill bg-info float-end">
+                                            @{
+                                                //string userid = Session["userid"].ToString();
+                                                string email = Session["email"].ToString();
+                                                int totalNotification = db.notifications.Where(p => p.receiver == email && p.isread == "False").Count();
+                                            }
+                                            @totalNotification
+                                        </span>
+                                        <span class="text-white">Notification</span>
+                                    </a>
+                                </li>*@
+
+
+
+                                <li>
+                                    <a href="javascript: void(0);" class="has-arrow waves-effect">
+                                        <i class="mdi mdi-file-tree"></i>
+                                        <span>Tech Log</span>
+                                    </a>
+                                    <ul class="sub-menu" aria-expanded="true">
+                                        <li>
+                                            <a href="@Url.Action("Index","tech_log")" class="waves-effect">
+                                                <i class="mdi mdi-airplay"></i>
+                                                <span>Tech Log</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="@Url.Action("tech_log","tech_log")" class="waves-effect">
+                                                <i class="mdi mdi-airplay"></i>
+                                                <span>Tech Log By Filter</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="@Url.Action("Index","client_fuel")" class="waves-effect">
+                                                <i class="mdi mdi-airplay"></i>
+                                                <span>Clients</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+
+                                <li>
+                                    <a href="@Url.Action("Index","route_list")" class="waves-effect">
+                                        <i class="mdi mdi-airplay"></i>
+                                        <span>Manage Routes</span>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="javascript: void(0);" class="has-arrow waves-effect">
+                                        <i class="mdi mdi-file-tree"></i>
+                                        <span>Aircraft</span>
+                                    </a>
+                                    <ul class="sub-menu" aria-expanded="true">
+                                        <li>
+                                            <a href="@Url.Action("index","aircraft")" class="waves-effect">
+                                                <i class="mdi mdi-airplay"></i>
+                                                <span>Aircraft Mgmt</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="@Url.Action("Index","aircraft_document")" class="waves-effect">
+                                                <i class="mdi mdi-airplay"></i>
+                                                <span>Aircraft Doc</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="javascript: void(0);" class="has-arrow waves-effect">
+                                        <i class="mdi mdi-file-tree"></i>
+                                        <span>Duty/Flight Hrs</span>
+                                    </a>
+                                    <ul class="sub-menu" aria-expanded="true">
+                                        <li>
+                                            <a href="@Url.Action("PilotFlightDutyTime","Crew")" class="waves-effect">
+                                                <i class="mdi mdi-airplay"></i>
+                                                <span>Pilot Duty/Flight Hrs</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="@Url.Action("CabinFlightDutyTime","Crew")" class="waves-effect">
+                                                <i class="mdi mdi-airplay"></i>
+                                                <span> Crew Duty/Flight Hrs</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="@Url.Action("CrewRecency","crew")" class="waves-effect">
+                                        <i class="mdi mdi-airplay"></i>
+                                        <span>Crew Recency</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="@Url.Action("pilot","Crew")" class="waves-effect">
+                                        <i class="mdi mdi-airplay"></i>
+                                        <span>Manange Crew</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="javascript: void(0);" class="has-arrow waves-effect">
+                                        <i class="mdi mdi-file-tree"></i>
+                                        <span>Crew Management</span>
+                                    </a>
+                                    <ul class="sub-menu" aria-expanded="true">
+                                        <li>
+                                            <a href="@Url.Action("CrewDocuments","crew")" class="waves-effect">
+                                                <i class="mdi mdi-airplay"></i>
+                                                <span>Crew Folders</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="@Url.Action("Index","documents")" class="waves-effect">
+                                                <i class="mdi mdi-airplay"></i>
+                                                <span>Crew Docs Types </span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="@Url.Action("Index","personel_files_cat")" class="waves-effect">
+                                                <i class="mdi mdi-airplay"></i>
+                                                <span>Folders Category</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+
+                                <li>
+                                    <a href="javascript: void(0);" class="has-arrow waves-effect">
+                                        <i class="mdi mdi-file-tree"></i>
+                                        <span>OPS Library</span>
+                                    </a>
+                                    <ul class="sub-menu" aria-expanded="true">
+                                        <li>
+                                            <a href="@Url.Action("Index","ops_library")" class="waves-effect">
+                                                <i class="mdi mdi-airplay"></i>
+                                                <span>OPS Library</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="@Url.Action("Index","ops_library_cat")" class="waves-effect">
+                                                <i class="mdi mdi-airplay"></i>
+                                                <span>OPS Lib Doc. Cat. </span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+
+                                <li>
+                                    <a href="javascript: void(0);" class="has-arrow waves-effect">
+                                        <i class="mdi mdi-file-tree"></i>
+                                        <span>Board</span>
+                                    </a>
+                                    <ul class="sub-menu" aria-expanded="true">
+
+                                        <li>
+                                            <a href="@Url.Action("technicalCrewBoard","OperationsBoard")" class="waves-effect">
+                                                <i class="mdi mdi-airplay"></i>
+                                                <span>Tech Crew Board</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="@Url.Action("cabinCrewBoard","OperationsBoard")" class="waves-effect">
+                                                <i class="mdi mdi-airplay"></i>
+                                                <span>Cabin Crew Board</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="@Url.Action("dispatcherBoard","OperationsBoard")" class="waves-effect">
+                                                <i class="mdi mdi-airplay"></i>
+                                                <span>Dispatcher Board</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="@Url.Action("AirCraftStatus","OperationsBoard")" class="waves-effect">
+                                                <i class="mdi mdi-airplay"></i>
+                                                <span>AirCraft Status</span>
+                                            </a>
+                                        </li>
+
+                                        <li>
+                                            <a href="@Url.Action("flightInfo","OperationsBoard")" class="waves-effect">
+                                                <i class="mdi mdi-airplay"></i>
+                                                <span>flight Info </span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+
+                        </div>
+                    }
+                    else
+                        if (usertype == "ADMIN")
+                    {
+                   
+                        <div id="sidebar-menu">
+                            <!-- Left Menu Start -->
+                            <ul class="metismenu list-unstyled" id="side-menu">
+                                <li class="menu-title">MENU</li>
+
+                                @*<li class="bg-primary">
+            <a href="javascript: void(0);" class="waves-effect">
+                <i class="mdi mdi-airplay"></i>
+                <span class="badge rounded-pill bg-info float-end">
+                    @{
+                        //string userid = Session["userid"].ToString();
+                        string email = Session["email"].ToString();
+                        int totalNotification = db.notifications.Where(p => p.receiver == email && p.isread == "False").Count();
+                    }
+                    @totalNotification
+                </span>
+                <span class="text-white">Notification</span>
+            </a>
+        </li>*@
+
+
+
+                                <li>
+                                    <a href="@Url.Action("Index","Calendars")" class="waves-effect">
+                                        <i class="mdi mdi-airplay"></i>
+                                        <span>My Calendar</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="javascript: void(0);" class="has-arrow waves-effect">
+                                        <i class="mdi mdi-file-tree"></i>
+                                        <span>Leads</span>
+                                    </a>
+                                    <ul class="sub-menu" aria-expanded="true">
+                                        <li>
+                                            <a href="@Url.Action("index","Lead_Contact")" class="waves-effect">
+                                                <i class="mdi mdi-airplay"></i>
+                                                <span>Lead Contact</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="@Url.Action("Index","Deals")" class="waves-effect">
+                                                <i class="mdi mdi-airplay"></i>
+                                                <span>Deals</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="@Url.Action("Index","Clients")" class="waves-effect">
+                                        <i class="mdi mdi-airplay"></i>
+                                        <span>Clients</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="javascript: void(0);" class="has-arrow waves-effect">
+                                        <i class="mdi mdi-file-tree"></i>
+                                        <span>HR</span>
+                                    </a>
+                                    <ul class="sub-menu" aria-expanded="true">
+                                        <li>
+                                            <a href="@Url.Action("index","Employees")" class="waves-effect">
+                                                <i class="mdi mdi-airplay"></i>
+                                                <span>Employees</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="@Url.Action("index","Leaves")" class="waves-effect">
+                                                <i class="mdi mdi-airplay"></i>
+                                                <span>Leaves</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="@Url.Action("Index","Shiftroster")" class="waves-effect">
+                                                <i class="mdi mdi-airplay"></i>
+                                                <span>Shift Roster</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="@Url.Action("index","Attendances")" class="waves-effect">
+                                                <i class="mdi mdi-airplay"></i>
+                                                <span>Attendance</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="@Url.Action("Index","Holidays")" class="waves-effect">
+                                                <i class="mdi mdi-airplay"></i>
+                                                <span>Holiday</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="@Url.Action("index","Designations")" class="waves-effect">
+                                                <i class="mdi mdi-airplay"></i>
+                                                <span>Designation</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="@Url.Action("Index","Departments")" class="waves-effect">
+                                                <i class="mdi mdi-airplay"></i>
+                                                <span>Department</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="@Url.Action("index","Apprication")" class="waves-effect">
+                                                <i class="mdi mdi-airplay"></i>
+                                                <span>Apprication</span>
+                                            </a>
+                                        </li> 
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="@Url.Action("Index","settings")" class="waves-effect">
+                                        <i class="mdi mdi-airplay"></i>
+                                        <span>settings</span>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="@Url.Action("Index","useraccounts")" class="waves-effect">
+                                        <i class="mdi mdi-airplay"></i>
+                                        <span>useraccounts</span>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="javascript: void(0);" class="has-arrow waves-effect">
+                                        <i class="mdi mdi-file-tree"></i>
+                                        <span>Aircraft</span>
+                                    </a>
+                                    <ul class="sub-menu" aria-expanded="true">
+                                        <li>
+                                            <a href="@Url.Action("index","aircraft")" class="waves-effect">
+                                                <i class="mdi mdi-airplay"></i>
+                                                <span>Aircraft Mgmt</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="@Url.Action("Index","aircraft_document")" class="waves-effect">
+                                                <i class="mdi mdi-airplay"></i>
+                                                <span>Aircraft Doc</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+
+                        </div>
+
+                    }
+                    else
+                    if (usertype == "SUPERADMIN")
+                    {
+                        <div id="sidebar-menu">
+                            <!-- Left Menu Start -->
+                            <ul class="metismenu list-unstyled" id="side-menu">
+                                <li class="menu-title">MENU</li>
+
+                                @*<li class="bg-primary">
+                                    <a href="javascript: void(0);" class="waves-effect">
+                                        <i class="mdi mdi-airplay"></i>
+                                        <span class="badge rounded-pill bg-info float-end">
+                                            @{
+                                                //string userid = Session["userid"].ToString();
+                                                string email = Session["email"].ToString();
+                                                int totalNotification = db.notifications.Where(p => p.receiver == email && p.isread == "False").Count();
+                                            }
+                                            @totalNotification
+                                        </span>
+                                        <span class="text-white">Notification</span>
+                                    </a>
+                                </li>*@
+
+                                <li>
+                                    <a href="@Url.Action("Index","Packages")" class="waves-effect">
+                                        <i class="mdi mdi-checkbox-multiple-blank-outline"></i>
+                                        <span>Packages</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="@Url.Action("Index","Companies")" class="waves-effect">
+                                        <i class="mdi mdi-inbox-full"></i>
+                                        <span>Companies</span>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="@Url.Action("Index","Billings")" class="waves-effect">
+                                        <i class="mdi mdi-clipboard-list-outline"></i>
+                                        <span>Billing</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="@Url.Action("Index","personneldocuments")" class="waves-effect">
+                                        <i class="mdi mdi-calendar-check"></i>
+                                        <span>Admin FAQ</span>
+                                    </a>
+                                </li>
+                                @*<li>
+                            <a href="@Url.Action("Index","Adminfaqs")" class="waves-effect">
+                                <i class="mdi mdi-calendar-check"></i>
+                                <span>Admin FAQ</span>
+                            </a>
+                        </li>*@
+
+                                <li>
+                                    <a href="@Url.Action("Index","Superadmins")" class="waves-effect">
+                                        <i class="mdi mdi-account-circle-outline"></i>
+                                        <span>Super Admin</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="@Url.Action("Index","Offlinerequests")" class="waves-effect">
+                                        <i class="mdi mdi-chart-donut"></i>
+                                        <span>Offline Request</span>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="@Url.Action("Index","SupportTicket")" class="waves-effect">
+                                        <i class="mdi mdi-inbox-full"></i>
+                                        <span>Support Ticket</span>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="@Url.Action("Index","settings")" class="waves-effect">
+                                        <i class="mdi mdi-checkbox-multiple-blank-outline"></i>
+                                        <span>Font Settings</span>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="@Url.Action("Index","Settings")" class="waves-effect">
+                                        <i class="mdi mdi-settings-outline"></i>
+                                        <span>Settings</span>
+                                    </a>
+                                </li>
+
+                            </ul>
+
+                        </div>
+
+                    }
+                }
+                <li class="menu-divider">
+                    <hr />
+                </li>
+                <li class="menu-divider">
+                    <hr />
+                </li>
+
+                <li>
+                    <a href="@Url.Action("index","useraccounts")" class="waves-effect">
+                        <i class="mdi mdi-airplay"></i>
+                        <span>User Accounts</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="@Url.Action("index","ActivityLogs")" class="waves-effect">
+                        <i class="mdi mdi-airplay"></i>
+                        <span>Activity Logs</span>
+                    </a>
+                </li>
+                <li>
+                    <a class="waves-effect" href="@Url.Action("Logout","UserAccounts")"
+                       aria-expanded="false">
+                        <i class="mdi mdi-checkbox-multiple-blank-outline"></i><span>Logout</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <!-- Sidebar -->
+    </div>
+</div>
+<!-- Left Sidebar End -->

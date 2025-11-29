@@ -1,0 +1,236 @@
+                                
+    View                            
+    <!--  INLINE-EDIT CELL  -->
+                                      <td data-field="name">
+                                          @*<span class="cat-text" data-id="@cat.id">@cat.cat_name</span>
+                                              <input type="text"
+                                                     class="form-control form-control-sm d-none cat-input"
+                                                     data-id="@cat.id"
+                                                     value="@cat.cat_name" />*@
+
+                                          <div class="mb-3">
+                                              @*<label class="fw-bold">Article Title</label>*@
+                                              <div class="input-group">
+                                                  <input type="text" id="title_@cat.id" value="@cat.cat_name" class="form-control">
+                                                  <button class="btn btn-sm btn-outline-success" type="button" onclick="saveTitle('@cat.id')">Save</button>
+                                              </div>
+                                              <span id="msg_@cat.id" class="text-danger"></span>
+                                          </div>
+
+                                          <script>
+                                            function saveTitle(id) {
+                                                var txt = $("#title_" + id).val();
+                                                $.post("@Url.Action("Updatecat_name", "personneldocuments")", { id: id, newTitle: txt }, function (res) {
+                                                    var ok = res === "Success";
+                                                    $("#title_" + id).css("border-color", ok ? "green" : "red");
+                                                    $("#msg_" + id).text(ok ? "" : res);
+                                                });
+}
+                                          </script>
+                                      </td>
+
+Controller
+  /******************** JQUERY EDIT ****************/
+  /*************************************************/
+  [HttpPost]
+  public JsonResult Updatecat_name(string id, string newTitle)
+  {
+      try
+      {
+          if (string.IsNullOrWhiteSpace(newTitle))
+              return Json("Title cannot be empty.", JsonRequestBehavior.AllowGet);
+
+          var faq = db.personel_files_cat.Find(id);
+          if (faq == null) return Json("Record not found.", JsonRequestBehavior.AllowGet);
+
+          faq.cat_name = newTitle.Trim();
+          faq.updatedate = DateTime.Now;
+          db.SaveChanges();
+
+          return Json("Success", JsonRequestBehavior.AllowGet);
+      }
+      catch (Exception ex)
+      {
+          return Json("Save failed: " + ex.Message, JsonRequestBehavior.AllowGet);
+      }
+  }
+  /*****************************************************************/
+  /*****************************************************************/
+
+
+
+
+
+Layout
+    <!-- =====================  PRINTING DIV  ========================= -->
+    <!-- ============================================================== -->
+    <script language="javascript" type="text/javascript">
+        function printDiv(divName) {
+            var printContents = document.getElementById(divName).innerHTML;
+            var originalContents = document.body.innerHTML;
+            document.body.innerHTML = printContents;
+
+            window.print();
+
+            document.body.innerHTML = originalContents;
+        }
+    </script>
+    <script>
+        function myFunction() {
+            // Declare variables
+            var input, filter, table, tr, td, i, txtValue;
+            input = document.getElementById("myInput");
+            filter = input.value.toUpperCase();
+            table = document.getElementById("search");
+            tr = table.getElementsByTagName("tr");
+
+            // Loop through all table rows, and hide those who don't match the search query
+            for (i = 0; i < tr.length; i++) {
+                td = tr[i].getElementsByTagName("td")[1];
+                if (td) {
+                    txtValue = td.textContent || td.innerText;
+                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                        tr[i].style.display = "";
+                    } else {
+                        tr[i].style.display = "none";
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- =====================  FOR SEARCHING ========================= -->
+    <!-- ============================================================== -->    
+    <style>
+        #myInput {
+            background-image: url('/css/searchicon.png'); /* Add a search icon to input */
+            background-position: 10px 12px; /* Position the search icon */
+            background-repeat: no-repeat; /* Do not repeat the icon image */
+            width: 100%; /* Full-width */
+            font-size: 16px; /* Increase font-size */
+            padding: 12px 20px 12px 40px; /* Add some padding */
+            border: 1px solid #ddd; /* Add a grey border */
+            margin-bottom: 12px; /* Add some space below the input */
+        }
+
+        #search {
+            border-collapse: collapse; /* Collapse borders */
+            width: 100%; /* Full-width */
+            border: 1px solid #ddd; /* Add a grey border */
+            font-size: 18px; /* Increase font-size */
+        }
+
+            #search th, #search td {
+                text-align: left; /* Left-align text */
+                padding: 12px; /* Add padding */
+            }
+
+            #search tr {
+                /* Add a bottom border to all table rows */
+                border-bottom: 1px solid #ddd;
+            }
+
+                #search tr.header, #search tr:hover {
+                    /* Add a grey background color to the table header and on hover */
+                    background-color: #f1f1f1;
+                }
+    </style>
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- =========================  TEXTAREA  ========================= -->
+    <!-- ============================================================== -->
+    <!-- ===  <textarea class="form-control" aria-label="With textarea" rows="5" id="description" name="description"></textarea>  ========== -->
+    <script>
+        $(document).ready(function () {
+            $('textarea').summernote({
+                placeholder: '',
+                tabsize: 2,
+                height: 250,
+                toolbar: [
+                    ['style', ['style']],
+                    ['font', ['bold', 'underline', 'clear']],
+                    ['color', ['color']],
+                    ['para', ['ul', 'ol', 'paragraph']],
+                    ['table', ['table']],
+                    ['insert', ['link', 'picture', 'video']],
+                    ['view', ['fullscreen', 'codeview', 'help']]
+                ]
+            });
+        });
+    </script>
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.9.0/dist/summernote.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.9.0/dist/summernote.min.js"></script>
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- =========================  FILE & IMAGE ======================= -->
+    <!-- ============================================================== -->
+    <!-- ===
+        <label for="maxEmployees">
+        Add Files
+    </label>
+    <input type="file" name="file" id="file" class="form-control" />
+    <img id="preview" src="#" alt="Image Preview" style="display:none; max-width:300px;" />
+        === -->
+    <script>
+        const input = document.getElementById('file');
+        const previewContainer = document.getElementById('previewContainer');
+        const previewImg = document.getElementById('previewImg');
+        const previewPdf = document.getElementById('previewPdf');
+
+        input.addEventListener('change', function () {
+            const file = this.files[0];
+            if (!file) {
+                previewContainer.style.display = 'none';
+                return;
+            }
+
+            const ext = file.name.split('.').pop().toLowerCase();
+            const reader = new FileReader();
+
+            if (['jpg', 'jpeg', 'png', 'gif', 'bmp', 'webp'].includes(ext)) {
+                reader.onload = function (e) {
+                    previewImg.src = e.target.result;
+                    previewImg.style.display = 'block';
+                    previewPdf.style.display = 'none';
+                    previewContainer.style.display = 'block';
+                };
+                reader.readAsDataURL(file);
+            } else if (ext === 'pdf') {
+                reader.onload = function (e) {
+                    previewPdf.data = e.target.result;
+                    previewPdf.style.display = 'block';
+                    previewImg.style.display = 'none';
+                    previewContainer.style.display = 'block';
+                };
+                reader.readAsDataURL(file);
+            } else {
+                alert("Only image or PDF files are allowed.");
+                input.value = ""; // reset
+                previewContainer.style.display = 'none';
+            }
+        });
+    </script>
+
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- =========================From dantoro yason school project===================================== -->
+    @*<script src="~/Content/assets/assets/libs/jquery/dist/jquery.min.js"></script>
+        <script src="~/Content/assets/assets/libs/popper.js/dist/umd/popper.min.js"></script>*@
+    <script src="~/Content/assets/assets/libs/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- ============================================================== -->
+    <!-- =========================From dantoro yason school project===================================== -->
+    <!-- =========================Drop down search select search ===================================== -->
+    <script src="~/Content/dist/js/select2.js"></script>
+    <link href="~/Content/dist/css/select2.css" rel="stylesheet" />
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <script>
+        $(document).ready(function () {
+            $("select").select2();
+        });
+    </script>
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->

@@ -1,0 +1,80 @@
+Description text area
+
+YOU NEED SETUP FOLDER AND PACKAGES CONTROLLER FOR THIS TO WORK
+-----------------------------------------------------------------------------------
+@model IEnumerable<Project_Management.Models.personneldocument>
+ 
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    Project_Management.Models.project_managementEntities db = new Project_Management.Models.project_managementEntities();
+    Project_Management.Controllers.PackagesController tech = new Project_Management.Controllers.PackagesController();
+
+    int sn = 0;
+}
+
+@using Project_Management.setup;
+
+-----------------------------------------------------------------------------------
+VIEW
+-----------------------------------------------------------------------------------
+  <div class="row">
+      <div class="col-md-12">
+          <label for="packageType">
+              Description
+          </label>
+          <textarea class="form-control" aria-label="With textarea" rows="5" id="description" name="description" required></textarea>
+
+      </div>
+  </div>
+
+-----------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------
+
+EDIT
+-----------------------------------------------------------------------------------
+  <div class="form-group">
+      <div class="row">
+          <div class="col-md-12">
+              <label>
+                  Description
+              </label>
+              <textarea class="form-control" @setEditor.getTextString(item.description) rows="15" id="description" name="description">@setEditor.getTextString(item.description)</textarea>
+          </div>
+      </div>
+  </div>
+-----------------------------------------------------------------------------------
+CONTROLLER
+-----------------------------------------------------------------------------------
+   description = setEditor.getJsonString(description),
+------------------------------------------------------------------------------------
+
+LAYOUT
+-----------------------------------------------------------------------------------
+ <!-- ============================================================== -->
+ <!-- ============================================================== -->
+ <!-- =========================  TEXTAREA  ========================= -->
+ <!-- ============================================================== -->
+ <!-- ===  <textarea class="form-control" aria-label="With textarea" rows="5" id="description" name="description"></textarea>  ========== -->
+ <script>
+     $(document).ready(function () {
+         $('textarea').summernote({
+             placeholder: '',
+             tabsize: 2,
+             height: 250,
+             toolbar: [
+                 ['style', ['style']],
+                 ['font', ['bold', 'underline', 'clear']],
+                 ['color', ['color']],
+                 ['para', ['ul', 'ol', 'paragraph']],
+                 ['table', ['table']],
+                 ['insert', ['link', 'picture', 'video']],
+                 ['view', ['fullscreen', 'codeview', 'help']]
+             ]
+         });
+     });
+ </script>
+ <link href="https://cdn.jsdelivr.net/npm/summernote@0.9.0/dist/summernote.min.css" rel="stylesheet">
+ <script src="https://cdn.jsdelivr.net/npm/summernote@0.9.0/dist/summernote.min.js"></script>
+-----------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------

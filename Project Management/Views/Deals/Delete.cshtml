@@ -1,0 +1,120 @@
+﻿@model Project_Management.Models.Deal
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Delete</title>
+</head>
+<body>
+    <h3>Are you sure you want to delete this?</h3>
+    <div>
+        <h4>Deal</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.name)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.name)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.pipeline)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.pipeline)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.dealstages)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.dealstages)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.dealvalue)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.dealvalue)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.closedate)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.closedate)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.dealcategory)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.dealcategory)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.dealagent)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.dealagent)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.product)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.product)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.dealwatcher)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.dealwatcher)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.insertdate)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.insertdate)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Lead_Contact.name)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Lead_Contact.name)
+            </dd>
+    
+        </dl>
+    
+        @using (Html.BeginForm()) {
+            @Html.AntiForgeryToken()
+    
+            <div class="form-actions no-color">
+                <input type="submit" value="Delete" class="btn btn-default" /> |
+                @Html.ActionLink("Back to List", "Index")
+            </div>
+        }
+    </div>
+</body>
+</html>

@@ -1,0 +1,114 @@
+﻿@model Project_Management.Models.document
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+    <div>
+        <h4>document</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.name)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.name)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.description)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.description)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.insertdate)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.insertdate)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.notes)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.notes)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.status)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.status)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.expdate)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.expdate)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.updatedate)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.updatedate)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.createdby)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.createdby)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.updateby)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.updateby)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.personel_files_cat.cat_name)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.personel_files_cat.cat_name)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.personneldocument.doc_order)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.personneldocument.doc_order)
+            </dd>
+    
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</body>
+</html>

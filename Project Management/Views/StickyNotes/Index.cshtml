@@ -1,0 +1,494 @@
+﻿@model IEnumerable<Project_Management.Models.StickyNote>
+@{
+    ViewBag.Title = "Packages";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    Project_Management.Models.project_managementEntities db =
+        new Project_Management.Models.project_managementEntities();
+    //int sn = 0;
+}
+@using Project_Management.setup;
+
+<button class="btn btn-primary waves-effect waves-light"
+        data-toggle="modal" data-target="#create">
+    <i class="mdi mdi-plus-circle-outline"></i>
+    Sticky Notes
+</button>
+<br />
+<div class="row mb-4">
+    <div class="col-md-6 offset-md-3">
+        <input type="text" id="searchStickyNote" class="form-control" placeholder="Search Sticky Notes by Name..." />
+    </div>
+</div>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const searchInput = document.getElementById('searchStickyNote');
+        const cards = document.querySelectorAll('.sticky-card');
+
+        searchInput.addEventListener('keyup', function () {
+            const term = this.value.toLowerCase().trim();
+
+            cards.forEach(card => {
+                const title = card.querySelector('.title-preview').innerText.toLowerCase();
+                const status = card.querySelector('.status-preview').innerText.toLowerCase();
+                const color = card.querySelector('.color-preview').innerText.toLowerCase();
+                const date = card.querySelector('.date-preview').innerText.toLowerCase();
+
+                if (title.includes(term) || status.includes(term) || color.includes(term) || date.includes(term)) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        });
+    });
+</script>
+
+
+<br />
+<div class="row justify-content-center">
+    <div class="col-lg-6">
+        <div class="text-center mb-5">
+            <h4>
+                Sticky Notes
+            </h4>
+            <p class="text-muted">
+                "Uniform grammar, pronunciation, and common words are key if languages merge."
+            </p>
+        </div>
+    </div>
+</div>
+
+<div class="row" id="stickyNotesContainer">
+    @foreach (var item in db.StickyNotes.OrderByDescending(p => p.insertdate).ToList())
+    {
+        <div class="col-xl-3 col-md-6 sticky-card">
+            <div class="card plan-box">
+                <div class="card-body p-4">
+                    <div class="d-flex align-items-start">
+                        <div class="flex-1 me-3">
+                            <h6>Sticky Note</h6>
+                            <p class="text-muted date-preview">@item.insertdate</p>
+                        </div>
+                        <div class="ms-auto">
+                            <i class="bx bx-note h1" style="color: @item.color;"></i>
+                            <p class="color-preview" style="display:none">@item.color</p>
+                        </div>
+                    </div>
+                    <div class="py-4 mt-4 text-center bg-soft-light">
+                        <span class="badge status-preview @GetStatusClass(item.status) fs-5 py-2 px-3">
+                            @item.status
+                        </span>
+                        @functions {
+                            public string GetStatusClass(string status)
+                            {
+                                switch (status)
+                                {
+                                    case "Active":
+                                        return "bg-primary";
+                                    case "InActive":
+                                        return "bg-warning";
+                                    case "Done":
+                                        return "bg-success";
+                                    case "Working on It":
+                                        return "bg-info";
+                                    case "Suspended":
+                                        return "bg-danger";
+                                    default:
+                                        return "bg-dark";
+                                }
+                            }
+                        }
+                    </div>
+                    <div class="py-4 mt-4 text-center bg-soft-light">
+                        <h3 class="m-0 title-preview">
+                            @item.title
+                        </h3>
+                    </div>
+
+                    <div class="plan-features p-4 text-muted mt-2">
+                        <div class="description-preview" title="@item.description">
+                            @Html.Raw(Project_Management.setup.setEditor.getTextString(item.description ?? ""))
+                        </div>
+                    </div>
+
+                    <div class="">
+                        <div class="text-center">
+                            <a href="#" data-toggle="modal" data-target="#edit__@item.id">
+                                <i class="fa fa-edit btn btn-info btn-sm"></i>
+                            </a>
+                            |
+                            <a href="#" data-toggle="modal" data-target="#details_@item.id">
+                                <i class="fa fa-info btn btn-success btn-sm"></i>
+                            </a>
+                            |
+                            <a href="#" data-toggle="modal" data-target="#delete_@item.id">
+                                <i class="fa fa-trash btn btn-danger btn-sm"></i>
+                            </a>
+                        </div>
+
+
+
+                        <!---------------------- EDIT------------------------>
+                        <div id="edit__@item.id" class="modal fade" role="dialog">
+                            <div class="modal-dialog modal-xl">
+                                <div class="modal-content">
+                                    <div class="modal-header text-center">
+                                        <h5 class="modal-title mb-0">
+                                            Edit StickyNotes
+                                        </h5>
+                                        <button type="button" class="close text-red" data-dismiss="modal">&times;</button>
+                                    </div>
+
+                                    @using (Html.BeginForm("Edit", "StickyNotes", FormMethod.Post, new { @class = "custom-validation" }))
+                                    {
+                                        @Html.AntiForgeryToken()
+                                        <input type="hidden" name="id" value="@item.id" />
+
+                                        <div class="modal-body">
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <label>Title</label>
+                                                    <input type="text" name="title" class="form-control" value="@item.title" required />
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label>Status Type</label>
+                                                    <select name="status" class="form-control" required>
+                                                        <option value="@item.status" selected>@item.status</option>
+                                                        <option value="Active">Active</option>
+                                                        <option value="InActive">InActive</option>
+                                                        <option value="Done">Done</option>
+                                                        <option value="Working on It">Working on It</option>
+                                                        <option value="Suspended">Suspended</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                            <br />
+
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <label for="colorEdit">Color</label>
+                                                    <div class="color-picker" id="colorPickerEdit">
+                                                        <div style="background-color: red;" onclick="setColor('red','Edit')"></div>
+                                                        <div style="background-color: green;" onclick="setColor('green','Edit')"></div>
+                                                        <div style="background-color: blue;" onclick="setColor('blue','Edit')"></div>
+                                                        <div style="background-color: yellow;" onclick="setColor('yellow','Edit')"></div>
+                                                        <div style="background-color: gray;" onclick="setColor('gray','Edit')"></div>
+                                                    </div>
+                                                    <input type="text" id="colorEdit" value="@item.color" name="color" class="form-control" required />
+                                                </div>
+                                            </div>
+
+
+                                            <br />
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <label>Description</label>
+                                                    <textarea class="form-control" @setEditor.getTextString(item.description) rows="15" id="description" name="description">@setEditor.getTextString(item.description)</textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <br />
+                                        <div class="row">
+                                            <div class="col-md-12 text-center">
+                                                <button type="submit" class="btn btn-success">Update</button>
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                            </div>
+                                        </div>
+                                        <br /> <br />
+                                    }
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <!---------------------- DETAILS------------------------>
+                        <div id="details_@item.id" class="modal fade" role="dialog">
+                            <div class="modal-dialog modal-xl">
+                                <!-- Modal content-->
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h4 class="modal-title">
+                                            Detail of Package
+                                        </h4>
+                                    </div>
+                                    <div class="modal-body">
+
+                                        <form class="custom-validation" action="@Url.Action("Details","StickyNotes")" method="post">
+                                            @Html.AntiForgeryToken()
+                                            <input type="hidden" name="id" value="@item.id" />
+                                            <div class="modal-body">
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <label>Title</label>
+                                                        <input type="text" name="title" class="form-control" value="@item.title" readonly />
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <label>Status Type</label>
+                                                        <input type="text" name="status" class="form-control" value="@item.status" readonly />
+
+                                                    </div>
+                                                </div>
+
+                                                <br />
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <label for="color">Color</label>
+
+                                                        <!-- Color Picker (read-only) -->
+                                                        <div class="color-picker" style="pointer-events: none;">
+                                                            <div style="background-color: red; border:@(item.color == "red" ? "3px solid black" : "1px solid #ccc")"></div>
+                                                            <div style="background-color: green; border:@(item.color == "green" ? "3px solid black" : "1px solid #ccc")"></div>
+                                                            <div style="background-color: blue; border:@(item.color == "blue" ? "3px solid black" : "1px solid #ccc")"></div>
+                                                            <div style="background-color: yellow; border:@(item.color == "yellow" ? "3px solid black" : "1px solid #ccc")"></div>
+                                                            <div style="background-color: gray; border:@(item.color == "gray" ? "3px solid black" : "1px solid #ccc")"></div>
+                                                        </div>
+
+                                                        <!-- Read-only Input -->
+                                                        <input type="text" id="color" name="color" class="form-control mt-2" value="@item.color" readonly />
+                                                    </div>
+                                                </div>
+
+
+                                                <br />
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <label>Description</label>
+
+                                                        <!-- Display-only Summernote content -->
+                                                        <div class="note-display p-3 border rounded" style="background-color: #FFD700; color: #000000; min-height: 150px;">
+                                                            @Html.Raw(Project_Management.setup.setEditor.getTextString(item.description ?? ""))
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <style>
+                                                    .note-display {
+                                                        white-space: pre-wrap; /* preserve line breaks */
+                                                        word-wrap: break-word; /* wrap long words */
+                                                        font-family: 'Arial', sans-serif;
+                                                        font-size: 14px;
+                                                        line-height: 1.5;
+                                                    }
+                                                </style>
+
+
+
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12 text-center">
+                                                    @*<a href="@Url.Action("Edit", "StickyNotes", new { id = item.id })" class="btn btn-warning">Edit</a>*@
+
+                                                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <!---------------------- DELETE------------------------>
+                        <div id="delete_@item.id" class="modal fade" role="dialog">
+                            <div class="modal-dialog">
+
+                                <!-- Modal content-->
+                                <div class="modal-content">
+                                    <div class="modal-header text-center">
+                                        <h4 class="text-danger">ARE YOU SURE YOU WANT TO DELETE</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <H3 class="text-center">
+                                            @item.title
+                                        </H3>
+                                        <form class="" action="@Url.Action("delete","StickyNotes")" method="post">
+                                            @Html.AntiForgeryToken()
+                                            <input type="hidden" name="id" value="@item.id" />
+
+                                            <br />
+
+                                            <div class="row">
+                                                <div class="col-md-12 text-center">
+                                                    <button type="submit" class="btn btn-success">Yes</button>
+                                                    <button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        </div>
+
+
+
+
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+
+
+
+
+
+<!---------------------- CREATE ------------------------>
+<div id="create" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-header"><h6>Create Sticky Note</h6></div>
+            @using (Html.BeginForm("Create", "StickyNotes", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                @Html.AntiForgeryToken()
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label>Title</label>
+                            <input type="text" name="title" class="form-control" required />
+                        </div>
+                        <div class="col-md-6">
+                            <label>Status</label>
+                            <select name="status" class="form-control" required>
+                                <option disabled selected>Please Select</option>
+                                <option>Active</option>
+                                <option>InActive</option>
+                                <option>Done</option>
+                                <option>Working on It</option>
+                                <option>Suspended</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <br />
+                    <div class="row">
+                        <div class="col-md-12">
+                            <label for="colorCreate">Color</label>
+                            <div class="color-picker" id="colorPickerCreate">
+                                <div style="background-color: red;" onclick="setColor('red','Create')"></div>
+                                <div style="background-color: green;" onclick="setColor('green','Create')"></div>
+                                <div style="background-color: blue;" onclick="setColor('blue','Create')"></div>
+                                <div style="background-color: yellow;" onclick="setColor('yellow','Create')"></div>
+                                <div style="background-color: gray;" onclick="setColor('gray','Create')"></div>
+                            </div>
+                            <input type="text" id="colorCreate" name="color" class="form-control" required />
+                        </div>
+                    </div>
+
+                    <br />
+                    <div class="row">
+                        <div class="col-md-12">
+                            <label>Description</label>
+                            <textarea class="form-control" aria-label="With textarea" rows="5" id="description" name="description" required></textarea>
+                        </div>
+                    </div>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        <button type="submit" class="btn btn-success">Create</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+                <br /> <br />
+            }
+        </div>
+    </div>
+</div>
+
+<!------- DESCRIPTION AND TITLE PREVIEW ---------------->
+<style>
+    .description-preview {
+        height: 100px; /* Set a fixed height */
+        overflow: hidden; /* Hide overflow content */
+        position: relative; /* Ensure the absolute positioned element stays within bounds */
+        padding: 8px;
+        border: 1px solid #ccc; /* Optional: Add a border for better visibility */
+        border-radius: 4px; /* Optional: Add rounded corners */
+    }
+
+        .description-preview::after {
+            content: "...";
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 100%);
+            width: 100%;
+            height: 20px; /* Adjust the height of the gradient */
+        }
+
+    .title-preview {
+        width: 100%; /* Ensure the title takes the full width of the container */
+        white-space: nowrap; /* Prevent line breaks */
+        overflow: hidden; /* Hide overflow content */
+        text-overflow: ellipsis; /* Add ellipsis for truncated text */
+        padding: 0 8px; /* Add some padding for better readability */
+    }
+</style>
+
+<!------- COLOR PICKER FOR BOTH CREATE AND EDIT ---------------->
+<script>
+    function setColor(color, type) {
+        // type = "Create" or "Edit"
+        if (type === 'Create') {
+            document.getElementById('colorCreate').value = color;
+        } else if (type === 'Edit') {
+            document.getElementById('colorEdit').value = color;
+        }
+    }
+
+    // Function to open Edit modal and set current color
+    function openEditModal(noteId, currentColor) {
+        // Set the existing color in the input
+        document.getElementById('colorEdit').value = currentColor;
+
+        // Optionally, highlight the selected color in the color picker
+        const colorDivs = document.querySelectorAll('#colorPickerEdit div');
+        colorDivs.forEach(div => {
+            if (div.style.backgroundColor === currentColor) {
+                div.style.border = '2px solid black';
+            } else {
+                div.style.border = 'none';
+            }
+        });
+
+        // Open the modal (Bootstrap 5)
+        const editModal = new bootstrap.Modal(document.getElementById('editModal'));
+        editModal.show();
+
+        // Store noteId in hidden input if needed for form submission
+        document.getElementById('editNoteId').value = noteId;
+    }
+</script>
+<!-- COLOR PICKER STYLES -->
+<style>
+    .color-picker {
+        padding: 5px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        display: inline-block;
+    }
+
+        .color-picker div {
+            width: 25px;
+            height: 25px;
+            display: inline-block;
+            margin: 2px;
+            cursor: pointer;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            transition: transform 0.2s;
+        }
+
+            .color-picker div:hover {
+                transform: scale(1.2);
+            }
+</style>

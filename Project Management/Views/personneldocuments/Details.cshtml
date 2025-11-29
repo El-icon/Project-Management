@@ -1,0 +1,425 @@
+﻿@model Project_Management.Models.personneldocument
+ 
+@{ ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    Project_Management.Models.project_managementEntities db = new Project_Management.Models.project_managementEntities();
+    Project_Management.Controllers.PackagesController tech = new Project_Management.Controllers.PackagesController();
+
+    int sn = 0;
+}
+
+@using Project_Management.setup;
+
+
+<main>
+    <div class="row">
+        <div class="col-md-12 col-xl-3">
+            <div class="card">
+                <div class="card-body">
+                    <div class="profile-widgets py-3">
+
+                        <div class="text-center">
+
+
+                            <div class="mt-3 ">
+                                <div class="card">
+                                    <div class="card-body text-start">
+                                        <h5 class="card-title mb-4">DETAILS</h5>
+                                        <div class="mb-3">
+                                            <label class="fw-bold">Article Title</label>
+                                            <div>@Html.DisplayFor(model => model.document.name)</div>
+                                        </div>
+
+                                        <div class="mb-3">
+                                            <label class="fw-bold">Category Name</label>
+                                            <div>@Html.DisplayFor(model => model.personel_files_cat.cat_name)</div>
+                                        </div>
+
+                                        <div class="mb-3">
+                                            <label class="fw-bold">Description</label>
+                                            <div class="text-wrap">
+                                                @Html.Raw(Project_Management.setup.setEditor.getTextString(Model.document.description ?? ""))
+                                            </div>
+                                        </div>
+
+                                        @* loop over every file that shares the same category (i.e. the same group *@
+                                        <div class="mb-3">
+                                            <label class="fw-bold">Files</label>
+                                            <div>
+                                                @{ var docsForThisTitle = db.personneldocuments
+                                                                                  .Where(f => f.document.name == Model.document.name)   // same articletitle
+                                                                                  .Select(f => new { /*f.files,*/ f.url })
+                                                                                  .ToList();
+                                                }
+                                                @if (docsForThisTitle.Any())
+                                                {
+                                                    <ul class="list-unstyled mb-0">
+                                                        @foreach (var doc in docsForThisTitle)
+                                                        {
+                                                            <li>
+                                                                <a href="@doc.url" target="_blank">@doc.url</a>
+                                                            </li>
+                                                            <li class="menu-divider">
+                                                                <hr />
+                                                            </li>
+                                                        }
+                                                    </ul>
+                                                }
+                                                else
+                                                {
+                                                    <span class="text-muted">No documents for this article title.</span>
+                                                }
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                            </div>
+
+                            <div class="mt-4">
+
+                                <button data-toggle="modal" data-target="#postModal" class="btn btn-lg btn btn-success btn-block" title="">
+                                    Upload Document
+                                </button>
+                                <br />
+                                <br />
+                                <br />
+                                <div class="row">
+                                    <div class="col-md-12 text-center">
+                                        <a href="@Url.Action("Edit", "personneldocuments", new { id = Model.id })" class="btn btn-warning">Edit</a>
+
+                                        <a href="@Url.Action("Index", "personneldocuments")" class="btn btn-primary">Back to List</a>
+                                    </div>
+                                </div>
+
+                                @{
+                                    string fl = "29:120:43";
+
+                                    string hrs = fl.Substring(0, fl.IndexOf(':'));
+                                    string mins = fl.Substring(fl.IndexOf(':') + 1, fl.LastIndexOf(':') - fl.IndexOf(':') - 1);
+                                    string secs = fl.Substring(fl.LastIndexOf(':') + 1, fl.Length - fl.LastIndexOf(':') - 1);
+                                    //
+                                    TimeSpan time2 = new TimeSpan(int.Parse(hrs), int.Parse(mins), int.Parse(secs));
+                                }
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+        <div class="col-md-12 col-xl-9">
+            <div class="card">
+                <div class="card-body">
+
+                    <h4 class="card-title">
+                        @Html.DisplayFor(model => model.document.name)
+                    </h4>
+                    <p class="card-title-desc">
+                    </p>
+
+                    <div class="accordion" id="accordionExample">
+                        @foreach (var docs in db.personneldocuments
+                                                 .GroupBy(p => p.cat_id)
+                                                 .OrderBy(p => p.FirstOrDefault().personel_files_cat.cat_name)
+                                                 .ToList())
+                        {
+                            sn = 0;
+                            foreach (var item in docs
+                                                 .Where(p => p.documentid == Model.documentid)   // ✅ show all files for the same document
+                                                 .OrderBy(p => p.doc_order)
+                                                 .ToList())
+                            {
+                                sn++;
+                                DateTime xpDate = Convert.ToDateTime(item.expdate);
+                                var days = (xpDate.Date - DateTime.Now).Days;
+
+
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="header_@item.id">
+                                        <button class="accordion-button collapsed"
+                                                type="button"
+                                                data-bs-toggle="collapse"
+                                                data-bs-target="#_@item.id"
+                                                aria-expanded="false"
+                                                aria-controls="_@item.id">
+                                            @sn | @item.personel_files_cat.cat_name
+                                        </button>
+                                    </h2>
+                                    <div id="_@item.id" class="accordion-collapse collapse" aria-labelledby="header_@item.id" data-bs-parent="#accordionExample">
+                                        <div class="accordion-body">
+                                            <button data-toggle="modal" data-target="#modal_@item.id" class="btn btn-primary">Change Documents</button>
+                                            <button data-toggle="modal" data-target="#modal_edit_@item.id" class="btn btn-success">Edit Documents</button>
+                                            <a href="#" data-toggle="modal" data-target="#modal_delete_@item.id" class="btn btn-danger">Delete Documents</a>
+
+                                            <!--=================== CHANGE DOCUMENT ===================-->
+                                            <div id="modal_@item.id" class="modal fade" role="dialog">
+                                                <div class="modal-dialog modal-xl">
+                                                    <!-- Modal content-->
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h4 class="modal-title">Change Documents</h4>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <form method="post" action="@Url.Action("updateDocument", "personneldocuments")" enctype="multipart/form-data">
+                                                                <input type="hidden" name="id" value="@item.id" />
+                                                                @Html.AntiForgeryToken()
+
+                                                                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                                                <div class="row">
+                                                                    <div class="col-md-12">
+                                                                        <label>Select New Document</label>
+
+                                                                        <input type="file" name="file" id="file" class="form-control" accept=".pdf,image/*" />
+
+                                                                        <!-- Preview Container -->
+                                                                        <div id="previewContainer" style="margin-top:10px; display:none;">
+                                                                            <img id="previewImg" src="#" alt="Image Preview" style="max-width:300px; display:none;" />
+                                                                            <object id="previewPdf" type="application/pdf" width="600" height="800" style="display:none; width:100%;"></object>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <br />
+                                                                <div class="row">
+                                                                    <div class="col-md-12 text-center">
+                                                                        <input type="submit" value="Submit" class="btn btn-success" />
+                                                                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                                                    </div>
+                                                                </div>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+
+                                            <!--=================== EDIT DOCUMENT ===================-->
+                                            <div id="modal_edit_@item.id" class="modal fade" role="dialog">
+                                                <div class="modal-dialog modal-xl">
+                                                    <!-- Modal content-->
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h4 class="modal-title">Edit Documents</h4>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <form method="post" action="@Url.Action("EditDocument", "personneldocuments")" enctype="multipart/form-data">
+                                                                <input type="hidden" name="id" value="@item.id" />
+                                                                @Html.AntiForgeryToken()
+
+                                                                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                                                <div class="row">
+                                                                    <div class="col-md-6">
+                                                                        <label>Article Title</label>
+                                                                        <select name="documentid" class="form-control" required="">
+                                                                            <option value="@item.document.id">@item.document.name</option>
+                                                                            @foreach (var row in db.documents.OrderBy(p => p.name).ToList())
+                                                                            {
+                                                                                <option value="@row.id">@row.name</option>
+                                                                            }
+                                                                        </select>
+                                                                    </div>
+                                                                    <div class="col-md-6">
+                                                                        <label>Adminfaq Category</label>
+                                                                        <select name="cat" class="form-control" required="">
+                                                                            @foreach (var row in db.personel_files_cat.OrderBy(p => p.cat_name).ToList())
+                                                                            {
+                                                                                <option value="@row.id">@row.cat_name</option>
+                                                                            }
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+
+                                                                @*<br />
+
+                                                                <div class="row">
+                                                                    <div class="col-md-12">
+                                                                        <label>Adminfaq Category</label>
+                                                                        <select name="cat" class="form-control" required="">
+                                                                            @foreach (var row in db.personel_files_cat.OrderBy(p => p.cat_name).ToList())
+                                                                            {
+                                                                                <option value="@row.id">@row.cat_name</option>
+                                                                            }
+                                                                        </select>
+                                                                    </div>
+                                                                </div>*@
+
+                                                                @*<br />
+
+                                                                <div class="form-group">
+                                                                    <div class="row">
+                                                                        <div class="col-md-12">
+                                                                            <label>
+                                                                                Description
+                                                                            </label>
+                                                                            <textarea class="form-control" @setEditor.getTextString(item.description) rows="15" id="description" name="description">@setEditor.getTextString(item.description)</textarea>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>*@
+
+
+                                                                <br />
+                                                                <div class="row text-center">
+                                                                    <div class="col-md-12">
+                                                                        <button type="submit" class="btn btn-success">Save Changes </button>
+                                                                        <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                                                                    </div>
+                                                                </div>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+                                            <!--=================== DELETE DOCUMENT ===================-->
+                                            <div id="modal_delete_@item.id" class="modal fade" role="dialog">
+                                                <div class="modal-dialog">
+                                                    <!-- Modal content-->
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h4 class="modal-title">Delete Documents</h4>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <form method="post" action="@Url.Action("DeleteDocument", "personneldocuments")">
+                                                                @Html.AntiForgeryToken()
+                                                                <input type="hidden" name="id" value="@item.id" />
+                                                                <div class="row text-center">
+                                                                    <div class="col-md-12">
+                                                                        <p>Are you sure you want to delete the <strong>file</strong> for this document?</p>
+                                                                    </div>
+
+                                                                    <br />
+
+                                                                    <div class="col-md-12">
+                                                                        <button type="submit" class="btn btn-danger">Delete</button>
+                                                                        <button type="button" class="btn btn-primary" data-dismiss="modal">No</button>
+                                                                    </div>
+                                                                </div>
+                                                            </form>
+                                                        </div>
+                                                        <div class="modal-footer">
+
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+
+
+                                            <hr />
+                                            <object data="@item.url" type="application/pdf" style="height:700px; width:100%;"></object>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                            <hr />
+                        }
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</main>
+
+
+
+<!---------------------- UPLOAD DOCUMENT ------------------------>
+<div id="postModal" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-xl">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h6>
+                    UPLOAD DOCUMENT
+                </h6>
+            </div>
+            <div class="modal-body">
+                <form method="post" action="@Url.Action("Uploaddocument","personneldocuments")" enctype="multipart/form-data">
+                  
+                    <input type="hidden" name="id" value="@Model.id" />   <!-- instead of cat_id -->
+                    <input type="hidden" name="documentid" value="@Model.documentid" />
+
+
+                    @Html.AntiForgeryToken()
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label for="packageType">
+                                    Category
+                                </label>
+                                <select class="form-control" name="cat" required="">
+                                    <option> Select Category</option>
+                                    @foreach (var item in db.personel_files_cat.ToList())
+                                    {
+                                        <option value="@item.id">@item.cat_name </option>
+                                    }
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="col-md-12">
+                                    <label>Doc. Order</label>
+                                    <input type="text" name="doc_order" id="doc_order" required="" class="form-control" value="" />
+                                </div>
+                            </div>
+                        </div>
+
+                        <br>
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <label for="maxEmployees">
+                                    Add Files
+                                </label>
+
+                                <input type="file" name="file" id="file" class="form-control" accept=".pdf,image/*" />
+
+                                <!-- Preview Container -->
+                                <div id="previewContainer" style="margin-top:10px; display:none;">
+                                    <img id="previewImg" src="#" alt="Image Preview" style="max-width:300px; display:none;" />
+                                    <object id="previewPdf" type="application/pdf" width="600" height="800" style="display:none; width:100%;"></object>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <br />
+                    <div class="row">
+                        <div class="col-md-12 text-center">
+                            <input type="submit" value="Submit" class="btn btn-success" />
+                            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>document.getElementById('dates').valueAsDate = new Date();</script>
+

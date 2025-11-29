@@ -1,0 +1,99 @@
+﻿@model Project_Management.Models.personneldocument
+
+@{ ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    Project_Management.Models.project_managementEntities db = new Project_Management.Models.project_managementEntities();
+    Project_Management.Controllers.PackagesController tech = new Project_Management.Controllers.PackagesController();
+
+    int sn = 0;
+}
+
+@using Project_Management.setup;
+
+
+
+
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title"> Edit @Model.document.name </h4>
+
+                <div class="modal-body">
+                    <form method="post" action="@Url.Action("EditAdminfaq","personneldocuments")" enctype="multipart/form-data">
+                        <input type="hidden" name="id" value="@Model.id" />
+                        @Html.AntiForgeryToken()
+
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label for="packageName">Article Title</label>
+                                    <input type="text" class="form-control" value="@Model.document.name" name="name" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="packageType">
+                                        Category
+                                    </label>
+                                    <select class="form-control" name="cat_id" required>
+                                        <option value="@Model.personel_files_cat.id">@Model.personel_files_cat.cat_name</option>
+                                        @foreach (var c in db.personel_files_cat.ToList())
+                                        {
+                                            <option value="@c.id">@c.cat_name</option>
+                                        }
+                                    </select>
+                                </div>
+                            </div>
+
+                            <br>
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <label for="packageType">
+                                        Description
+                                    </label>
+                                    <textarea class="form-control" aria-label="With textarea" rows="5" id="description" name="description">
+@Html.Raw(HttpUtility.HtmlEncode(setEditor.getTextString(Model.description) ))</textarea>
+                                </div>
+                            </div>
+
+                            <br>
+
+                            <!--<div class="row">
+                                <div class="col-md-12">
+                                    <label for="maxEmployees">
+                                        Add Files
+                                    </label>
+
+                                    <input type="file" name="file" id="file" class="form-control" accept=".pdf,image/*" required />-->
+
+                                    <!-- Preview Container -->
+                                    <!--<div id="previewContainer" style="margin-top:10px; display:none;">
+                                        <img id="previewImg" src="#" alt="Image Preview" style="max-width:300px; display:none;" />
+                                        <object id="previewPdf" type="application/pdf" width="600" height="400" style="display:none; width:100%;"></object>
+                                    </div>
+                                </div>
+                            </div>-->
+
+                        </div>
+
+                        <br />
+                        <div class="row">
+                            <div class="col-md-12 text-center">
+                                <input type="submit" value="Create" class="btn btn-success" />
+                                <a href="@Url.Action("Index", "personneldocuments")" class="btn btn-primary">Back to List</a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+ 

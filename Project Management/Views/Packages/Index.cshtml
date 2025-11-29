@@ -1,0 +1,598 @@
+﻿@model IEnumerable<Project_Management.Models.Package>
+@{
+    ViewBag.Title = "Packages";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    Project_Management.Models.project_managementEntities db =
+        new Project_Management.Models.project_managementEntities();
+    int sn = 0;
+}
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Packages</h4>
+                <br />
+                <button class="btn btn-primary waves-effect waves-light"
+                        data-toggle="modal" data-target="#create">
+                    <i class="mdi mdi-plus-circle-outline"></i>
+                    Create New Package
+                </button>
+                <br /><br />
+
+                <!-- =====  TABLE  ===== -->
+                <div class="card">
+                    <div class="card-body">
+                        <div class="table-rep-plugin">
+                            <div class="table-responsive mb-0" data-pattern="priority-columns">
+                                <table id="datatable-buttons"
+                                       class="table table-striped table-bordered">
+                                    <thead class="thead-light">
+                                        <tr class="text-center">
+                                            <th>SN</th>
+                                            <th>PACKAGE NAME</th>
+                                            <th>PACKAGE TYPE</th>
+                                            <th>PACKAGE CAT</th>
+                                            <th>MODULES</th>
+                                            <th>ACTIONS</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var item in db.Packages.OrderBy(p => p.packagename))
+                                        {
+                                            sn++;
+                                            <!-- 34 module names – keep in sync with DB columns 1-34 -->
+                                            var moduleNames = new[]
+                                            {
+                                                "Clients","Invoices","Employees","Projects","Attendance",
+                                                "Leaves","Payments","Tasks","Tickets","Events",
+                                                "Reports","Leads","Messages","Products","Expenses",
+                                                "Contracts","Orders","Knowledge Base","Bank Account","Assets",
+                                                "Zoom","Recruit","Payroll","Purchases","Letter",
+                                                "QR Code","Biolinks","Performance","Biometric","Holidays",
+                                                "Time Logs","Notices","Estimates","ServerManager"
+                                            };
+                                            var flags = Enumerable.Range(1, 34)
+                                                                  .Select(i => (bool)typeof(Project_Management.Models.Package)
+                                                                                  .GetProperty($"moduleinpackage{i}")
+                                                                                  .GetValue(item))
+                                                                  .ToArray();
+
+                                        <tr>
+                                            <td class="align-middle text-center">@sn</td>
+                                            <td class="align-middle text-center"><b>@item.packagename</b></td>
+                                            <td class="align-middle text-center">@item.packagetype</td>
+                                            <td class="align-middle text-center">@item.packagecategory</td>
+
+                                            <!-- =====  MODULES (green ✔ / red ✘)  ===== -->
+                                            <td class="align-middle">
+                                                <div class="row small text-left">
+                                                    @for (int col = 0; col < 3; col++)
+                                                    {
+                                                        <div class="col-4">
+                                                            @for (int i = col * 12; i < Math.Min((col + 1) * 12, 34); i++)
+                                                            {
+                                                                <div class="mb-1">
+                                                                    @if (flags[i])
+                                                                    {
+                                                                        <i class="fa fa-check-circle text-success"></i>
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        <i class="fa fa-times-circle text-danger"></i>
+                                                                    }
+                                                                    @moduleNames[i]
+                                                                </div>
+                                                            }
+                                                        </div>
+                                                    }
+                                                </div>
+                                            </td>
+
+                                            <!-- =====  ACTIONS  ===== -->
+                                             <td class="align-middle text-center">
+                                                <a href="#edit_@item.id" data-toggle="modal" class="btn btn-sm btn-info"
+                                                   title="Edit"><i class="fa fa-edit"></i></a>
+                                                <a href="#view_@item.id" data-toggle="modal" class="btn btn-sm btn-success"
+                                                   title="Details"><i class="fa fa-info"></i></a>
+                                                <a href="#delete_@item.id" data-toggle="modal" class="btn btn-sm btn-danger"
+                                                   title="Delete"><i class="fa fa-trash"></i></a>
+
+
+
+
+                                                <!---------------------- EDIT------------------------>
+                                                <div id="edit_@item.id" class="modal fade" role="dialog">
+                                                    <div class="modal-dialog modal-xl">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header text-center">
+                                                                <h5 class="modal-title mb-0">
+                                                                    Edit Package
+                                                                </h5>
+                                                                <button type="button" class="close text-white" data-dismiss="modal">&times;</button>
+                                                            </div>
+
+                                                            @using (Html.BeginForm("Edit", "Packages", FormMethod.Post, new { @class = "custom-validation" }))
+                                                            {
+                                                                @Html.AntiForgeryToken()
+                                                                <input type="hidden" name="id" value="@item.id" />
+
+                                                                <div class="modal-body">
+                                                                    <!--  BASIC FIELDS  -->
+                                                                    <div class="row">
+                                                                        <div class="col-md-4">
+                                                                            <label>Package Name</label>
+                                                                            <input type="text" name="packagename" class="form-control" value="@item.packagename" required />
+                                                                        </div>
+                                                                        <div class="col-md-4">
+                                                                            <label>Package Type</label>
+                                                                            <select name="packagetype" class="form-control" required>
+                                                                                <option value="@item.packagetype" selected>@item.packagetype</option>
+                                                                                <option value="Paid Plan">Paid Plan</option>
+                                                                                <option value="Free Plan">Free Plan</option>
+                                                                            </select>
+                                                                        </div>
+                                                                        <div class="col-md-4">
+                                                                            <label>Package Category</label>
+                                                                            <select name="packagecategory" class="form-control" required>
+                                                                                <option value="@item.packagecategory" selected>@item.packagecategory</option>
+                                                                                <option>Standard</option>
+                                                                                <option>Premium</option>
+                                                                                <option>Basic</option>
+                                                                            </select>
+                                                                        </div>
+                                                                    </div>
+                                                                    <br />
+
+                                                                    <div class="row">
+                                                                        <div class="col-md-4">
+                                                                            <label>Max Employees</label>
+                                                                            <input type="text" name="maxemployees" class="form-control" value="@item.maxemployees" />
+                                                                        </div>
+                                                                        <div class="col-md-4">
+                                                                            <label>Max Storage Size (MB)</label>
+                                                                            <input type="text" name="filestoragemb" class="form-control" value="@item.filestoragemb" required />
+                                                                        </div>
+                                                                        <div class="col-md-4">
+                                                                            <label>Payment Gateway Currency</label>
+                                                                            <select name="currency" class="form-control" required>
+                                                                                <option value="@item.currency" selected>@item.currency</option>
+                                                                                <option>N (NAIRA)</option>
+                                                                                <option>$ (USD)</option>
+                                                                                <option>€ (EUR)</option>
+                                                                                <option>£ (GBP)</option>
+                                                                            </select>
+                                                                        </div>
+                                                                    </div>
+                                                                    <br />
+
+                                                                    <div class="row">
+                                                                        <div class="col-md-4">
+                                                                            <label>Monthly Plan</label>
+                                                                            <input type="text" name="monthlyprice" class="form-control" value="@item.monthlyprice" required />
+                                                                        </div>
+                                                                        <div class="col-md-4">
+                                                                            <label>Annual Plan</label>
+                                                                            <input type="text" name="annualprice" class="form-control" value="@item.annualprice" required />
+                                                                        </div>
+                                                                        <div class="col-md-4">
+                                                                            <label>Status</label>
+                                                                            <select name="status" class="form-control" required>
+                                                                                <option value="@item.status" selected>@item.status</option>
+                                                                                <option>Active</option>
+                                                                                <option>InActive</option>
+                                                                                <option>Suspended</option>
+                                                                            </select>
+                                                                        </div>
+                                                                    </div>
+                                                                    <br />
+
+                                                                    <!--  CENTRED  4-COLUMN  MODULES  -->
+                                                                    <div class="text-center mb-3">
+                                                                        <label class="font-weight-bold">Select Modules for this package</label>
+                                                                    </div>
+
+                                                                    <div class="row justify-content-center">
+                                                                        @{ var mods = new[]
+                                                                                    {
+                                                                                    ("moduleinpackage1","Clients"),  ("moduleinpackage2","Invoices"),
+                                                                                    ("moduleinpackage3","Employees"),("moduleinpackage4","Projects"),
+                                                                                    ("moduleinpackage5","Attendance"),("moduleinpackage6","Leaves"),
+                                                                                    ("moduleinpackage7","Payments"),("moduleinpackage8","Tasks"),
+                                                                                    ("moduleinpackage9","Tickets"),("moduleinpackage10","Events"),
+                                                                                    ("moduleinpackage11","Reports"),("moduleinpackage12","Leads"),
+                                                                                    ("moduleinpackage13","Messages"),("moduleinpackage14","Products"),
+                                                                                    ("moduleinpackage15","Expenses"),("moduleinpackage16","Contracts"),
+                                                                                    ("moduleinpackage17","Orders"),("moduleinpackage18","Knowledge Base"),
+                                                                                    ("moduleinpackage19","Bank Account"),("moduleinpackage20","Assets"),
+                                                                                    ("moduleinpackage21","Zoom"),("moduleinpackage22","Recruit"),
+                                                                                    ("moduleinpackage23","Payroll"),("moduleinpackage24","Purchases"),
+                                                                                    ("moduleinpackage25","Letter"),("moduleinpackage26","QR Code"),
+                                                                                    ("moduleinpackage27","Bio Links"),("moduleinpackage28","Performance"),
+                                                                                    ("moduleinpackage29","Biometric"),("moduleinpackage30","Holidays"),
+                                                                                    ("moduleinpackage31","Time logs"),("moduleinpackage32","Notices"),
+                                                                                    ("moduleinpackage33","Estimates"),("moduleinpackage34","Server Manager"),
+                                                                                };
+                                                                        }
+
+                                                                        @for (int col = 0; col < 4; col++)
+                                                                        {
+                                                                            <div class="col-auto">
+                                                                                @for (int i = col * 9; i < Math.Min((col + 1) * 9, mods.Length); i++)
+                                                                                {
+                                                                                    bool isChecked = (bool)typeof(Project_Management.Models.Package)
+                                                                                                       .GetProperty(mods[i].Item1)
+                                                                                                       .GetValue(item);
+                                                                                    <div class="form-check mb-2 text-left">
+                                                                                        <input type="checkbox" name="@mods[i].Item1" value="true"
+                                                                                               class="form-check-input" id="@mods[i].Item1" @(isChecked ? "checked" : "") />
+                                                                                        <label class="form-check-label" for="@mods[i].Item1">
+                                                                                            @mods[i].Item2
+                                                                                        </label>
+                                                                                        <input type="hidden" name="@mods[i].Item1" value="false" />
+                                                                                    </div>
+                                                                                }
+                                                                            </div>
+                                                                        }
+                                                                    </div>
+
+                                                                    <br />
+                                                                    <div class="row">
+                                                                        <div class="col-md-12">
+                                                                            <label>Description</label>
+                                                                            <textarea name="description" class="form-control" rows="5">@item.description</textarea>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+
+                                                                <br />
+                                                                <div class="row">
+                                                                    <div class="col-md-12 text-center">
+                                                                        <button type="submit" class="btn btn-success">Update</button>
+                                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                                    </div>
+                                                                </div>
+                                                                <br /> <br />
+                                                            }
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+
+                                                <!---------------------- DETAILS------------------------>
+                                                <div id="view_@item.id" class="modal fade" role="dialog">
+                                                    <div class="modal-dialog modal-xl">
+                                                        <!-- Modal content-->
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h4 class="modal-title">
+                                                                    Detail of Package
+                                                                </h4>
+                                                            </div>
+                                                            <div class="modal-body">
+
+                                                                <form class="custom-validation" action="@Url.Action("Details","Packages")" method="post">
+                                                                    @Html.AntiForgeryToken()
+                                                                    <input type="hidden" name="id" value="@item.id" />
+                                                                    <div class="form-group">
+                                                                        <div class="row">
+                                                                            <div class="col-md-4">
+                                                                                <label for="packageName">Package Name</label>
+                                                                                <input type="text" class="form-control" id="name" name="name" value="@item.packagename" readonly />
+                                                                            </div>
+                                                                            <div class="col-md-4">
+                                                                                <label for="packageType">
+                                                                                    Package Type
+                                                                                </label>
+                                                                                <input type="text" class="form-control" id="packagetype" name="packagetype" value="@item.packagetype" readonly />
+                                                                            </div>
+                                                                            <div class="col-md-4">
+                                                                                <label for="packageType">
+                                                                                    Package Category
+                                                                                </label>
+                                                                                <input type="text" class="form-control" id="packagecategory" name="packagecategory" value="@item.packagecategory" readonly />
+                                                                            </div>
+                                                                        </div>
+
+                                                                        <br>
+
+                                                                        <div class="row">
+                                                                            <div class="col-md-4">
+                                                                                <label for="maxEmployees">Max Employees</label>
+                                                                                <input type="text" class="form-control" id="maxemployees" name="maxemployees" value="@item.maxemployees" readonly />
+                                                                            </div>
+                                                                            <div class="col-md-4">
+                                                                                <label for="maxStorageSize">Max Storage Size</label>
+                                                                                <input type="text" class="form-control" id="filestoragemb" name="filestoragemb" value="@item.filestoragemb" readonly />
+                                                                            </div>
+                                                                            <div class="col-md-4">
+                                                                                <label for="storageUnit">Payment Gateway Currency</label>
+                                                                                <input type="text" class="form-control" id="currency" name="currency" value="@item.currency" readonly />
+                                                                            </div>
+                                                                        </div>
+
+
+                                                                        <br>
+
+                                                                        <div class="row">
+                                                                            <div class="col-md-4">
+                                                                                <label class="form-check-label" for="monthlyPlan">Monthly Plan</label>
+                                                                                <input type="text" class="form-control" id="monthlyprice" name="monthlyprice" value="@item.monthlyprice" readonly />
+                                                                            </div>
+
+                                                                            <div class="col-md-4">
+                                                                                <label class="form-check-label" for="annualPlan">Annual Plan</label>
+                                                                                <input type="text" class="form-control" id="annualprice" name="annualprice" value="@item.annualprice" readonly />
+                                                                            </div>
+                                                                            <div class="col-md-4">
+                                                                                <label class="form-check-label" for="status">Status</label>
+                                                                                <input type="text" class="form-control" id="st" name="status" value="@item.status" readonly />
+                                                                            </div>
+                                                                        </div>
+
+
+                                                                        <br>
+
+
+
+                                                                        <!-- =====  34-MODULE ICON GRID  ===== -->
+                                                                        @{
+                                                                            var moduleNamess = new[]
+                                                                                                                                                {
+                                                                                    "Clients","Invoices","Employees","Projects","Attendance",
+                                                                                    "Leaves","Payments","Tasks","Tickets","Events",
+                                                                                    "Reports","Leads","Messages","Products","Expenses",
+                                                                                    "Contracts","Orders","Knowledge Base","Bank Account","Assets",
+                                                                                    "Zoom","Recruit","Payroll","Purchases","Letter",
+                                                                                    "QR Code","Biolinks","Performance","Biometric","Holidays",
+                                                                                    "Time Logs","Notices","Estimates","ServerManager"
+                                                                                };
+                                                                            var flagss = Enumerable.Range(1, 34)
+                                                                                                  .Select(i => (bool)typeof(Project_Management.Models.Package)
+                                                                                                                  .GetProperty($"moduleinpackage{i}")
+                                                                                                                  .GetValue(item))
+                                                                                                  .ToArray();
+                                                                        }
+
+                                                                        <div class="mt-4">
+                                                                            <h6 class="text-center text-muted mb-3">Package Modules</h6>
+                                                                            <div class="row justify-content-center text-left">
+                                                                                @for (int col = 0; col < 3; col++)
+                                                                                {
+                                                                                    <div class="col-4">
+                                                                                        @for (int i = col * 12; i < Math.Min((col + 1) * 12, 34); i++)
+                                                                                        {
+                                                                                            <div class="mb-1">
+                                                                                                @if (flags[i])
+                                                                                                {
+                                                                                                    <i class="fa fa-check-circle text-success"></i>
+                                                                                                }
+                                                                                                else
+                                                                                                {
+                                                                                                    <i class="fa fa-times-circle text-danger"></i>
+                                                                                                }
+                                                                                                @moduleNames[i]
+                                                                                            </div>
+                                                                                        }
+                                                                                    </div>
+                                                                                }
+                                                                            </div>
+                                                                        </div>
+
+                                                                        <br />
+
+                                                                        <div class="form-group">
+                                                                            <div class="row">
+                                                                                <div class="col-md-12">
+                                                                                    <label>
+                                                                                        Description
+                                                                                    </label>
+                                                                                    <textarea class="form-control" aria-label="With textarea" rows="5" id="description" name="description" readonly value="@item.description">@item.description</textarea>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+
+                                                                    </div>
+                                                                    <br />
+                                                                    <div class="row">
+                                                                        <div class="col-md-12 text-center">
+                                                                            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                                                        </div>
+                                                                    </div>
+                                                                </form>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+
+                                                <!---------------------- DELETE------------------------>
+                                                <div id="delete_@item.id" class="modal fade" role="dialog">
+                                                    <div class="modal-dialog">
+
+                                                        <!-- Modal content-->
+                                                        <div class="modal-content">
+                                                            <div class="modal-header text-center">
+                                                                <h4 class="text-danger">ARE YOU SURE YOU WANT TO DELETE</h4>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                <H3 class="text-center">
+                                                                    @item.packagename
+                                                                </H3>
+                                                                <form class="" action="@Url.Action("delete","Packages")" method="post">
+                                                                    @Html.AntiForgeryToken()
+                                                                    <input type="hidden" name="id" value="@item.id" />
+
+                                                                    <br />
+
+                                                                    <div class="row">
+                                                                        <div class="col-md-12 text-center">
+                                                                            <button type="submit" class="btn btn-success">Yes</button>
+                                                                            <button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
+                                                                        </div>
+                                                                    </div>
+                                                                </form>
+                                                            </div>
+
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+
+
+                                            </td>
+                                        </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Create Modal -->
+<div id="create" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-header"><h6>Create Package</h6></div>
+            @using (Html.BeginForm("Create", "Packages", FormMethod.Post, new { @class = "custom-validation" }))
+            {
+                @Html.AntiForgeryToken()
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <label>Package Name</label>
+                            <input type="text" name="packagename" class="form-control" required />
+                        </div>
+                        <div class="col-md-4">
+                            <label>Package Type</label>
+                            <select name="packagetype" class="form-control" required>
+                                <option disabled selected>Please Select</option>
+                                <option>Paid Plan</option>
+                                <option>Free Plan</option>
+                            </select>
+                        </div>
+                        <div class="col-md-4">
+                            <label>Package Category</label>
+                            <select name="packagecategory" class="form-control" required>
+                                <option disabled selected>Please Select</option>
+                                <option>Standard</option>
+                                <option>Premium</option>
+                                <option>Basic</option>
+                            </select>
+                        </div>
+                    </div>
+                    <br />
+                    <div class="row">
+                        <div class="col-md-4">
+                            <label>Max Employees</label>
+                            <input type="text" name="maxemployees" class="form-control" />
+                        </div>
+                        <div class="col-md-4">
+                            <label>Max Storage Size (MB)</label>
+                            <input type="text" name="filestoragemb" class="form-control" required />
+                        </div>
+                        <div class="col-md-4">
+                            <label>Payment Gateway Currency</label>
+                            <select name="currency" class="form-control" required>
+                                <option disabled selected>Please Select</option>
+                                <option>N (NAIRA)</option>
+                                <option>$ (USD)</option>
+                                <option>€ (EUR)</option>
+                                <option>£ (GBP)</option>
+                            </select>
+                        </div>
+                    </div>
+                    <br />
+                    <div class="row">
+                        <div class="col-md-4">
+                            <label>Monthly Plan</label>
+                            <input type="text" name="monthlyprice" class="form-control" required />
+                        </div>
+                        <div class="col-md-4">
+                            <label>Annual Plan</label>
+                            <input type="text" name="annualprice" class="form-control" required />
+                        </div>
+                        <div class="col-md-4">
+                            <label>Status</label>
+                            <select name="status" class="form-control" required>
+                                <option disabled selected>Please Select</option>
+                                <option>Active</option>
+                                <option>InActive</option>
+                                <option>Suspended</option>
+                            </select>
+                        </div>
+                    </div>
+                    <br />
+
+                    <!--  CENTRED  4-COLUMN  MODULES  -->
+                    <div class="text-center mb-3">
+                        <label class="font-weight-bold">Select Modules for this package</label>
+                    </div>
+
+                    <div class="row justify-content-center">
+                        @{ var mods = new[]
+                               {
+            ("moduleinpackage1","Clients"),  ("moduleinpackage2","Invoices"),
+            ("moduleinpackage3","Employees"),("moduleinpackage4","Projects"),
+            ("moduleinpackage5","Attendance"),("moduleinpackage6","Leaves"),
+            ("moduleinpackage7","Payments"),("moduleinpackage8","Tasks"),
+            ("moduleinpackage9","Tickets"),("moduleinpackage10","Events"),
+            ("moduleinpackage11","Reports"),("moduleinpackage12","Leads"),
+            ("moduleinpackage13","Messages"),("moduleinpackage14","Products"),
+            ("moduleinpackage15","Expenses"),("moduleinpackage16","Contracts"),
+            ("moduleinpackage17","Orders"),("moduleinpackage18","Knowledge Base"),
+            ("moduleinpackage19","Bank Account"),("moduleinpackage20","Assets"),
+            ("moduleinpackage21","Zoom"),("moduleinpackage22","Recruit"),
+            ("moduleinpackage23","Payroll"),("moduleinpackage24","Purchases"),
+            ("moduleinpackage25","Letter"),("moduleinpackage26","QR Code"),
+            ("moduleinpackage27","Bio Links"),("moduleinpackage28","Performance"),
+            ("moduleinpackage29","Biometric"),("moduleinpackage30","Holidays"),
+            ("moduleinpackage31","Time logs"),("moduleinpackage32","Notices"),
+            ("moduleinpackage33","Estimates"),("moduleinpackage34","Server Manager"),
+        };
+                        }
+
+                        @for (int col = 0; col < 4; col++)
+                        {
+                            <div class="col-auto">
+                                @for (int i = col * 9; i < Math.Min((col + 1) * 9, mods.Length); i++)
+                                {
+                                    <div class="form-check mb-2 text-left">
+                                        <input type="checkbox" name="@mods[i].Item1" value="true"
+                                               class="form-check-input" id="@mods[i].Item1" />
+                                        <label class="form-check-label" for="@mods[i].Item1">
+                                            @mods[i].Item2
+                                        </label>
+                                        <input type="hidden" name="@mods[i].Item1" value="false" />
+                                    </div>
+                                }
+                            </div>
+                        }
+                    </div>
+
+                    <br />
+                    <div class="row">
+                        <div class="col-md-12">
+                            <label>Description</label>
+                            <textarea name="description" class="form-control" rows="5"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        <button type="submit" class="btn btn-success">Update</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+                <br /> <br />
+            }
+        </div>
+    </div>
+</div>
