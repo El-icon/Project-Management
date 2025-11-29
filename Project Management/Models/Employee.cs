@@ -18,6 +18,7 @@ namespace Project_Management.Models
         public Employee()
         {
             this.Appreciatiions = new HashSet<Appreciatiion>();
+            this.Deals = new HashSet<Deal>();
             this.Lead_Contact = new HashSet<Lead_Contact>();
             this.Lead_Contact1 = new HashSet<Lead_Contact>();
             this.Leaves = new HashSet<Leave>();
@@ -52,6 +53,8 @@ namespace Project_Management.Models
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Appreciatiion> Appreciatiions { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Deal> Deals { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Lead_Contact> Lead_Contact { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

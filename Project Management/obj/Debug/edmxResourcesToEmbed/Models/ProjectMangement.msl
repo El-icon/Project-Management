@@ -217,6 +217,7 @@
     <EntitySetMapping Name="Deals">
       <EntityTypeMapping TypeName="project_managementModel.Deal">
         <MappingFragment StoreEntitySet="Deals">
+          <ScalarProperty Name="employeeid" ColumnName="employeeid" />
           <ScalarProperty Name="insertdate" ColumnName="insertdate" />
           <ScalarProperty Name="dealwatcher" ColumnName="dealwatcher" />
           <ScalarProperty Name="product" ColumnName="product" />

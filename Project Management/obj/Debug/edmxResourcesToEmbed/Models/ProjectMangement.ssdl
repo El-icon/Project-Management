@@ -196,6 +196,7 @@
     <Property Name="product" Type="varchar" MaxLength="200" />
     <Property Name="dealwatcher" Type="varchar" MaxLength="200" />
     <Property Name="insertdate" Type="varchar" MaxLength="200" />
+    <Property Name="employeeid" Type="varchar" MaxLength="200" />
   </EntityType>
   <EntityType Name="Department">
     <Key>
@@ -565,6 +566,18 @@ warning 6002: The table/view 'project_management.dbo.Offlinerequest' does not ha
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_Deals_Employees">
+    <End Role="Employees" Type="Self.Employees" Multiplicity="0..1" />
+    <End Role="Deals" Type="Self.Deals" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employees">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Deals">
+        <PropertyRef Name="employeeid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_Deals_Lead_Contact">
     <End Role="Lead_Contact" Type="Self.Lead_Contact" Multiplicity="0..1" />
     <End Role="Deals" Type="Self.Deals" Multiplicity="*" />
@@ -792,6 +805,10 @@ warning 6002: The table/view 'project_management.dbo.Offlinerequest' does not ha
     <AssociationSet Name="FK_Companies_Packages1" Association="Self.FK_Companies_Packages1">
       <End Role="Packages" EntitySet="Packages" />
       <End Role="Companies" EntitySet="Companies" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Deals_Employees" Association="Self.FK_Deals_Employees">
+      <End Role="Employees" EntitySet="Employees" />
+      <End Role="Deals" EntitySet="Deals" />
     </AssociationSet>
     <AssociationSet Name="FK_Deals_Lead_Contact" Association="Self.FK_Deals_Lead_Contact">
       <End Role="Lead_Contact" EntitySet="Lead_Contact" />

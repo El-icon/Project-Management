@@ -5,34 +5,34 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="2303f69618e849d48f9b0e6b775e618a" Name="Diagram1" ZoomLevel="93">
-        <EntityTypeShape EntityType="project_managementModel.ActivityLog" Width="1.5" PointX="5.75" PointY="19" />
-        <EntityTypeShape EntityType="project_managementModel.Adminfaq" Width="1.5" PointX="17" PointY="17.25" />
-        <EntityTypeShape EntityType="project_managementModel.Adminfaqcategory" Width="1.5" PointX="14.75" PointY="18" />
-        <EntityTypeShape EntityType="project_managementModel.Appreciatiion" Width="1.5" PointX="3" PointY="12.25" />
-        <EntityTypeShape EntityType="project_managementModel.billing" Width="1.5" PointX="14.25" PointY="13" />
-        <EntityTypeShape EntityType="project_managementModel.Calendar" Width="1.5" PointX="16.75" PointY="13" />
-        <EntityTypeShape EntityType="project_managementModel.Client" Width="1.5" PointX="3" PointY="0.75" />
-        <EntityTypeShape EntityType="project_managementModel.Company" Width="1.5" PointX="12" PointY="10.5" />
-        <EntityTypeShape EntityType="project_managementModel.company001" Width="1.5" PointX="0.75" PointY="1.75" />
-        <EntityTypeShape EntityType="project_managementModel.Deal" Width="1.5" PointX="5.25" PointY="4.375" />
-        <EntityTypeShape EntityType="project_managementModel.Department" Width="1.5" PointX="3.75" PointY="16.25" />
-        <EntityTypeShape EntityType="project_managementModel.Designation" Width="1.5" PointX="11.75" PointY="8" />
-        <EntityTypeShape EntityType="project_managementModel.document" Width="1.5" PointX="7.75" PointY="3.5" />
-        <EntityTypeShape EntityType="project_managementModel.Employee" Width="1.5" PointX="0.75" PointY="7.75" />
-        <EntityTypeShape EntityType="project_managementModel.Lead_Contact" Width="1.5" PointX="3" PointY="7.5" />
-        <EntityTypeShape EntityType="project_managementModel.Leave" Width="1.5" PointX="3" PointY="19.375" />
-        <EntityTypeShape EntityType="project_managementModel.notification" Width="1.5" PointX="15" PointY="3.25" />
-        <EntityTypeShape EntityType="project_managementModel.Package" Width="1.5" PointX="9.75" PointY="9" />
-        <EntityTypeShape EntityType="project_managementModel.personel_files_cat" Width="1.5" PointX="7.75" PointY="14.5" />
-        <EntityTypeShape EntityType="project_managementModel.personneldocument" Width="1.5" PointX="10" PointY="3.25" />
-        <EntityTypeShape EntityType="project_managementModel.setting" Width="1.5" PointX="17" PointY="8.25" />
-        <EntityTypeShape EntityType="project_managementModel.settings_categories" Width="1.5" PointX="14.75" PointY="8.25" />
-        <EntityTypeShape EntityType="project_managementModel.Shift_Roster" Width="1.5" PointX="6" PointY="9.5" />
-        <EntityTypeShape EntityType="project_managementModel.StickyNote" Width="1.5" PointX="17.75" PointY="3" />
-        <EntityTypeShape EntityType="project_managementModel.Superadmin" Width="1.5" PointX="0.75" PointY="16" />
-        <EntityTypeShape EntityType="project_managementModel.sysdiagram" Width="1.5" PointX="11.75" PointY="20" />
-        <EntityTypeShape EntityType="project_managementModel.useraccount" Width="1.5" PointX="12.75" PointY="3.25" />
-        <EntityTypeShape EntityType="project_managementModel.Offlinerequest" Width="1.5" PointX="7.75" PointY="21" />
+        <EntityTypeShape EntityType="project_managementModel.ActivityLog" Width="1.5" PointX="2.75" PointY="14.75" />
+        <EntityTypeShape EntityType="project_managementModel.Adminfaq" Width="1.5" PointX="17" PointY="11" />
+        <EntityTypeShape EntityType="project_managementModel.Adminfaqcategory" Width="1.5" PointX="14.75" PointY="11.75" />
+        <EntityTypeShape EntityType="project_managementModel.Appreciatiion" Width="1.5" PointX="3" PointY="25.125" />
+        <EntityTypeShape EntityType="project_managementModel.billing" Width="1.5" PointX="12.25" PointY="10.75" />
+        <EntityTypeShape EntityType="project_managementModel.Calendar" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="project_managementModel.Client" Width="1.5" PointX="3" PointY="28.5" />
+        <EntityTypeShape EntityType="project_managementModel.Company" Width="1.5" PointX="10" PointY="8.25" />
+        <EntityTypeShape EntityType="project_managementModel.company001" Width="1.5" PointX="0.75" PointY="16" />
+        <EntityTypeShape EntityType="project_managementModel.Deal" Width="1.5" PointX="5.25" PointY="9.5" />
+        <EntityTypeShape EntityType="project_managementModel.Department" Width="1.5" PointX="0.75" PointY="4.5" />
+        <EntityTypeShape EntityType="project_managementModel.Designation" Width="1.5" PointX="2.75" PointY="0.75" />
+        <EntityTypeShape EntityType="project_managementModel.document" Width="1.5" PointX="5.75" PointY="1.25" />
+        <EntityTypeShape EntityType="project_managementModel.Employee" Width="1.5" PointX="0.75" PointY="7.875" />
+        <EntityTypeShape EntityType="project_managementModel.Lead_Contact" Width="1.5" PointX="3" PointY="9.75" />
+        <EntityTypeShape EntityType="project_managementModel.Leave" Width="1.5" PointX="3" PointY="21" />
+        <EntityTypeShape EntityType="project_managementModel.notification" Width="1.5" PointX="13" PointY="1" />
+        <EntityTypeShape EntityType="project_managementModel.Package" Width="1.5" PointX="7.75" PointY="6.75" />
+        <EntityTypeShape EntityType="project_managementModel.personel_files_cat" Width="1.5" PointX="5.75" PointY="5.25" />
+        <EntityTypeShape EntityType="project_managementModel.personneldocument" Width="1.5" PointX="8" PointY="1" />
+        <EntityTypeShape EntityType="project_managementModel.setting" Width="1.5" PointX="15" PointY="6" />
+        <EntityTypeShape EntityType="project_managementModel.settings_categories" Width="1.5" PointX="12.75" PointY="6.125" />
+        <EntityTypeShape EntityType="project_managementModel.Shift_Roster" Width="1.5" PointX="3" PointY="4.75" />
+        <EntityTypeShape EntityType="project_managementModel.StickyNote" Width="1.5" PointX="4.75" PointY="14.75" />
+        <EntityTypeShape EntityType="project_managementModel.Superadmin" Width="1.5" PointX="15.75" PointY="0.75" />
+        <EntityTypeShape EntityType="project_managementModel.sysdiagram" Width="1.5" PointX="12.75" PointY="15.75" />
+        <EntityTypeShape EntityType="project_managementModel.useraccount" Width="1.5" PointX="10.75" PointY="1" />
+        <EntityTypeShape EntityType="project_managementModel.Offlinerequest" Width="1.5" PointX="14.75" PointY="16.75" />
         <AssociationConnector Association="project_managementModel.FK_Adminfaq_Adminfaqcategory" />
         <AssociationConnector Association="project_managementModel.FK_Appreciatiion_Employees" />
         <AssociationConnector Association="project_managementModel.FK_billing_Companies" />
@@ -40,6 +40,7 @@
         <AssociationConnector Association="project_managementModel.FK_Clients_company001" />
         <AssociationConnector Association="project_managementModel.FK_Companies_Packages1" />
         <AssociationConnector Association="project_managementModel.FK_Lead_Contact_company001" />
+        <AssociationConnector Association="project_managementModel.FK_Deals_Employees" />
         <AssociationConnector Association="project_managementModel.FK_Deals_Lead_Contact" />
         <AssociationConnector Association="project_managementModel.FK_Shift_Roster_Department" />
         <AssociationConnector Association="project_managementModel.FK_personneldocument_documents" />

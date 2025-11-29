@@ -14,8 +14,8 @@ namespace Project_Management.Models
     
     public partial class Deal
     {
-        internal string companyid1;
         internal string leadid1;
+        internal string companyid1;
 
         public string id { get; set; }
         public string leadcontactid { get; set; }
@@ -29,7 +29,9 @@ namespace Project_Management.Models
         public string product { get; set; }
         public string dealwatcher { get; set; }
         public string insertdate { get; set; }
+        public string employeeid { get; set; }
     
+        public virtual Employee Employee { get; set; }
         public virtual Lead_Contact Lead_Contact { get; set; }
     }
 }

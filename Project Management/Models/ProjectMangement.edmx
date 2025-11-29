@@ -201,6 +201,7 @@
           <Property Name="product" Type="varchar" MaxLength="200" />
           <Property Name="dealwatcher" Type="varchar" MaxLength="200" />
           <Property Name="insertdate" Type="varchar" MaxLength="200" />
+          <Property Name="employeeid" Type="varchar" MaxLength="200" />
         </EntityType>
         <EntityType Name="Department">
           <Key>
@@ -570,6 +571,18 @@ warning 6002: The table/view 'project_management.dbo.Offlinerequest' does not ha
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Deals_Employees">
+          <End Role="Employees" Type="Self.Employees" Multiplicity="0..1" />
+          <End Role="Deals" Type="Self.Deals" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employees">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Deals">
+              <PropertyRef Name="employeeid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Deals_Lead_Contact">
           <End Role="Lead_Contact" Type="Self.Lead_Contact" Multiplicity="0..1" />
           <End Role="Deals" Type="Self.Deals" Multiplicity="*" />
@@ -798,6 +811,10 @@ warning 6002: The table/view 'project_management.dbo.Offlinerequest' does not ha
             <End Role="Packages" EntitySet="Packages" />
             <End Role="Companies" EntitySet="Companies" />
           </AssociationSet>
+          <AssociationSet Name="FK_Deals_Employees" Association="Self.FK_Deals_Employees">
+            <End Role="Employees" EntitySet="Employees" />
+            <End Role="Deals" EntitySet="Deals" />
+          </AssociationSet>
           <AssociationSet Name="FK_Deals_Lead_Contact" Association="Self.FK_Deals_Lead_Contact">
             <End Role="Lead_Contact" EntitySet="Lead_Contact" />
             <End Role="Deals" EntitySet="Deals" />
@@ -933,6 +950,10 @@ warning 6002: The table/view 'project_management.dbo.Offlinerequest' does not ha
           <AssociationSet Name="FK_Lead_Contact_company001" Association="project_managementModel.FK_Lead_Contact_company001">
             <End Role="company001" EntitySet="company001" />
             <End Role="Lead_Contact" EntitySet="Lead_Contact" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Deals_Employees" Association="project_managementModel.FK_Deals_Employees">
+            <End Role="Employee" EntitySet="Employees" />
+            <End Role="Deal" EntitySet="Deals" />
           </AssociationSet>
           <AssociationSet Name="FK_Deals_Lead_Contact" Association="project_managementModel.FK_Deals_Lead_Contact">
             <End Role="Lead_Contact" EntitySet="Lead_Contact" />
@@ -1192,6 +1213,8 @@ warning 6002: The table/view 'project_management.dbo.Offlinerequest' does not ha
           <Property Name="product" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Name="dealwatcher" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Name="insertdate" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="employeeid" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Employee" Relationship="project_managementModel.FK_Deals_Employees" FromRole="Deal" ToRole="Employee" />
           <NavigationProperty Name="Lead_Contact" Relationship="project_managementModel.FK_Deals_Lead_Contact" FromRole="Deal" ToRole="Lead_Contact" />
         </EntityType>
         <EntityType Name="Department">
@@ -1256,6 +1279,7 @@ warning 6002: The table/view 'project_management.dbo.Offlinerequest' does not ha
           <Property Name="maritalstatus" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Name="businessaddress" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Appreciatiions" Relationship="project_managementModel.FK_Appreciatiion_Employees" FromRole="Employee" ToRole="Appreciatiion" />
+          <NavigationProperty Name="Deals" Relationship="project_managementModel.FK_Deals_Employees" FromRole="Employee" ToRole="Deal" />
           <NavigationProperty Name="Lead_Contact" Relationship="project_managementModel.FK_Lead_Contact_Employees1" FromRole="Employee" ToRole="Lead_Contact" />
           <NavigationProperty Name="Lead_Contact1" Relationship="project_managementModel.FK_Lead_Contact_Employees2" FromRole="Employee" ToRole="Lead_Contact" />
           <NavigationProperty Name="Leaves" Relationship="project_managementModel.FK_Leave_Employees" FromRole="Employee" ToRole="Leave" />
@@ -1592,6 +1616,18 @@ warning 6002: The table/view 'project_management.dbo.Offlinerequest' does not ha
             </Principal>
             <Dependent Role="Lead_Contact">
               <PropertyRef Name="companyid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Deals_Employees">
+          <End Type="project_managementModel.Employee" Role="Employee" Multiplicity="0..1" />
+          <End Type="project_managementModel.Deal" Role="Deal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Deal">
+              <PropertyRef Name="employeeid" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1939,6 +1975,7 @@ warning 6002: The table/view 'project_management.dbo.Offlinerequest' does not ha
           <EntitySetMapping Name="Deals">
             <EntityTypeMapping TypeName="project_managementModel.Deal">
               <MappingFragment StoreEntitySet="Deals">
+                <ScalarProperty Name="employeeid" ColumnName="employeeid" />
                 <ScalarProperty Name="insertdate" ColumnName="insertdate" />
                 <ScalarProperty Name="dealwatcher" ColumnName="dealwatcher" />
                 <ScalarProperty Name="product" ColumnName="product" />
