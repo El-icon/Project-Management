@@ -1,0 +1,211 @@
+﻿@*@model Project_Management.Models.Deal*@
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    //Project_Management.Models.project_managementEntities db = new Project_Management.Models.project_managementEntities();
+    //Project_Management.Controllers.PackagesController tech = new Project_Management.Controllers.PackagesController();
+
+    //int sn = 0;
+}
+
+
+
+
+<main>
+    <div class="col-xl-12">
+        <div class="card">
+            <div class="card-body">
+                <div class="d-flex align-items-center justify-content-between mb-3">
+                    <h4 class="card-title mb-0">
+                        @Model.name
+                    </h4>
+
+                    <div class="dropdown d-inline-block">
+                        <button type="button" class="btn header-item waves-effect text-dark"
+                                id="page-header-user-dropdown"
+                                data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fa fa-ellipsis-v"></i>
+                            <i class="mdi mdi-chevron-down d-none d-xl-inline-block"></i>
+                        </button>
+
+                        <div class="dropdown-menu dropdown-menu-end">
+                            <a class="dropdown-item" href="@Url.Action("Index","Deals")">
+                                <i class="bx bx-edit font-size-16 align-middle me-1"></i> Index
+                            </a>
+                            <a class="dropdown-item" href="#edit_@Model.id" data-toggle="modal">
+                                <i class="bx bx-edit font-size-16 align-middle me-1"></i> Edit
+                            </a>
+                            <a class="dropdown-item" href="#delete_@Model.id" data-toggle="modal">
+                                <i class="bx bx-trash font-size-16 align-middle me-1"></i> Delete
+                            </a>
+                        </div>
+                    </div>
+                </div>
+ 
+                <!---------------------- Delete Modal --------------------- -->
+                <div id="delete_@Model.id" class="modal fade" tabindex="-1" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content shadow-lg border-0 rounded-4">
+
+                            <!-- Header -->
+                            <div class="modal-header bg-danger text-white justify-content-center">
+                                <h5 class="modal-title fw-bold">
+                                    <i class="mdi mdi-alert-circle-outline me-2"></i>Are you sure?
+                                </h5>
+                            </div>
+
+                            <!-- Body -->
+                            <div class="modal-body text-center p-4">
+                                <div class="mb-3">
+                                    <i class="mdi mdi-delete-circle text-danger" style="font-size: 4rem;"></i>
+                                </div>
+                                <p class="text-muted mb-0">
+                                    You will <strong>not</strong> be able to recover the deleted record!
+                                </p>
+                                <h6 class="mt-2 text-danger">@Model.name</h6>
+                            </div>
+
+                            <!-- Footer -->
+                            <div class="modal-footer border-0">
+                                @using (Html.BeginForm("Delete", "Deals", FormMethod.Post, new { @class = "w-100" }))
+                                {
+                                    @Html.AntiForgeryToken()
+                                    <input type="hidden" name="id" value="@Model.id" />
+                                    <div class="d-flex justify-content-center gap-2">
+                                        <button type="submit" class="btn btn-danger btn-lg px-4">
+                                            <i class="mdi mdi-check-circle me-1"></i>Yes, Delete It!
+                                        </button>
+                                        <button type="button" class="btn btn-secondary btn-lg px-4" data-bs-dismiss="modal">
+                                            <i class="mdi mdi-close-circle me-1"></i>Cancel
+                                        </button>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-header">
+                                Deal Info
+                            </div>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    🧑 Deal Name <span>@Model.name</span>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    🧑 Lead Contact <span>@Model.Lead_Contact.name</span>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    📧 Email <span>@Model.Lead_Contact.email</span>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    🏢 Company Name <span>@Model.Lead_Contact.company001.name</span>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    🌐 Deal Category <span>@Model.dealcategory</span>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    📱 Deal agent <span>@Model.dealagent</span>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    ☎️ Deal Watcher <span>@Model.dealwatcher</span>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    🌍 Deal Value <span>@Model.dealvalue</span>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    🗺️ Products <span>@Model.product</span>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    🏙️ City <span>@Model.closedate</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-header">
+                                Lead Contact Detail
+                            </div>
+                            <div class="card-body">
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        🧑 Lead Contact  <span>@Model.Lead_Contact.name</span>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        💾 Email  <span>@Model.Lead_Contact.email</span>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        👥 Company Name <span>@Model.Lead_Contact.company001.name</span>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        🧾 Mobile <span>@Model.Lead_Contact.company001.mobile</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</main>
+
+
+<div class="col-xl-12">
+    <div class="card">
+        <div class="card-body">
+            <!-- Nav tabs -->
+            <ul class="nav nav-tabs nav-tabs-custom nav-justified" role="tablist">
+
+                <li class="nav-item">
+                    <a class="nav-link" data-bs-toggle="tab" href="#file" role="tab">
+                        <span class="d-block d-sm-none"><i class="far fa-user"></i></span>
+                        <span class="d-none d-sm-block">Files</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-bs-toggle="tab" href="#followup" role="tab">
+                        <span class="d-block d-sm-none"><i class="far fa-user"></i></span>
+                        <span class="d-none d-sm-block">Follow Up</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-bs-toggle="tab" href="#proposal" role="tab">
+                        <span class="d-block d-sm-none"><i class="far fa-envelope"></i></span>
+                        <span class="d-none d-sm-block">Proposal</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-bs-toggle="tab" href="#notes" role="tab">
+                        <span class="d-block d-sm-none"><i class="far fa-user"></i></span>
+                        <span class="d-none d-sm-block">Notes</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-bs-toggle="tab" href="#history" role="tab">
+                        <span class="d-block d-sm-none"><i class="far fa-envelope"></i></span>
+                        <span class="d-none d-sm-block">History</span>
+                    </a>
+                </li>
+            </ul>
+
+            <!-- Tab panes -->
+            <div class="tab-content p-3 text-muted">
+ 
+            </div>
+
+
+        </div>
+    </div>
+</div>
+
+
+ 

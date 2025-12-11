@@ -803,27 +803,21 @@
             }
 
             const ext = file.name.split('.').pop().toLowerCase();
-            const reader = new FileReader();
+            previewContainer.style.display = 'block';
 
             if (['jpg', 'jpeg', 'png', 'gif', 'bmp', 'webp'].includes(ext)) {
-                reader.onload = function (e) {
-                    previewImg.src = e.target.result;
-                    previewImg.style.display = 'block';
-                    previewPdf.style.display = 'none';
-                    previewContainer.style.display = 'block';
-                };
-                reader.readAsDataURL(file);
+                const url = URL.createObjectURL(file);
+                previewImg.src = url;
+                previewImg.style.display = 'block';
+                previewPdf.style.display = 'none';
             } else if (ext === 'pdf') {
-                reader.onload = function (e) {
-                    previewPdf.data = e.target.result;
-                    previewPdf.style.display = 'block';
-                    previewImg.style.display = 'none';
-                    previewContainer.style.display = 'block';
-                };
-                reader.readAsDataURL(file);
+                const url = URL.createObjectURL(file);
+                previewPdf.data = url;          // <--- object needs URL, not data-URI
+                previewPdf.style.display = 'block';
+                previewImg.style.display = 'none';
             } else {
                 alert("Only image or PDF files are allowed.");
-                input.value = ""; // reset
+                input.value = "";
                 previewContainer.style.display = 'none';
             }
         });

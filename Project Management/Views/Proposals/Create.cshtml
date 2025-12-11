@@ -1,0 +1,213 @@
+﻿@*@model Project_Management.Models.Proposals*@
+
+@{
+    ViewBag.Title = "Deals";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    Project_Management.Models.project_managementEntities db =
+        new Project_Management.Models.project_managementEntities();
+    //int sn = 0;
+}
+@using Project_Management.setup;
+
+
+<div class="row">
+    <div class="col-lg-12 col-md-12">
+        <div class="card">
+            <div class="card-body">
+                @*<h4 class="card-title">Create Proposal</h4>*@
+                <div class="form-horizontal">
+                    <hr />
+
+                    <div class="modal-content">
+                        <div class="modal-header"><h4>Create Proposal</h4></div>
+                        @using (Html.BeginForm("Create", "Proposal", FormMethod.Post, new { @class = "custom-validation" }))
+                        {
+                            @Html.AntiForgeryToken()
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <label>Lead Contacts</label>
+                                <select class="form-control" name="leadcontactid" required="">
+                                    <option> Select Contacts</option>
+                                    @foreach (var item in db.Lead_Contact.ToList())
+                                    {
+                                        <option value="@item.id">@item.name</option>
+                                    }
+                                </select>
+                            </div>
+                            <div class="col-md-4">
+                                <label>Deal</label>
+                                <select class="form-control" name="leadcontactid" required="">
+                                    <option> Select Deal</option>
+                                    @foreach (var item in db.Deals.ToList())
+                                    {
+                                        <option value="@item.id">@item.name</option>
+                                    }
+                                </select>
+                            </div>
+                            <div class="col-md-4">
+                                <label>Valid Till</label>
+                                <input type="date" name="validtill" class="form-control" required />
+                            </div>
+                        </div>
+                        <br />
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>
+                                    Currency
+                                </label>
+                                <select name="currency" class="form-control" required>
+                                    <option disabled selected>Please Select</option>
+                                    <option>USD ($)</option>
+                                    <option>Naira N</option>
+                                    <option>GBP</option>
+                                    <option>Euro</option>
+                                    <option>INR</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <label>Calculated Tax</label>
+                                <select name="calculatedtax" class="form-control" required>
+                                    <option disabled selected>Please Select</option>
+                                    <option>After Discount</option>
+                                    <option>Before Discount</option>
+                                </select>
+                            </div>
+                        </div>
+                        <br>
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <label for="packageType">
+                                    Description
+                                </label>
+                                <textarea class="form-control" aria-label="With textarea" rows="10" id="description" name="description" required></textarea>
+
+                            </div>
+                        </div>
+                        <br>
+                        <div class="form-check mb-4">
+                            <input class="form-check-input" type="checkbox" checked>
+                            <label class="form-check-label">Require customer signature for approval</label>
+                        </div>
+                        <br>
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <label for="packageType">
+                                    Select Product
+                                </label>
+                                <select name="dealcategory" class="form-control" required>
+                                    <option disabled selected>Please Select</option>
+                                    <option>Best Case</option>
+                                    <option>Closed</option>
+                                    <option>Commit</option>
+                                </select>
+                                @*<select class="form-control" name="product" required="">
+                    <option> Select Product</option>
+                    @foreach (var item in db.Products.ToList())
+                    {
+                        <option value="@item.id">@item.name</option>
+                    }
+                </select>*@
+                            </div>
+                        </div>
+
+
+                        <br>
+                        <div class="item-box mb-4">
+                            <div class="row g-3">
+
+                                <div class="col-md-4">
+                                    <label class="form-label fw-semibold">Description</label>
+                                    <input type="text" class="form-control mb-2" placeholder="Item Name">
+                                    <input type="text" class="form-control" placeholder="Enter Description (optional)">
+                                </div>
+
+                                <div class="col-md-2">
+                                    <label class="form-label">Quantity</label>
+                                    <div class="input-group">
+                                        <input type="number" class="form-control" value="1">
+                                        <select class="form-select"><option>Pcs</option></select>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-2">
+                                    <label class="form-label">Unit Price</label>
+                                    <input type="number" class="form-control" value="0">
+                                </div>
+
+                                <div class="col-md-2">
+                                    <label class="form-label">Tax</label>
+                                    <select class="form-select mb-2"><option>Nothing selected</option></select>
+                                    <div class="file-upload">Choose a file</div>
+                                </div>
+
+                                <div class="col-md-2">
+                                    <label class="form-label">Amount</label>
+                                    <div class="amount-col h-100">0.00</div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <br>
+
+
+                        <!-- Add item link -->
+                        <a href="#" class="text-primary d-inline-block mb-3">+ Add Item</a>
+
+                        <div class="row g-4 mb-4">
+                            <div class="col-md-6">
+                                <label class="form-label">Note for the recipient</label>
+                                <textarea class="form-control" rows="4" placeholder="e.g. Thank you for your business"></textarea>
+                            </div>
+
+                            <div class="col-md-6">
+                                <table class="table table-bordered sub-table">
+                                    <tbody>
+                                        <tr>
+                                            <td>Sub Total</td>
+                                            <td class="text-end">0.00</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Discount</td>
+                                            <td>
+                                                <div class="d-flex justify-content-end">
+                                                    <input type="number" class="form-control me-2" style="max-width:110px">
+                                                    <select class="form-select" style="max-width:80px"><option>%</option></select>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Tax</td>
+                                            <td class="text-end">0.00</td>
+                                        </tr>
+                                        <tr class="total-row">
+                                            <td>Total</td>
+                                            <td class="text-end">0.00</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <br>
+                         
+                    </div>
+                            <br />
+                            <div class="row">
+                                <div class="col-md-12 text-center">
+                                    <button type="submit" class="btn btn-success">Create</button>
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                </div>
+                            </div>
+                            <br /> <br />
+                        }
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div> 

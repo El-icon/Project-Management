@@ -3,28 +3,52 @@
   "WorkspaceRootPath": "C:\\Users\\yusuf\\Documents\\GitHub\\Project-Management\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{3FC1037D-2AF7-46D9-B000-1C582E79A5E6}|Project Management\\Project Management.csproj|c:\\users\\yusuf\\documents\\github\\project-management\\project management\\views\\deals\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{3FC1037D-2AF7-46D9-B000-1C582E79A5E6}|Project Management\\Project Management.csproj|solutionrelative:project management\\views\\deals\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{3FC1037D-2AF7-46D9-B000-1C582E79A5E6}|Project Management\\Project Management.csproj|c:\\users\\yusuf\\documents\\github\\project-management\\project management\\views\\proposals\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{3FC1037D-2AF7-46D9-B000-1C582E79A5E6}|Project Management\\Project Management.csproj|solutionrelative:project management\\views\\proposals\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3FC1037D-2AF7-46D9-B000-1C582E79A5E6}|Project Management\\Project Management.csproj|c:\\users\\yusuf\\documents\\github\\project-management\\project management\\views\\lead_contact\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "AbsoluteMoniker": "D:0:0:{3FC1037D-2AF7-46D9-B000-1C582E79A5E6}|Project Management\\Project Management.csproj|C:\\Users\\yusuf\\Documents\\GitHub\\Project-Management\\project management\\views\\personneldocuments\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{3FC1037D-2AF7-46D9-B000-1C582E79A5E6}|Project Management\\Project Management.csproj|solutionrelative:project management\\views\\personneldocuments\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3FC1037D-2AF7-46D9-B000-1C582E79A5E6}|Project Management\\Project Management.csproj|C:\\Users\\yusuf\\Documents\\GitHub\\Project-Management\\project management\\controllers\\proposalscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3FC1037D-2AF7-46D9-B000-1C582E79A5E6}|Project Management\\Project Management.csproj|solutionrelative:project management\\controllers\\proposalscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3FC1037D-2AF7-46D9-B000-1C582E79A5E6}|Project Management\\Project Management.csproj|C:\\Users\\yusuf\\Documents\\GitHub\\Project-Management\\project management\\views\\lead_contact\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{3FC1037D-2AF7-46D9-B000-1C582E79A5E6}|Project Management\\Project Management.csproj|solutionrelative:project management\\views\\lead_contact\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3FC1037D-2AF7-46D9-B000-1C582E79A5E6}|Project Management\\Project Management.csproj|c:\\users\\yusuf\\documents\\github\\project-management\\project management\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{3FC1037D-2AF7-46D9-B000-1C582E79A5E6}|Project Management\\Project Management.csproj|solutionrelative:project management\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3FC1037D-2AF7-46D9-B000-1C582E79A5E6}|Project Management\\Project Management.csproj|c:\\users\\yusuf\\documents\\github\\project-management\\project management\\views\\companies\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{3FC1037D-2AF7-46D9-B000-1C582E79A5E6}|Project Management\\Project Management.csproj|solutionrelative:project management\\views\\companies\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{3FC1037D-2AF7-46D9-B000-1C582E79A5E6}|Project Management\\Project Management.csproj|c:\\users\\yusuf\\documents\\github\\project-management\\project management\\views\\deals\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{3FC1037D-2AF7-46D9-B000-1C582E79A5E6}|Project Management\\Project Management.csproj|solutionrelative:project management\\views\\deals\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{3FC1037D-2AF7-46D9-B000-1C582E79A5E6}|Project Management\\Project Management.csproj|c:\\users\\yusuf\\documents\\github\\project-management\\project management\\controllers\\dealscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{3FC1037D-2AF7-46D9-B000-1C582E79A5E6}|Project Management\\Project Management.csproj|solutionrelative:project management\\controllers\\dealscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3FC1037D-2AF7-46D9-B000-1C582E79A5E6}|Project Management\\Project Management.csproj|c:\\users\\yusuf\\documents\\github\\project-management\\project management\\controllers\\stickynotescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3FC1037D-2AF7-46D9-B000-1C582E79A5E6}|Project Management\\Project Management.csproj|solutionrelative:project management\\controllers\\stickynotescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{3FC1037D-2AF7-46D9-B000-1C582E79A5E6}|Project Management\\Project Management.csproj|C:\\Users\\yusuf\\Documents\\GitHub\\Project-Management\\project management\\views\\proposals\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{3FC1037D-2AF7-46D9-B000-1C582E79A5E6}|Project Management\\Project Management.csproj|solutionrelative:project management\\views\\proposals\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3FC1037D-2AF7-46D9-B000-1C582E79A5E6}|Project Management\\Project Management.csproj|c:\\users\\yusuf\\documents\\github\\project-management\\project management\\views\\proposals\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{3FC1037D-2AF7-46D9-B000-1C582E79A5E6}|Project Management\\Project Management.csproj|solutionrelative:project management\\views\\proposals\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3FC1037D-2AF7-46D9-B000-1C582E79A5E6}|Project Management\\Project Management.csproj|C:\\Users\\yusuf\\Documents\\GitHub\\Project-Management\\project management\\views\\lead_contact\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{3FC1037D-2AF7-46D9-B000-1C582E79A5E6}|Project Management\\Project Management.csproj|solutionrelative:project management\\views\\lead_contact\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3FC1037D-2AF7-46D9-B000-1C582E79A5E6}|Project Management\\Project Management.csproj|C:\\Users\\yusuf\\Documents\\GitHub\\Project-Management\\project management\\views\\proposals\\template.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{3FC1037D-2AF7-46D9-B000-1C582E79A5E6}|Project Management\\Project Management.csproj|solutionrelative:project management\\views\\proposals\\template.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3FC1037D-2AF7-46D9-B000-1C582E79A5E6}|Project Management\\Project Management.csproj|C:\\Users\\yusuf\\Documents\\GitHub\\Project-Management\\project management\\views\\shared\\_leftbar.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{3FC1037D-2AF7-46D9-B000-1C582E79A5E6}|Project Management\\Project Management.csproj|solutionrelative:project management\\views\\shared\\_leftbar.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3FC1037D-2AF7-46D9-B000-1C582E79A5E6}|Project Management\\Project Management.csproj|C:\\Users\\yusuf\\Documents\\GitHub\\Project-Management\\project management\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{3FC1037D-2AF7-46D9-B000-1C582E79A5E6}|Project Management\\Project Management.csproj|solutionrelative:project management\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     }
   ],
   "DocumentGroupContainers": [
@@ -34,60 +58,8 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 4,
           "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "C:\\Users\\yusuf\\Documents\\GitHub\\Project-Management\\Project Management\\Views\\Companies\\Index.cshtml",
-              "RelativeDocumentMoniker": "Project Management\\Views\\Companies\\Index.cshtml",
-              "ToolTip": "C:\\Users\\yusuf\\Documents\\GitHub\\Project-Management\\Project Management\\Views\\Companies\\Index.cshtml",
-              "RelativeToolTip": "Project Management\\Views\\Companies\\Index.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAEkAAAAtAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-11-29T14:01:47.459Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "_Layout.cshtml",
-              "DocumentMoniker": "C:\\Users\\yusuf\\Documents\\GitHub\\Project-Management\\Project Management\\Views\\Shared\\_Layout.cshtml",
-              "RelativeDocumentMoniker": "Project Management\\Views\\Shared\\_Layout.cshtml",
-              "ToolTip": "C:\\Users\\yusuf\\Documents\\GitHub\\Project-Management\\Project Management\\Views\\Shared\\_Layout.cshtml",
-              "RelativeToolTip": "Project Management\\Views\\Shared\\_Layout.cshtml",
-              "ViewState": "AgIAACcAAAAAAAAAAAAAAE0AAABAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-11-29T13:35:13.595Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "C:\\Users\\yusuf\\Documents\\GitHub\\Project-Management\\Project Management\\Views\\Lead_Contact\\Index.cshtml",
-              "RelativeDocumentMoniker": "Project Management\\Views\\Lead_Contact\\Index.cshtml",
-              "ToolTip": "C:\\Users\\yusuf\\Documents\\GitHub\\Project-Management\\Project Management\\Views\\Lead_Contact\\Index.cshtml",
-              "RelativeToolTip": "Project Management\\Views\\Lead_Contact\\Index.cshtml",
-              "ViewState": "AgIAACcAAAAAAAAAAAAAAI8AAAA8AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-11-29T11:13:46.267Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "C:\\Users\\yusuf\\Documents\\GitHub\\Project-Management\\Project Management\\Views\\Deals\\Index.cshtml",
-              "RelativeDocumentMoniker": "Project Management\\Views\\Deals\\Index.cshtml",
-              "ToolTip": "C:\\Users\\yusuf\\Documents\\GitHub\\Project-Management\\Project Management\\Views\\Deals\\Index.cshtml",
-              "RelativeToolTip": "Project Management\\Views\\Deals\\Index.cshtml",
-              "ViewState": "AgIAALYAAAAAAAAAAAAiwNsAAAAGAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-11-29T11:08:52.087Z",
-              "EditorCaption": ""
-            },
             {
               "$type": "Bookmark",
               "Name": "ST:128:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
@@ -98,29 +70,155 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "DealsController.cs",
               "DocumentMoniker": "C:\\Users\\yusuf\\Documents\\GitHub\\Project-Management\\Project Management\\Controllers\\DealsController.cs",
               "RelativeDocumentMoniker": "Project Management\\Controllers\\DealsController.cs",
               "ToolTip": "C:\\Users\\yusuf\\Documents\\GitHub\\Project-Management\\Project Management\\Controllers\\DealsController.cs",
               "RelativeToolTip": "Project Management\\Controllers\\DealsController.cs",
-              "ViewState": "AgIAACgAAAAAAAAAAAAiwC4AAABKAAAAAAAAAA==",
+              "ViewState": "AgIAABEAAAAAAAAAAAAQwCkAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-29T11:08:39.999Z",
+              "WhenOpened": "2025-12-11T09:19:39.311Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "StickyNotesController.cs",
-              "DocumentMoniker": "C:\\Users\\yusuf\\Documents\\GitHub\\Project-Management\\Project Management\\Controllers\\StickyNotesController.cs",
-              "RelativeDocumentMoniker": "Project Management\\Controllers\\StickyNotesController.cs",
-              "ToolTip": "C:\\Users\\yusuf\\Documents\\GitHub\\Project-Management\\Project Management\\Controllers\\StickyNotesController.cs",
-              "RelativeToolTip": "Project Management\\Controllers\\StickyNotesController.cs",
-              "ViewState": "AgIAADYAAAAAAAAAAAAowGEAAAA3AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-29T11:08:58.941Z",
+              "DocumentIndex": 4,
+              "Title": "Details.cshtml",
+              "DocumentMoniker": "C:\\Users\\yusuf\\Documents\\GitHub\\Project-Management\\Project Management\\Views\\Deals\\Details.cshtml",
+              "RelativeDocumentMoniker": "Project Management\\Views\\Deals\\Details.cshtml",
+              "ToolTip": "C:\\Users\\yusuf\\Documents\\GitHub\\Project-Management\\Project Management\\Views\\Deals\\Details.cshtml",
+              "RelativeToolTip": "Project Management\\Views\\Deals\\Details.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAMgCAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-12-11T09:08:03.339Z",
               "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Details.cshtml",
+              "DocumentMoniker": "C:\\Users\\yusuf\\Documents\\GitHub\\Project-Management\\Project Management\\Views\\Proposals\\Details.cshtml",
+              "RelativeDocumentMoniker": "Project Management\\Views\\Proposals\\Details.cshtml",
+              "ToolTip": "C:\\Users\\yusuf\\Documents\\GitHub\\Project-Management\\Project Management\\Views\\Proposals\\Details.cshtml",
+              "RelativeToolTip": "Project Management\\Views\\Proposals\\Details.cshtml",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAABQAAAAYAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-12-11T09:05:57.76Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Create.cshtml",
+              "DocumentMoniker": "C:\\Users\\yusuf\\Documents\\GitHub\\Project-Management\\Project Management\\Views\\Lead_Contact\\Create.cshtml",
+              "RelativeDocumentMoniker": "Project Management\\Views\\Lead_Contact\\Create.cshtml",
+              "ToolTip": "C:\\Users\\yusuf\\Documents\\GitHub\\Project-Management\\Project Management\\Views\\Lead_Contact\\Create.cshtml",
+              "RelativeToolTip": "Project Management\\Views\\Lead_Contact\\Create.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-12-10T13:04:50.226Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "Template.cshtml",
+              "DocumentMoniker": "C:\\Users\\yusuf\\Documents\\GitHub\\Project-Management\\Project Management\\Views\\Proposals\\Template.cshtml",
+              "RelativeDocumentMoniker": "Project Management\\Views\\Proposals\\Template.cshtml",
+              "ToolTip": "C:\\Users\\yusuf\\Documents\\GitHub\\Project-Management\\Project Management\\Views\\Proposals\\Template.cshtml",
+              "RelativeToolTip": "Project Management\\Views\\Proposals\\Template.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-12-10T13:01:34.448Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\yusuf\\Documents\\GitHub\\Project-Management\\Project Management\\Views\\Lead_Contact\\Index.cshtml",
+              "RelativeDocumentMoniker": "Project Management\\Views\\Lead_Contact\\Index.cshtml",
+              "ToolTip": "C:\\Users\\yusuf\\Documents\\GitHub\\Project-Management\\Project Management\\Views\\Lead_Contact\\Index.cshtml",
+              "RelativeToolTip": "Project Management\\Views\\Lead_Contact\\Index.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAA9AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-12-10T12:54:01.393Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\yusuf\\Documents\\GitHub\\Project-Management\\Project Management\\Views\\personneldocuments\\Index.cshtml",
+              "RelativeDocumentMoniker": "Project Management\\Views\\personneldocuments\\Index.cshtml",
+              "ToolTip": "C:\\Users\\yusuf\\Documents\\GitHub\\Project-Management\\Project Management\\Views\\personneldocuments\\Index.cshtml",
+              "RelativeToolTip": "Project Management\\Views\\personneldocuments\\Index.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAgAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-12-10T13:14:01.066Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Create.cshtml",
+              "DocumentMoniker": "C:\\Users\\yusuf\\Documents\\GitHub\\Project-Management\\Project Management\\Views\\Proposals\\Create.cshtml",
+              "RelativeDocumentMoniker": "Project Management\\Views\\Proposals\\Create.cshtml",
+              "ToolTip": "C:\\Users\\yusuf\\Documents\\GitHub\\Project-Management\\Project Management\\Views\\Proposals\\Create.cshtml",
+              "RelativeToolTip": "Project Management\\Views\\Proposals\\Create.cshtml",
+              "ViewState": "AgIAALIAAAAAAAAAAAAswNQAAAAHAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-12-10T12:53:09.636Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ProposalsController.cs",
+              "DocumentMoniker": "C:\\Users\\yusuf\\Documents\\GitHub\\Project-Management\\Project Management\\Controllers\\ProposalsController.cs",
+              "RelativeDocumentMoniker": "Project Management\\Controllers\\ProposalsController.cs",
+              "ToolTip": "C:\\Users\\yusuf\\Documents\\GitHub\\Project-Management\\Project Management\\Controllers\\ProposalsController.cs",
+              "RelativeToolTip": "Project Management\\Controllers\\ProposalsController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAwC4AAAAHAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-10T12:51:25.581Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\yusuf\\Documents\\GitHub\\Project-Management\\Project Management\\Views\\Proposals\\Index.cshtml",
+              "RelativeDocumentMoniker": "Project Management\\Views\\Proposals\\Index.cshtml",
+              "ToolTip": "C:\\Users\\yusuf\\Documents\\GitHub\\Project-Management\\Project Management\\Views\\Proposals\\Index.cshtml",
+              "RelativeToolTip": "Project Management\\Views\\Proposals\\Index.cshtml",
+              "ViewState": "AgIAAEwAAAAAAAAAAAAAAFUAAABaAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-12-09T14:12:45.958Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "_leftbar.cshtml",
+              "DocumentMoniker": "C:\\Users\\yusuf\\Documents\\GitHub\\Project-Management\\Project Management\\Views\\Shared\\_leftbar.cshtml",
+              "RelativeDocumentMoniker": "Project Management\\Views\\Shared\\_leftbar.cshtml",
+              "ToolTip": "C:\\Users\\yusuf\\Documents\\GitHub\\Project-Management\\Project Management\\Views\\Shared\\_leftbar.cshtml",
+              "RelativeToolTip": "Project Management\\Views\\Shared\\_leftbar.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB0AAAAUAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-12-09T11:47:11.499Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "_Layout.cshtml",
+              "DocumentMoniker": "C:\\Users\\yusuf\\Documents\\GitHub\\Project-Management\\Project Management\\Views\\Shared\\_Layout.cshtml",
+              "RelativeDocumentMoniker": "Project Management\\Views\\Shared\\_Layout.cshtml",
+              "ToolTip": "C:\\Users\\yusuf\\Documents\\GitHub\\Project-Management\\Project Management\\Views\\Shared\\_Layout.cshtml",
+              "RelativeToolTip": "Project Management\\Views\\Shared\\_Layout.cshtml",
+              "ViewState": "AgIAABADAAAAAAAAAAAYwDYDAAALAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-11-29T13:35:13.595Z"
             }
           ]
         },
